@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Billy Love Collection — Elevated Loungewear &amp; Apparel</title>
+<meta name="description" content="Billy Love Collection. Classy, comfortable pajamas, loungewear and apparel for women and men.">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Marcellus&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="responsive.css?v=2">
+</head>
+<body>
+
+<!-- ================= OVERLAY TOP BAR (announcement + header) ================= -->
+<div class="site-top" id="siteTop">
+
+<!-- ================= ANNOUNCEMENT BAR ================= -->
+<div class="announcement">
+  <div class="container announcement__container">
+    <button class="announcement__arrow" type="button" data-announce-prev aria-label="Previous announcement"><i class="ph ph-caret-left"></i></button>
+    <div class="announcement__viewport">
+      <p class="announcement__item is-active">Free US shipping on orders over $75</p>
+      <p class="announcement__item">New drop — Pajama Season is here</p>
+      <p class="announcement__item">Easy 30-day returns, always</p>
+    </div>
+    <button class="announcement__arrow" type="button" data-announce-next aria-label="Next announcement"><i class="ph ph-caret-right"></i></button>
+  </div>
+</div>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header" id="siteHeader">
+  <div class="container site-header__container">
+    <nav class="site-nav" aria-label="Primary">
+      <ul class="site-nav__list">
+        <li class="site-nav__item"><a class="site-nav__link" href="#">Women</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="#">Men</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="#">Pajamas</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="#">New In</a></li>
+      </ul>
+    </nav>
+
+    <a class="site-logo" href="#">
+      <img class="site-logo__img" src="images/logo.webp" alt="Billy Love Collection" width="400" height="432">
+    </a>
+
+    <div class="site-actions">
+      <button class="site-actions__btn" type="button" aria-label="Search"><i class="ph ph-magnifying-glass"></i></button>
+      <a class="site-actions__btn site-actions__btn--desktop" href="#" aria-label="Account"><i class="ph ph-user"></i></a>
+      <button class="site-actions__btn" type="button" aria-label="Cart">
+        <i class="ph ph-handbag-simple"></i>
+        <span class="site-actions__count" data-cart-count>0</span>
+      </button>
+      <button class="site-actions__btn site-actions__btn--mobile" type="button" data-open-menu aria-label="Menu"><i class="ph ph-list"></i></button>
+    </div>
+  </div>
+</header>
+
+</div>
+
+<!-- ================= MOBILE DRAWER ================= -->
+<div class="drawer" id="mobileDrawer" aria-hidden="true">
+  <div class="drawer__panel">
+    <div class="drawer__head">
+      <span class="drawer__title">Menu</span>
+      <button class="drawer__close" type="button" data-close-menu aria-label="Close menu"><i class="ph ph-x"></i></button>
+    </div>
+    <ul class="drawer__list">
+      <li class="drawer__item"><a class="drawer__link" href="#">Women</a></li>
+      <li class="drawer__item"><a class="drawer__link" href="#">Men</a></li>
+      <li class="drawer__item"><a class="drawer__link" href="#">Pajamas</a></li>
+      <li class="drawer__item"><a class="drawer__link" href="#">New In</a></li>
+      <li class="drawer__item"><a class="drawer__link" href="#">Journal</a></li>
+      <li class="drawer__item"><a class="drawer__link" href="#">Account</a></li>
+    </ul>
+    <div class="drawer__social">
+      <a class="drawer__social-link" href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+      <a class="drawer__social-link" href="#" aria-label="TikTok"><i class="ph ph-tiktok-logo"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero__media">
+    <img class="hero__img"
+         src="images/hero.webp"
+         srcset="images/hero-960.webp 960w,
+                 images/hero-1440.webp 1440w,
+                 images/hero.webp 1916w"
+         sizes="100vw"
+         alt="Model in the Billy Love camo crop tee against a warm studio backdrop"
+         fetchpriority="high" width="1916" height="821">
+  </div>
+  <div class="container hero__container">
+    <div class="hero__content">
+      <span class="eyebrow eyebrow--light">Loungewear Reimagined</span>
+      <h1 class="hero__title">More Than a<br>Brand</h1>
+      <p class="hero__text">Premium essentials for a bolder tomorrow. Designed for comfort. Built for a lifestyle.</p>
+      <div class="hero__actions">
+        <a class="btn btn--accent" href="#">Shop Pajamas</a>
+        <a class="btn btn--ghost" href="#">Shop New In</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BEST SELLERS (tabbed carousel) ================= -->
+<section class="section bestsellers" id="shop-gender">
+  <div class="container">
+
+    <div class="bestsellers__head">
+      <span class="eyebrow">Our Best Sellers</span>
+      <div class="tabs" role="tablist" aria-label="Best sellers by category">
+        <button class="tab is-active" type="button" role="tab" id="shop-women" aria-controls="panel-women" aria-selected="true" tabindex="0" data-cta-label="All Women's Styles" data-cta-href="#">Women</button>
+        <button class="tab" type="button" role="tab" id="shop-men" aria-controls="panel-men" aria-selected="false" tabindex="-1" data-cta-label="All Men's Styles" data-cta-href="#">Men</button>
+      </div>
+    </div>
+
+    <div class="bestsellers__panels">
+
+      <div class="bestsellers__panel is-active" role="tabpanel" id="panel-women" aria-labelledby="shop-women">
+        <div class="carousel" data-carousel>
+          <button class="carousel__btn carousel__btn--prev" type="button" data-carousel-prev aria-label="Previous women's products"><i class="ph ph-arrow-left"></i></button>
+          <div class="carousel__track" data-carousel-track tabindex="0" role="group" aria-label="Women's best sellers, use arrow keys to scroll">
+            <article class="bs-card bs-card--photo" data-product="Pajama Set — Pink" data-price="$68.00" data-image="images/p3.webp">
+              <div class="bs-card__media">
+                <span class="bs-card__badge">New</span>
+                <a class="bs-card__media-link" href="#" aria-label="Pajama Set — Pink">
+                  <img class="bs-card__img bs-card__img--front" src="images/p3.webp" alt="Model on a bed in the pink pajama set, long-sleeve shirt with white piping and matching shorts" loading="lazy" width="900" height="1200">
+                </a>
+                <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Pajama Set — Pink"><i class="ph ph-eye"></i></button>
+              </div>
+              <h3 class="bs-card__title"><a class="bs-card__link" href="#">Pajama Set — Pink</a></h3>
+              <p class="bs-card__price">$68.00</p>
+            </article>
+            <article class="bs-card bs-card--photo" data-product="Pajama Set — Leopard" data-price="$74.00" data-image="images/leopard-pajama-set.webp">
+              <div class="bs-card__media">
+                <span class="bs-card__badge">Best Seller</span>
+                <a class="bs-card__media-link" href="#" aria-label="Pajama Set — Leopard">
+                  <img class="bs-card__img bs-card__img--front" src="images/leopard-pajama-set.webp" alt="Model reclining on a sofa in the leopard-print pajama set, long-sleeve shirt with white piping and matching shorts" loading="lazy" width="1200" height="1200">
+                </a>
+                <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Pajama Set — Leopard"><i class="ph ph-eye"></i></button>
+              </div>
+              <h3 class="bs-card__title"><a class="bs-card__link" href="#">Pajama Set — Leopard</a></h3>
+              <p class="bs-card__price">$74.00</p>
+            </article>
+            <article class="bs-card bs-card--photo" data-product="Pajama Set — Peach Hearts" data-price="$68.00" data-image="images/p2.webp">
+              <div class="bs-card__media">
+                <span class="bs-card__badge">New</span>
+                <a class="bs-card__media-link" href="#" aria-label="Pajama Set — Peach Hearts">
+                  <img class="bs-card__img bs-card__img--front" src="images/p2.webp" alt="Model seated on a bed in the peach heart-print pajama set, long-sleeve shirt and matching shorts" loading="lazy" width="900" height="1200">
+                </a>
+                <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Pajama Set — Peach Hearts"><i class="ph ph-eye"></i></button>
+              </div>
+              <h3 class="bs-card__title"><a class="bs-card__link" href="#">Pajama Set — Peach Hearts</a></h3>
+              <p class="bs-card__price">$68.00</p>
+            </article>
+            <article class="bs-card bs-card--photo" data-product="Billy Love Tracksuit — Pink" data-price="$96.00" data-image="images/p1.webp">
+              <div class="bs-card__media">
+                <span class="bs-card__badge">New</span>
+                <a class="bs-card__media-link" href="#" aria-label="Billy Love Tracksuit — Pink">
+                  <img class="bs-card__img bs-card__img--front" src="images/p1.webp" alt="Model in the hot pink tracksuit, cropped zip hoodie and matching joggers with gold logo" loading="lazy" width="900" height="1200">
+                </a>
+                <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Billy Love Tracksuit — Pink"><i class="ph ph-eye"></i></button>
+              </div>
+              <h3 class="bs-card__title"><a class="bs-card__link" href="#">Billy Love Tracksuit — Pink</a></h3>
+              <p class="bs-card__price">$96.00</p>
+            </article>
+            <article class="bs-card bs-card--photo" data-product="Billy Love Camo Tank Top" data-price="$42.00" data-image="images/p4.webp">
+              <div class="bs-card__media">
+                <span class="bs-card__badge">New</span>
+                <a class="bs-card__media-link" href="#" aria-label="Billy Love Camo Tank Top">
+                  <img class="bs-card__img bs-card__img--front" src="images/p4.webp" alt="Model in the cropped camo top with red Billy Love script, worn with matching camo joggers" loading="lazy" width="900" height="1200">
+                </a>
+                <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Billy Love Camo Tank Top"><i class="ph ph-eye"></i></button>
+              </div>
+              <h3 class="bs-card__title"><a class="bs-card__link" href="#">Billy Love Camo Tank Top</a></h3>
+              <p class="bs-card__price">$42.00</p>
+            </article>
+            <article class="bs-card bs-card--photo" data-product="Pajama Set — Red Rib" data-price="$52.00" data-image="images/p5.webp">
+              <div class="bs-card__media">
+                <span class="bs-card__badge">New</span>
+                <a class="bs-card__media-link" href="#" aria-label="Pajama Set — Red Rib">
+                  <img class="bs-card__img bs-card__img--front" src="images/p5.webp" alt="Model by a fireplace in the red ribbed cami and shorts pajama set with lace trim and rhinestone BL monogram" loading="lazy" width="900" height="1200">
+                </a>
+                <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Pajama Set — Red Rib"><i class="ph ph-eye"></i></button>
+              </div>
+              <h3 class="bs-card__title"><a class="bs-card__link" href="#">Pajama Set — Red Rib</a></h3>
+              <p class="bs-card__price">$52.00</p>
+            </article>
+          </div>
+          <button class="carousel__btn carousel__btn--next" type="button" data-carousel-next aria-label="Next women's products"><i class="ph ph-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="bestsellers__panel" role="tabpanel" id="panel-men" aria-labelledby="shop-men" hidden>
+        <div class="carousel" data-carousel>
+          <button class="carousel__btn carousel__btn--prev" type="button" data-carousel-prev aria-label="Previous men's products"><i class="ph ph-arrow-left"></i></button>
+          <div class="carousel__track" data-carousel-track tabindex="0" role="group" aria-label="Men's best sellers, use arrow keys to scroll">
+            <article class="bs-card bs-card--photo" data-product="Billy Love Camo Tee" data-price="$48.00" data-image="images/m1.webp">
+              <div class="bs-card__media">
+                <span class="bs-card__badge">New</span>
+                <a class="bs-card__media-link" href="#" aria-label="Billy Love Camo Tee">
+                  <img class="bs-card__img bs-card__img--front" src="images/m1.webp" alt="Model in the camo ringer tee with red Billy Love script and red collar and cuff trim" loading="lazy" width="1200" height="1200">
+                </a>
+                <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Billy Love Camo Tee"><i class="ph ph-eye"></i></button>
+              </div>
+              <h3 class="bs-card__title"><a class="bs-card__link" href="#">Billy Love Camo Tee</a></h3>
+              <p class="bs-card__price">$48.00</p>
+            </article>
+            <article class="bs-card bs-card--photo" data-product="Billy Love Dice &amp; Smoke Sweatshirt" data-price="$98.00" data-image="images/m2.webp">
+              <div class="bs-card__media">
+                <span class="bs-card__badge">New</span>
+                <a class="bs-card__media-link" href="#" aria-label="Billy Love Dice &amp; Smoke Sweatshirt">
+                  <img class="bs-card__img bs-card__img--front" src="images/m2.webp" alt="Model in the distressed washed-black sweatshirt with Billy Love script, flaming dice graphic and embroidered patches" loading="lazy" width="697" height="1130">
+                </a>
+                <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Billy Love Dice &amp; Smoke Sweatshirt"><i class="ph ph-eye"></i></button>
+              </div>
+              <h3 class="bs-card__title"><a class="bs-card__link" href="#">Billy Love Dice &amp; Smoke Sweatshirt</a></h3>
+              <p class="bs-card__price">$98.00</p>
+            </article>
+          </div>
+          <button class="carousel__btn carousel__btn--next" type="button" data-carousel-next aria-label="Next men's products"><i class="ph ph-arrow-right"></i></button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="bestsellers__cta">
+      <a class="btn btn--solid btn--wide" href="#" data-tab-cta>All Women's Styles</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= MEN'S BANNER =================
+  Layout options (swap the modifier class on .promo-banner):
+    height     promo-banner--small | --medium | --large | --full
+    position   promo-banner--bottom-left | --center-left | --center | --bottom-center
+    button     promo-banner--btn-solid | --btn-outline
+  Per-instance overrides live on the element's style hook in style.css:
+    --promo-overlay (0-1), --promo-text (colour), --promo-focal (object-position)
+-->
+<section class="promo-banner promo-banner--medium promo-banner--bottom-left promo-banner--btn-solid" data-reveal>
+  <picture class="promo-banner__media">
+    <source media="(max-width: 575px)" srcset="images/banner1-mobile.webp" width="900" height="1200">
+    <img class="promo-banner__img"
+         src="images/banner1.webp"
+         srcset="images/banner1-960.webp 960w,
+                 images/banner1-1440.webp 1440w,
+                 images/banner1.webp 1916w"
+         sizes="100vw"
+         alt="Billy Love loungewear shot in warm natural light"
+         loading="lazy" width="1916" height="821">
+  </picture>
+  <span class="promo-banner__overlay" aria-hidden="true"></span>
+  <div class="container promo-banner__inner">
+    <div class="promo-banner__content">
+      <span class="promo-banner__subheading">Billy Love Collection</span>
+      <h2 class="promo-banner__heading">Iconic Comfort</h2>
+      <p class="promo-banner__text">Timeless essentials. Modern attitude. Always Billy Love.</p>
+      <a class="promo-banner__btn" href="#">Shop the collection</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee">
+  <div class="marquee__track">
+    <span class="marquee__item">Pajama Season <i class="ph-fill ph-asterisk marquee__star"></i></span>
+    <span class="marquee__item">New Drop <i class="ph-fill ph-asterisk marquee__star"></i></span>
+    <span class="marquee__item">Billy Love Collection <i class="ph-fill ph-asterisk marquee__star"></i></span>
+    <span class="marquee__item">Pajama Season <i class="ph-fill ph-asterisk marquee__star"></i></span>
+    <span class="marquee__item">New Drop <i class="ph-fill ph-asterisk marquee__star"></i></span>
+    <span class="marquee__item">Billy Love Collection <i class="ph-fill ph-asterisk marquee__star"></i></span>
+  </div>
+</div>
+
+<!-- ================= FULL COLLECTION ================= -->
+<section class="section" id="collection">
+  <div class="container">
+    <div class="section__head section__head--center">
+      <span class="eyebrow">Shop all</span>
+      <h2 class="section__title">The Full Collection</h2>
+    </div>
+    <div class="carousel" data-carousel>
+      <button class="carousel__btn carousel__btn--prev" type="button" data-carousel-prev aria-label="Previous products"><i class="ph ph-arrow-left"></i></button>
+      <div class="carousel__track" data-carousel-track tabindex="0" role="group" aria-label="The full collection, use arrow keys to scroll">
+        <article class="bs-card bs-card--flat" data-product="Billy Love Camo Tee" data-price="$48.00" data-image="images/c1.webp">
+          <div class="bs-card__media">
+            <span class="bs-card__badge">New</span>
+            <a class="bs-card__media-link" href="#" aria-label="Billy Love Camo Tee">
+              <img class="bs-card__img bs-card__img--front" src="images/c1.webp" alt="Camo ringer tee with red collar and cuff trim and red Billy Love script across the chest" loading="lazy" width="1086" height="1448">
+            </a>
+            <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Billy Love Camo Tee"><i class="ph ph-eye"></i></button>
+          </div>
+          <h3 class="bs-card__title"><a class="bs-card__link" href="#">Billy Love Camo Tee</a></h3>
+          <p class="bs-card__price">$48.00</p>
+        </article>
+        <article class="bs-card bs-card--flat" data-product="Billy Love Dice &amp; Smoke Sweatshirt" data-price="$98.00" data-image="images/c2.webp">
+          <div class="bs-card__media">
+            <span class="bs-card__badge">New</span>
+            <a class="bs-card__media-link" href="#" aria-label="Billy Love Dice &amp; Smoke Sweatshirt">
+              <img class="bs-card__img bs-card__img--front" src="images/c2.webp" alt="Washed charcoal crewneck sweatshirt with red Billy Love graphic print on the chest" loading="lazy" width="1086" height="1448">
+            </a>
+            <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Billy Love Dice &amp; Smoke Sweatshirt"><i class="ph ph-eye"></i></button>
+          </div>
+          <h3 class="bs-card__title"><a class="bs-card__link" href="#">Billy Love Dice &amp; Smoke Sweatshirt</a></h3>
+          <p class="bs-card__price">$98.00</p>
+        </article>
+        <article class="bs-card bs-card--flat" data-product="Billy Love Camo Hoodie" data-price="$88.00" data-image="images/c3.webp">
+          <div class="bs-card__media">
+            <span class="bs-card__badge">New</span>
+            <a class="bs-card__media-link" href="#" aria-label="Billy Love Camo Hoodie">
+              <img class="bs-card__img bs-card__img--front" src="images/c3.webp" alt="Camo pullover hoodie with red Billy Love script graphic across the chest" loading="lazy" width="1086" height="1448">
+            </a>
+            <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Billy Love Camo Hoodie"><i class="ph ph-eye"></i></button>
+          </div>
+          <h3 class="bs-card__title"><a class="bs-card__link" href="#">Billy Love Camo Hoodie</a></h3>
+          <p class="bs-card__price">$88.00</p>
+        </article>
+        <article class="bs-card bs-card--flat" data-product="Billy Love Camo Crop Tee" data-price="$42.00" data-image="images/c4.webp">
+          <div class="bs-card__media">
+            <span class="bs-card__badge">New</span>
+            <a class="bs-card__media-link" href="#" aria-label="Billy Love Camo Crop Tee">
+              <img class="bs-card__img bs-card__img--front" src="images/c4.webp" alt="Cropped camo tee with red collar and cuff trim and red Billy Love script" loading="lazy" width="1086" height="1448">
+            </a>
+            <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Billy Love Camo Crop Tee"><i class="ph ph-eye"></i></button>
+          </div>
+          <h3 class="bs-card__title"><a class="bs-card__link" href="#">Billy Love Camo Crop Tee</a></h3>
+          <p class="bs-card__price">$42.00</p>
+        </article>
+      </div>
+      <button class="carousel__btn carousel__btn--next" type="button" data-carousel-next aria-label="Next products"><i class="ph ph-arrow-right"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CRAFT = reviews over the banner image =================
+  One image spans the whole section. The craft card sits on top of it, with
+  the reviews below in a near-transparent dark panel.
+  Per-instance overrides on .craft:
+    --craft-min-height, --craft-overlay (0-1 dark wash over the photo),
+    --craft-reviews-alpha (0-1 opacity of the review panel), --craft-focal
+-->
+<section class="craft" data-reveal>
+
+  <div class="craft__media">
+    <img class="craft__img"
+         src="images/banner2.webp"
+         srcset="images/banner2-960.webp 960w,
+                 images/banner2.webp 1916w"
+         sizes="100vw"
+         alt="Close-up of distressed olive fabric with red drawcords and an embroidered cross and BL heart motif"
+         loading="lazy" width="1916" height="821">
+  </div>
+  <span class="craft__overlay" aria-hidden="true"></span>
+
+  <!-- ---- craft card, laid over the top of the image ---- -->
+  <div class="feature-banner feature-banner--bare">
+    <div class="container feature-banner__container">
+      <div class="feature-banner__card">
+        <span class="eyebrow">Craftsmanship</span>
+        <h2 class="feature-banner__heading">In Every Detail</h2>
+        <p class="feature-banner__text">Premium fabrics. Authentic details. A higher standard.</p>
+        <a class="btn btn--accent feature-banner__btn" href="#">Explore our craft</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---- reviews, below the card, over the same image ---- -->
+  <div class="craft__reviews">
+    <div class="container craft__reviews-inner">
+
+
+      <div class="testimonials testimonials--light" data-testimonials role="group"
+           aria-roledescription="carousel" aria-label="Customer reviews">
+        <blockquote class="testimonial is-active" data-testimonial>
+          <div class="rating rating--light"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+          <p class="testimonial__text">&ldquo;The pink set is the softest thing I own.&rdquo;</p>
+          <p class="testimonial__support">I ordered a second one the same week and I have barely taken it off since.</p>
+          <cite class="testimonial__author">Jasmine R.</cite>
+        </blockquote>
+        <blockquote class="testimonial" data-testimonial aria-hidden="true">
+          <div class="rating rating--light"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+          <p class="testimonial__text">&ldquo;Finally a brand that gets it right.&rdquo;</p>
+          <p class="testimonial__support">Fit is true to size and the fabric is heavier than I expected. It feels far more expensive than what I actually paid.</p>
+          <cite class="testimonial__author">Marcus D.</cite>
+        </blockquote>
+        <blockquote class="testimonial" data-testimonial aria-hidden="true">
+          <div class="rating rating--light"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+          <p class="testimonial__text">&ldquo;Beautiful from the moment it arrived.&rdquo;</p>
+          <p class="testimonial__support">Shipped in two days and the packaging was lovely. Already reordering in two more colours for me and my sister.</p>
+          <cite class="testimonial__author">Alyssa T.</cite>
+        </blockquote>
+      </div>
+
+
+    </div>
+
+    <div class="testimonials__nav">
+      <div class="testimonials__dots">
+        <button class="testimonials__dot is-active" type="button" data-testimonial-dot="0" aria-label="Show review 1 of 3" aria-current="true"></button>
+        <button class="testimonials__dot" type="button" data-testimonial-dot="1" aria-label="Show review 2 of 3"></button>
+        <button class="testimonials__dot" type="button" data-testimonial-dot="2" aria-label="Show review 3 of 3"></button>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ================= PRODUCT OF THE WEEK ================= -->
+<section class="section">
+  <div class="container">
+    <div class="section__head section__head--center">
+      <span class="eyebrow">One to watch</span>
+      <h2 class="section__title">Product of the Week</h2>
+    </div>
+    <div class="potw" data-product="Pajama Set — Leopard" data-price="$74.00">
+      <div class="potw__media">
+        <img class="potw__img" src="images/leopard-pajama-set.webp" alt="Model reclining on a sofa in the leopard-print pajama set, long-sleeve shirt with white piping and matching shorts" loading="lazy" width="1200" height="1200">
+      </div>
+      <div class="potw__content">
+        <div class="rating"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><span class="rating__count">(88 reviews)</span></div>
+        <h3 class="potw__title">Pajama Set — Leopard</h3>
+        <p class="potw__price">$74.00</p>
+        <p class="potw__text">A relaxed two-piece in a soft-brushed leopard print. Elasticated waist, piped trim, and a shirt you will wear far beyond the bedroom.</p>
+        <span class="potw__label">Select size</span>
+        <div class="size-swatches size-swatches--lg">
+          <button class="size-swatch" type="button">S</button>
+          <button class="size-swatch" type="button">M</button>
+          <button class="size-swatch" type="button">L</button>
+          <button class="size-swatch" type="button">XL</button>
+          <button class="size-swatch" type="button">XXL</button>
+        </div>
+        <div class="potw__actions">
+          <button class="btn btn--solid" type="button" data-add-to-cart>Add to Bag</button>
+          <button class="btn btn--outline" type="button" data-buy-now>Buy It Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= JOURNAL ================= -->
+<section class="section section--cream" id="journal">
+  <div class="container">
+    <div class="section__head section__head--center">
+      <span class="eyebrow">From the journal</span>
+      <h2 class="section__title">Notes &amp; Stories</h2>
+    </div>
+    <div class="blog-grid">
+      <article class="blog-card">
+        <img class="blog-card__img" src="images/blog3.webp" alt="Model walking a city street in the pink cropped hoodie and joggers" loading="lazy" width="1000" height="714">
+        <span class="blog-card__meta">Style · 4 min read</span>
+        <h3 class="blog-card__title"><a class="blog-card__link" href="#">How to Style a Pajama Set</a></h3>
+        <span class="link-underline">Read More</span>
+      </article>
+      <article class="blog-card">
+        <img class="blog-card__img" src="images/blog2.webp" alt="Close-up of the distressed Billy Love sweatshirt showing the embroidered patches and washed fabric" loading="lazy" width="1000" height="714">
+        <span class="blog-card__meta">Fabric · 3 min read</span>
+        <h3 class="blog-card__title"><a class="blog-card__link" href="#">The Fabrics We Choose</a></h3>
+        <span class="link-underline">Read More</span>
+      </article>
+      <article class="blog-card">
+        <img class="blog-card__img" src="images/blog1.webp" alt="Model folding freshly laundered camo sets in a sunlit laundry room" loading="lazy" width="1000" height="714">
+        <span class="blog-card__meta">Care · 2 min read</span>
+        <h3 class="blog-card__title"><a class="blog-card__link" href="#">Keeping Your Set Soft</a></h3>
+        <span class="link-underline">Read More</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SOCIAL FEED ================= -->
+<section class="section">
+  <div class="container">
+    <div class="section__head section__head--center">
+      <span class="eyebrow">Tag us</span>
+      <h2 class="section__title">#BillyLoveCollection</h2>
+      <div class="social-links">
+        <a class="social-links__item" href="#"><i class="ph ph-instagram-logo"></i>Instagram</a>
+        <a class="social-links__item" href="#"><i class="ph ph-tiktok-logo"></i>TikTok</a>
+      </div>
+    </div>
+    <div class="social-grid">
+      <a class="social-tile" href="#">
+        <img class="social-tile__img" src="images/ig-1.webp" alt="Customer photo: the pink set worn at home" loading="lazy" width="600" height="600">
+        <span class="social-tile__icon"><i class="ph ph-instagram-logo"></i></span>
+      </a>
+      <a class="social-tile" href="#">
+        <img class="social-tile__img" src="images/ig-2.webp" alt="Customer photo: the pink set styled on the sofa" loading="lazy" width="600" height="600">
+        <span class="social-tile__icon"><i class="ph ph-tiktok-logo"></i></span>
+      </a>
+      <a class="social-tile" href="#">
+        <img class="social-tile__img" src="images/ig-3.webp" alt="Customer photo: the distressed Billy Love sweatshirt" loading="lazy" width="600" height="600">
+        <span class="social-tile__icon"><i class="ph ph-instagram-logo"></i></span>
+      </a>
+      <a class="social-tile" href="#">
+        <img class="social-tile__img" src="images/ig-4.webp" alt="Customer photo: the distressed Billy Love hoodie held up close" loading="lazy" width="600" height="600">
+        <span class="social-tile__icon"><i class="ph ph-tiktok-logo"></i></span>
+      </a>
+      <a class="social-tile" href="#">
+        <img class="social-tile__img" src="images/ig-5.webp" alt="Customer photo: two friends in the camo and pink sets" loading="lazy" width="600" height="600">
+        <span class="social-tile__icon"><i class="ph ph-instagram-logo"></i></span>
+      </a>
+      <a class="social-tile" href="#">
+        <img class="social-tile__img" src="images/ig-6.webp" alt="Customer photo: the camo set worn out on the street" loading="lazy" width="600" height="600">
+        <span class="social-tile__icon"><i class="ph ph-tiktok-logo"></i></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= USP BAR ================= -->
+<section class="usp">
+  <div class="container usp__container">
+    <div class="usp__item">
+      <i class="ph ph-truck usp__icon"></i>
+      <h3 class="usp__title">Free US Shipping</h3>
+      <p class="usp__text">On every order over $75, shipped within 48 hours.</p>
+    </div>
+    <div class="usp__item">
+      <i class="ph ph-arrows-counter-clockwise usp__icon"></i>
+      <h3 class="usp__title">30-Day Returns</h3>
+      <p class="usp__text">Not quite right? Send it back, no questions asked.</p>
+    </div>
+    <div class="usp__item">
+      <i class="ph ph-feather usp__icon"></i>
+      <h3 class="usp__title">Premium Fabrics</h3>
+      <p class="usp__text">Soft-touch cottons and blends that hold their shape.</p>
+    </div>
+    <div class="usp__item">
+      <i class="ph ph-lock-simple usp__icon"></i>
+      <h3 class="usp__title">Secure Checkout</h3>
+      <p class="usp__text">Encrypted payments with all major cards accepted.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NEWSLETTER ================= -->
+<!-- Dark band directly above the footer: pitch on the left, form on the right. -->
+<section class="newsletter">
+  <div class="container newsletter__container">
+    <div class="newsletter__intro">
+      <span class="eyebrow eyebrow--light">Join the movement</span>
+      <h2 class="newsletter__title">Be the first to know.</h2>
+    </div>
+    <form class="newsletter__form" data-newsletter>
+      <input class="newsletter__input" type="email" name="email" placeholder="Your email address" aria-label="Your email address" required>
+      <button class="btn btn--accent" type="submit">Subscribe</button>
+    </form>
+    <p class="newsletter__note" data-newsletter-note role="status"></p>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container site-footer__top">
+    <div class="footer-col footer-col--brand">
+      <img class="footer-logo" src="images/logo-light.webp" alt="Billy Love Collection" width="400" height="432">
+      <p class="footer-col__text">Elevated loungewear and apparel, designed to be lived in. Shipping across the United States.</p>
+      <div class="footer-social">
+        <a class="footer-social__link" href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+        <a class="footer-social__link" href="#" aria-label="TikTok"><i class="ph ph-tiktok-logo"></i></a>
+        <a class="footer-social__link" href="#" aria-label="Email"><i class="ph ph-envelope-simple"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h3 class="footer-col__title">Shop</h3>
+      <ul class="footer-col__list">
+        <li class="footer-col__item"><a class="footer-col__link" href="#">Women</a></li>
+        <li class="footer-col__item"><a class="footer-col__link" href="#">Men</a></li>
+        <li class="footer-col__item"><a class="footer-col__link" href="#">Pajamas</a></li>
+        <li class="footer-col__item"><a class="footer-col__link" href="#">New Arrivals</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3 class="footer-col__title">Help</h3>
+      <ul class="footer-col__list">
+        <li class="footer-col__item"><a class="footer-col__link" href="#">Shipping &amp; Delivery</a></li>
+        <li class="footer-col__item"><a class="footer-col__link" href="#">Returns &amp; Exchanges</a></li>
+        <li class="footer-col__item"><a class="footer-col__link" href="#">Size Guide</a></li>
+        <li class="footer-col__item"><a class="footer-col__link" href="#">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3 class="footer-col__title">About</h3>
+      <ul class="footer-col__list">
+        <li class="footer-col__item"><a class="footer-col__link" href="#">Our Story</a></li>
+        <li class="footer-col__item"><a class="footer-col__link" href="#">Journal</a></li>
+        <li class="footer-col__item"><a class="footer-col__link" href="#">Privacy Policy</a></li>
+        <li class="footer-col__item"><a class="footer-col__link" href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container site-footer__bottom">
+    <p class="site-footer__copy">© 2026 Billy Love Collection. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ================= QUICK VIEW MODAL ================= -->
+<div class="modal" id="quickView" aria-hidden="true">
+  <div class="modal__panel">
+    <button class="modal__close" type="button" data-close-quickview aria-label="Close quick view"><i class="ph ph-x"></i></button>
+    <div class="modal__media">
+      <img class="modal__img" src="https://placehold.co/700x900/FFFFFF/B79C86?text=Product" alt="Product quick view" data-qv-image>
+    </div>
+    <div class="modal__content" data-qv-body>
+      <div class="rating"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+      <h3 class="modal__title" data-qv-title>Product</h3>
+      <p class="modal__price" data-qv-price>$0.00</p>
+      <p class="modal__text">Soft-touch fabric, relaxed fit, and a finish that holds up. Select a size to add it straight to your bag.</p>
+      <span class="potw__label">Select size</span>
+      <div class="size-swatches size-swatches--lg">
+        <button class="size-swatch" type="button">S</button>
+        <button class="size-swatch" type="button">M</button>
+        <button class="size-swatch" type="button">L</button>
+        <button class="size-swatch" type="button">XL</button>
+        <button class="size-swatch" type="button">XXL</button>
+      </div>
+      <button class="btn btn--solid" type="button" data-add-to-cart>Add to Bag</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= TOAST ================= -->
+<div class="toast" id="toast" aria-live="polite"><i class="ph ph-check-circle"></i><span class="toast__text" data-toast-text>Added to bag</span></div>
+
+<script src="script.js?v=2"></script>
+</body>
+</html>
