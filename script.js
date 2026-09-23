@@ -57,23 +57,62 @@
 
   /* ============ 2. STICKY HEADER STATE ============ */
   (function stickyHeader() {
-    var top = qs('#siteTop');
+    // The header pins on its own; the announcement above it just scrolls away.
+    var top = qs('#siteHeader');
+    var announce = qs('.announcement');
     if (!top) { return; }
 
-    // Measured before .is-stuck hides the announcement, otherwise the
-    // threshold would shrink on activation and flicker at the boundary.
-    var threshold = top.offsetHeight;
-
-    function onScroll() {
-      top.classList.toggle('is-stuck', window.scrollY > threshold);
+    function measure() {
+      return announce ? announce.offsetHeight : 0;
     }
 
-    window.addEventListener('resize', function () {
-      if (!top.classList.contains('is-stuck')) { threshold = top.offsetHeight; }
-    });
+    var threshold = measure();
+
+    var lastY = window.scrollY;
+    var ticking = false;
+
+    // Below this much movement a scroll counts as noise, not a direction
+    // change -- without it the bar flickers on trackpad jitter.
+    var DELTA = 6;
+
+    function update() {
+      ticking = false;
+
+      var max = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+      var y = Math.min(Math.max(window.scrollY, 0), max);
+
+      top.classList.toggle('is-stuck', y > threshold);
+
+      // Never hide it at the very top, and ignore momentum past the end.
+      if (y <= threshold) {
+        top.classList.remove('is-hidden');
+        lastY = y;
+        return;
+      }
+
+      if (Math.abs(y - lastY) < DELTA) { return; }
+
+      // Down hides it, up brings it straight back.
+      top.classList.toggle('is-hidden', y > lastY);
+      lastY = y;
+    }
+
+    function onScroll() {
+      if (ticking) { return; }
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+
+    window.addEventListener('resize', function () { threshold = measure(); });
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+
+    // A drawer or modal locks the body; the bar must not be hidden behind it.
+    document.addEventListener('billylove:revealheader', function () {
+      top.classList.remove('is-hidden');
+    });
+
+    update();
   }());
 
   /* ============ 3. MOBILE DRAWER ============ */
@@ -454,6 +493,7 @@
     var track = qs('[data-testimonials]');
     if (!track) { return; }
 
+    var rail = qs('[data-testimonials-track]', track);
     var slides = qsa('[data-testimonial]', track);
     var dots = qsa('[data-testimonial-dot]');
     if (slides.length < 2) { return; }
@@ -462,8 +502,31 @@
     var timer = null;
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    // Viewport follows the active slide so the dots sit a fixed distance below
+    // the author line. On phones it is pinned to the tallest slide instead:
+    // resizing every 2 seconds would shunt the rest of the page up and down.
+    var narrow = window.matchMedia('(max-width: 575px)');
+
+    function resize() {
+      if (!slides.length) { return; }
+
+      if (narrow.matches) {
+        var tallest = 0;
+        slides.forEach(function (slide) {
+          tallest = Math.max(tallest, slide.offsetHeight);
+        });
+        track.style.height = tallest + 'px';
+        return;
+      }
+
+      if (slides[index]) { track.style.height = slides[index].offsetHeight + 'px'; }
+    }
+
     function show(next) {
       index = (next + slides.length) % slides.length;
+
+      if (rail) { rail.style.transform = 'translateX(-' + (index * 100) + '%)'; }
+      resize();
 
       slides.forEach(function (slide, i) {
         var on = i === index;
@@ -482,7 +545,7 @@
 
     function play() {
       if (reduced) { return; }
-      timer = window.setInterval(function () { show(index + 1); }, 6000);
+      timer = window.setInterval(function () { show(index + 1); }, 2000);
     }
 
     function stop() { window.clearInterval(timer); }
@@ -492,13 +555,67 @@
       dot.addEventListener('click', function () { show(i); restart(); });
     });
 
+    window.addEventListener('resize', resize);
+
+    // Webfonts land after first paint and change the text height, so the
+    // viewport is measured again once they are ready.
+    window.addEventListener('load', resize);
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(resize); }
+
     // Pause while someone is reading or tabbing through.
     track.addEventListener('mouseenter', stop);
     track.addEventListener('mouseleave', play);
     track.addEventListener('focusin', stop);
     track.addEventListener('focusout', play);
 
+    // Sets the starting transform and, crucially, the viewport height --
+    // without this the first slide keeps the tallest slide's height.
+    show(0);
     play();
+  }());
+
+  /* ============ 9b. USP SLIDER DOTS (phone only) ============ */
+  /* The track itself is plain CSS scroll-snap; this only keeps the dots in
+     step with it and lets a dot scroll the track. */
+  (function uspSlider() {
+    var track = qs('.usp__container');
+    var dots = qsa('[data-usp-dot]');
+    if (!track || !dots.length) { return; }
+
+    var items = qsa('.usp__item', track);
+    var ticking = false;
+
+    function current() {
+      var w = track.clientWidth;
+      if (!w) { return 0; }
+      return Math.max(0, Math.min(items.length - 1, Math.round(track.scrollLeft / w)));
+    }
+
+    function sync() {
+      ticking = false;
+      var index = current();
+      dots.forEach(function (dot, i) {
+        var on = i === index;
+        dot.classList.toggle('is-active', on);
+        if (on) { dot.setAttribute('aria-current', 'true'); }
+        else { dot.removeAttribute('aria-current'); }
+      });
+    }
+
+    track.addEventListener('scroll', function () {
+      if (ticking) { return; }
+      ticking = true;
+      window.requestAnimationFrame(sync);
+    }, { passive: true });
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () {
+        if (items[i]) { track.scrollTo({ left: items[i].offsetLeft - items[0].offsetLeft, behavior: 'smooth' }); }
+      });
+    });
+
+    window.addEventListener('resize', sync);
+    sync();
   }());
 
   /* ============ 10. MARQUEE DUPLICATION GUARD ============ */

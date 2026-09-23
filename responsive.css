@@ -56,8 +56,12 @@
   .bestsellers__cta { padding-top: var(--space-40); }
 
   .site-nav { display: none; }
-  .site-logo { position: relative; left: auto; width: auto; flex: 1 1 auto; justify-content: flex-start; transform: none; }
+
+  /* Menu button left, logo centred, actions right. The logo keeps the base
+     rule's absolute centring so it is centred on the header, not on whatever
+     space is left between the two button groups. */
   .site-logo { height: 42px; }
+  .site-actions { flex: 1 1 0; }
   .site-actions__btn--mobile { display: flex; }
   .site-actions__btn--desktop { display: none; }
   .site-actions { gap: var(--space-16); }
@@ -112,7 +116,6 @@
   .potw__content { flex: 1 1 100%; width: 100%; }
   .potw__media { flex: 0 1 400px; width: 400px; }
 
-  .testimonials { min-height: 195px; }
   .blog-grid { gap: var(--space-24); }
   .social-grid { gap: var(--space-10); }
   .social-tile { flex: 1 1 calc(50% - var(--space-10)); }
@@ -121,15 +124,32 @@
   .footer-col { flex: 1 1 calc(50% - var(--space-32)); }
   .footer-col--brand { flex: 1 1 100%; }
 
-  .modal__panel { flex-direction: column; max-height: 88vh; }
-  .modal__media, .modal__content { flex: 1 1 100%; width: 100%; }
-  .modal__img { aspect-ratio: 16 / 10; }
+  /* Side by side rather than stacked: a full-width 16/10 letterbox crops
+     these portrait product shots hard. A narrow tall column matches the
+     source aspect far better, so almost nothing is lost. */
+  .modal__panel { flex-direction: row; flex-wrap: nowrap; max-height: 88vh; }
+
+  .modal__media { flex: 0 0 40%; }
+
+  .modal__img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    object-fit: cover;
+  }
+
+  .modal__content {
+    flex: 1 1 60%;
+    gap: var(--space-10);
+    padding: var(--space-32) var(--space-20) var(--space-24);
+    overflow-y: auto;
+  }
 }
 
 /* ============ MOBILE — 575px ============ */
 @media (max-width: 575px) {
-  .craft__reviews { padding: var(--space-24) 0 var(--space-40); }
-  .feature-banner--bare { padding: var(--space-40) 0 var(--space-24); }
+  .craft__reviews { padding: var(--space-40) 0; }
+  .feature-banner--bare { padding: var(--space-40) 0; }
 
   :root {
     --fs-h1: 26px;
@@ -164,24 +184,106 @@
 
   /* ~1.3 cards in view so the next one peeks and invites a swipe */
   .bs-card { flex: 0 0 64%; }
-  .carousel__btn { display: none; }
+
+  /* Arrows straddle the card edge, half on and half off, as on desktop.
+     The button is sized to exactly twice the gutter (16px), so the half that
+     hangs out lands in the page margin and nothing overflows the screen.
+     Vertically they centre on the image band, not the whole card: top clears
+     the media's margin, bottom clears the title and price. */
+  .carousel {
+    --carousel-btn: 32px;
+    --carousel-caption: 66px;
+  }
+
+  .carousel__btn {
+    top: var(--space-16);
+    bottom: var(--carousel-caption);
+    margin-block: auto;
+    transform: none;
+  }
   .bs-card { --bs-img-pad: var(--space-16); }
   .tabs { gap: var(--space-24); }
+
+  /* tabs sit much closer to the carousel on a phone */
+  .bestsellers__head { gap: var(--space-12); }
+  .bestsellers__panels { padding-top: var(--space-24); }
   .bestsellers__cta .btn { width: 100%; }
 
   .announcement { padding-top: var(--space-8); padding-bottom: var(--space-8); }
   .site-logo { height: 36px; }
 
-  /* narrow viewports crop hard, so lean the frame toward the model */
-  .hero__img { object-position: 72% center; }
-  .hero__content { gap: var(--space-16); }
-  .hero__actions { width: 100%; gap: var(--space-8); }
-  .hero__actions .btn { flex: 1 1 100%; }
+  /* ---- hero stacks on phones: photo on top, copy beneath it ----
+     The image leaves the absolute layer and becomes a normal block, so the
+     section is simply two stacked boxes instead of an overlay. */
+  .hero {
+    justify-content: flex-start;
+    min-height: 0;
+    padding-top: 0;
+    padding-bottom: var(--space-40);
+  }
+
+  .hero__media {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+
+  /* the scrim exists to lift text off the photo; nothing sits on it now */
+  .hero__media::after { display: none; }
+
+  /* the phone source is already cropped to 4:3, so no further zoom or
+     repositioning is needed here */
+  .hero__img { object-position: center; transform: none; }
+
+  .hero__container { padding-top: var(--space-32); }
+
+  .hero__content {
+    gap: var(--space-16);
+    max-width: 100%;
+    text-shadow: none;
+  }
+
+  /* copy now sits on the page background, so it takes the page ink */
+  .hero__title { color: var(--color-text); }
+  .hero__text { color: var(--color-text-muted); }
+  .hero .eyebrow--light { color: var(--color-logo-pink); opacity: 1; }
+
+  /* the ghost button was white-on-photo; on ivory it needs the dark pair */
+  .hero__actions .btn--ghost {
+    --btn-fill: var(--color-espresso);
+    --btn-ink: var(--color-ivory);
+  }
+
+  /* both CTAs share one row rather than stacking */
+  .hero__actions { width: 100%; flex-wrap: nowrap; gap: var(--space-8); }
+
+  .hero__actions .btn {
+    flex: 1 1 0;
+    min-width: 0;
+    padding-left: var(--space-12);
+    padding-right: var(--space-12);
+    letter-spacing: var(--ls-wide);
+    white-space: nowrap;
+  }
 
   .section__head--row { flex-direction: column; align-items: flex-start; }
 
-  .usp__item { flex: 1 1 100%; }
+  /* ---- USP bar becomes a one-at-a-time slider with dots ---- */
+  .usp__container {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    gap: 0;
+  }
+
+  .usp__container::-webkit-scrollbar { display: none; }
+
+  .usp__item { flex: 0 0 100%; scroll-snap-align: center; }
   .usp__text { max-width: 100%; }
+  .usp__dots { display: flex; }
 
 
   .marquee__item { font-size: var(--fs-h5); gap: var(--space-24); }
@@ -192,18 +294,94 @@
   .bs-card__add { opacity: 1; transform: translateY(0); }
 
 
-  .promo-banner { --promo-height: 520px; --promo-overlay: 0.3; }
-  .craft { --craft-min-height: 500px; --craft-overlay: 0.35; }
-  .feature-banner__card { max-width: 100%; padding: var(--space-28) var(--space-20); }
-  .promo-banner__inner { padding-top: var(--space-40); padding-bottom: var(--space-40); }
-  .promo-banner__content { max-width: 100%; }
-  .promo-banner__overlay { background-image: linear-gradient(to top, rgba(28, 23, 21, 0.6) 0%, rgba(28, 23, 21, 0) 65%); }
+  /* ---- promo banner stacks: 4:3 image on top, copy beneath ----
+     The media leaves the absolute layer and becomes a normal block, so the
+     section is two stacked boxes rather than an overlay. */
+  .promo-banner {
+    --promo-height: 0;
+    --promo-text: var(--color-text);
+    justify-content: flex-start;
+  }
 
-  .testimonials { min-height: 225px; }
-  .blog-card { flex: 1 1 100%; }
+  .promo-banner__media {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+
+  /* the scrim exists to lift text off the photo; nothing sits on it now */
+  .promo-banner__overlay { display: none; }
+
+  .promo-banner__inner {
+    padding-top: var(--space-32);
+    padding-bottom: var(--space-40);
+  }
+
+  .promo-banner__text { opacity: 1; color: var(--color-text-muted); }
+  .promo-banner__subheading { color: var(--color-logo-pink); }
+
+  /* CTA was white-on-photo; on ivory it needs the dark pair */
+  .promo-banner__btn {
+    --btn-fill: var(--color-espresso);
+    --btn-ink: var(--color-ivory);
+  }
+  .craft { --craft-min-height: 500px; --craft-overlay: 0.35; }
+
+  /* the reveal zoom would add crop on top of an already tight phone frame */
+  .craft__img { transform: none; }
+  .feature-banner__card { max-width: 100%; padding: var(--space-28) var(--space-20); }
+  .promo-banner__content { max-width: 100%; }
+
+  /* ---- journal becomes a swipeable slider ----
+     Same scroll-snap approach as the product carousel, so it needs no JS.
+     Negative margins let the track bleed to the screen edges while the
+     padding keeps the first card aligned with the rest of the page. */
+  .blog-grid {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    gap: var(--space-16);
+    margin-left: calc(var(--gutter) * -1);
+    margin-right: calc(var(--gutter) * -1);
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+    /* snap points align to the scrollport edge, not the padding box, so
+       without this the first card snaps flush to the screen edge */
+    scroll-padding-left: var(--gutter);
+  }
+
+  .blog-grid::-webkit-scrollbar { display: none; }
+
+  /* ~1.2 cards in view so the next one peeks and invites a swipe */
+  .blog-card { flex: 0 0 78%; scroll-snap-align: start; }
+
+  /* ---- social feed becomes a swipeable strip, same pattern ---- */
+  .social-grid {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    gap: var(--space-10);
+    margin-left: calc(var(--gutter) * -1);
+    margin-right: calc(var(--gutter) * -1);
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+    scroll-padding-left: var(--gutter);
+  }
+
+  .social-grid::-webkit-scrollbar { display: none; }
+
+  .social-tile { flex: 0 0 46%; scroll-snap-align: start; }
 
   .newsletter__container { flex-direction: column; align-items: flex-start; }
   .newsletter__form { flex-direction: column; flex: 1 1 100%; width: 100%; }
+
+  /* The form stacks here, so flex-basis applies to height -- the desktop
+     "flex: 1 1 240px" made the input 240px tall. Height comes from padding. */
+  .newsletter__input { flex: 0 0 auto; width: 100%; }
+
   .newsletter__form .btn { width: 100%; }
 
   .potw__media { flex-basis: 320px; width: 320px; }
@@ -230,7 +408,10 @@
   }
 
   .size-swatch { min-width: 32px; }
-  .social-tile { flex: 1 1 100%; }
+  .social-tile { flex: 0 0 56%; }
+
+  /* gutter drops to 14px here, so the arrow shrinks to match */
+  .carousel { --carousel-btn: 28px; }
 }
 
 /* ============ REDUCED MOTION ============ */
@@ -243,6 +424,7 @@
   .bs-card__add:hover i { transform: none; }
   .promo-banner__content { opacity: 1; transform: none; }
   .feature-banner__card { opacity: 1; transform: none; }
+  .testimonials__track { transition: none; }
   *,
   *::before,
   *::after { transition-duration: 1ms !important; }

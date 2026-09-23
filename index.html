@@ -36,6 +36,8 @@
 <!-- ================= HEADER ================= -->
 <header class="site-header" id="siteHeader">
   <div class="container site-header__container">
+    <button class="site-actions__btn site-actions__btn--mobile" type="button" data-open-menu aria-label="Menu"><i class="ph ph-list"></i></button>
+
     <nav class="site-nav" aria-label="Primary">
       <ul class="site-nav__list">
         <li class="site-nav__item"><a class="site-nav__link" href="#">Women</a></li>
@@ -56,7 +58,6 @@
         <i class="ph ph-handbag-simple"></i>
         <span class="site-actions__count" data-cart-count>0</span>
       </button>
-      <button class="site-actions__btn site-actions__btn--mobile" type="button" data-open-menu aria-label="Menu"><i class="ph ph-list"></i></button>
     </div>
   </div>
 </header>
@@ -87,7 +88,10 @@
 
 <!-- ================= HERO ================= -->
 <section class="hero" id="top">
-  <div class="hero__media">
+  <picture class="hero__media">
+    <!-- phones get a 4:3 crop taken from the right of the frame, so the left
+         of the scene is clipped rather than the whole image being zoomed -->
+    <source media="(max-width: 575px)" srcset="images/hero-mobile.webp" width="1200" height="900">
     <img class="hero__img"
          src="images/hero.webp"
          srcset="images/hero-960.webp 960w,
@@ -96,7 +100,7 @@
          sizes="100vw"
          alt="Model in the Billy Love camo crop tee against a warm studio backdrop"
          fetchpriority="high" width="1916" height="821">
-  </div>
+  </picture>
   <div class="container hero__container">
     <div class="hero__content">
       <span class="eyebrow eyebrow--light">Loungewear Reimagined</span>
@@ -249,7 +253,7 @@
 -->
 <section class="promo-banner promo-banner--medium promo-banner--bottom-left promo-banner--btn-solid" data-reveal>
   <picture class="promo-banner__media">
-    <source media="(max-width: 575px)" srcset="images/banner1-mobile.webp" width="900" height="1200">
+    <source media="(max-width: 575px)" srcset="images/banner1-mobile.webp" width="1200" height="900">
     <img class="promo-banner__img"
          src="images/banner1.webp"
          srcset="images/banner1-960.webp 960w,
@@ -351,7 +355,9 @@
 -->
 <section class="craft" data-reveal>
 
-  <div class="craft__media">
+  <picture class="craft__media">
+    <!-- phones get a 3:4 crop; the landscape file would be cropped far harder -->
+    <source media="(max-width: 575px)" srcset="images/banner2-mobile.webp" width="750" height="1000">
     <img class="craft__img"
          src="images/banner2.webp"
          srcset="images/banner2-960.webp 960w,
@@ -359,7 +365,7 @@
          sizes="100vw"
          alt="Close-up of distressed olive fabric with red drawcords and an embroidered cross and BL heart motif"
          loading="lazy" width="1916" height="821">
-  </div>
+  </picture>
   <span class="craft__overlay" aria-hidden="true"></span>
 
   <!-- ---- craft card, laid over the top of the image ---- -->
@@ -381,6 +387,7 @@
 
       <div class="testimonials testimonials--light" data-testimonials role="group"
            aria-roledescription="carousel" aria-label="Customer reviews">
+        <div class="testimonials__track" data-testimonials-track>
         <blockquote class="testimonial is-active" data-testimonial>
           <div class="rating rating--light"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
           <p class="testimonial__text">&ldquo;The pink set is the softest thing I own.&rdquo;</p>
@@ -399,6 +406,7 @@
           <p class="testimonial__support">Shipped in two days and the packaging was lovely. Already reordering in two more colours for me and my sister.</p>
           <cite class="testimonial__author">Alyssa T.</cite>
         </blockquote>
+        </div>
       </div>
 
 
@@ -541,6 +549,14 @@
       <h3 class="usp__title">Secure Checkout</h3>
       <p class="usp__text">Encrypted payments with all major cards accepted.</p>
     </div>
+  </div>
+
+  <!-- Only rendered on phones, where the bar becomes a one-at-a-time slider. -->
+  <div class="usp__dots">
+    <button class="usp__dot is-active" type="button" data-usp-dot="0" aria-label="Show benefit 1 of 4" aria-current="true"></button>
+    <button class="usp__dot" type="button" data-usp-dot="1" aria-label="Show benefit 2 of 4"></button>
+    <button class="usp__dot" type="button" data-usp-dot="2" aria-label="Show benefit 3 of 4"></button>
+    <button class="usp__dot" type="button" data-usp-dot="3" aria-label="Show benefit 4 of 4"></button>
   </div>
 </section>
 

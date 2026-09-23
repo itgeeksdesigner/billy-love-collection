@@ -175,9 +175,11 @@
   /* Prestige's own easing + timings, for hover and image motion */
   --ease-prestige: cubic-bezier(0.785, 0.135, 0.15, 0.86);
   --ease-zoom: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-slide: cubic-bezier(0.4, 0, 0.22, 1);
   --duration-hover: 300ms;
   --duration-zoom: 1200ms;
   --duration-wipe: 450ms;   /* Prestige button transition */
+  --duration-slide: 600ms;  /* review slider travel */
   --duration-fast: 200ms;
   --duration-base: 350ms;
   --duration-slow: 600ms;
@@ -399,18 +401,12 @@ h6 { font-size: var(--fs-h6); }
 }
 
 /* ============ 6. ANNOUNCEMENT BAR ============ */
-/* The top bar floats over the hero. On scroll JS adds .is-stuck, which
-   pins it and swaps the transparent treatment for the solid one. */
-.site-top {
-  display: flex;
-  position: sticky;
-  top: 0;
-  z-index: var(--z-header);
-  flex-direction: column;
-  background-color: var(--color-ivory);
-}
-
-.site-top.is-stuck { box-shadow: var(--shadow-soft); }
+/* display:contents dissolves this wrapper's box so the announcement and the
+   header become siblings in the page flow. That lets the header alone be
+   sticky: the announcement simply scrolls away, and nothing is hidden or
+   resized at the scroll boundary -- which is what caused the bar to flicker
+   when the two were pinned together. */
+.site-top { display: contents; }
 
 .announcement {
   display: flex;
@@ -458,12 +454,22 @@ h6 { font-size: var(--fs-h6); }
 /* ============ 7. HEADER ============ */
 .site-header {
   display: flex;
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
   flex-direction: column;
   align-items: center;
   background-color: var(--color-ivory);
   color: var(--color-ink);
   border-bottom: var(--border-hairline);
+  transition: transform var(--duration-base) var(--ease-prestige),
+              box-shadow var(--duration-fast) ease-in-out;
 }
+
+.site-header.is-stuck { box-shadow: var(--shadow-soft); }
+
+/* Reveal-on-scroll-up: slides out while scrolling down, returns on the way up. */
+.site-header.is-hidden { transform: translateY(-100%); }
 
 .site-header__container {
   position: relative;
@@ -702,6 +708,21 @@ h6 { font-size: var(--fs-h6); }
 }
 
 .usp__container { flex-direction: row; flex-wrap: wrap; gap: var(--space-32); }
+
+/* Hidden until the phone breakpoint turns the bar into a slider. */
+.usp__dots { display: none; flex-direction: row; gap: var(--space-8); padding-top: var(--space-20); }
+
+.usp__dot {
+  display: flex;
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-circle);
+  background-color: var(--color-line);
+  transition: background-color var(--duration-fast) ease-in-out;
+}
+
+.usp__dot.is-active { background-color: var(--color-mocha); }
+.usp__dot:focus-visible { outline: 1px solid var(--color-cocoa); outline-offset: 3px; }
 
 .usp__item {
   display: flex;
@@ -1005,7 +1026,7 @@ h6 { font-size: var(--fs-h6); }
   min-height: 0;
   flex: 0 0 auto;
   justify-content: center;
-  padding: var(--space-64) 0 var(--space-32);
+  padding: var(--space-60) 0;
 }
 
 .feature-banner__card {
@@ -1102,11 +1123,10 @@ h6 { font-size: var(--fs-h6); }
   position: relative;
   z-index: 2;
   flex-direction: column;
-  /* takes the slack so the pair stays centred inside --craft-min-height */
-  flex: 1 1 auto;
-  justify-content: center;
+  /* content-sized, so the 60px padding is exactly what shows */
+  flex: 0 0 auto;
   width: 100%;
-  padding: var(--space-32) 0 var(--space-40);
+  padding: var(--space-60) 0;
   background-color: rgba(43, 35, 32, var(--craft-reviews-alpha));
   color: var(--color-text-light);
 }
@@ -1142,30 +1162,38 @@ h6 { font-size: var(--fs-h6); }
   align-self: center;
   width: 100%;
   max-width: 620px;
-  /* holds the tallest slide so the dark strip does not jump between reviews */
-  min-height: 190px;
+  /* viewport: the track inside it is what actually moves. Its height is set
+     from JS to the active slide, so the dots keep a constant 12px gap
+     instead of following the tallest review. */
+  overflow: hidden;
+  transition: height var(--duration-slide) var(--ease-slide);
+}
+
+/* All three sit side by side; JS slides the track by whole viewport widths,
+   so one review travels out while the next travels in. */
+.testimonials__track {
+  display: flex;
+  flex-direction: row;
+  /* slides size to their own content rather than stretching to the tallest */
+  align-items: flex-start;
+  width: 100%;
+  transition: transform var(--duration-slide) var(--ease-slide);
 }
 
 .testimonial {
   display: flex;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  flex: 0 0 100%;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   gap: var(--space-16);
   text-align: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity var(--duration-base) var(--ease), visibility var(--duration-base) var(--ease);
+  /* non-active slides are clipped by the viewport, not hidden, so the
+     track keeps a single stable height */
+  opacity: 0.999;
 }
 
-.testimonial.is-active {
-  position: relative;
-  opacity: 1;
-  visibility: visible;
-}
+.testimonial.is-active { opacity: 1; }
 
 .testimonials__nav {
   display: flex;
@@ -1174,7 +1202,7 @@ h6 { font-size: var(--fs-h6); }
   justify-content: center;
   gap: var(--space-20);
   align-self: center;
-  padding-top: var(--space-8);
+  padding-top: var(--space-12);
 }
 
 
@@ -1567,7 +1595,7 @@ h6 { font-size: var(--fs-h6); }
   gap: var(--bs-gap);
   overflow-x: auto;
   scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
   scrollbar-width: none;
 }
 
