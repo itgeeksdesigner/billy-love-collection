@@ -172,6 +172,12 @@
 
   /* ---- Motion ---- */
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  /* Prestige's own easing + timings, for hover and image motion */
+  --ease-prestige: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  --ease-zoom: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --duration-hover: 300ms;
+  --duration-zoom: 1200ms;
+  --duration-wipe: 450ms;   /* Prestige button transition */
   --duration-fast: 200ms;
   --duration-base: 350ms;
   --duration-slow: 600ms;
@@ -298,6 +304,8 @@ h6 { font-size: var(--fs-h6); }
 
 .eyebrow--light { color: var(--color-cream); opacity: 0.85; }
 
+/* Prestige-style rule: a background gradient standing in for the underline,
+   so it can retract horizontally on hover instead of just fading. */
 .link-underline {
   display: inline-flex;
   font-size: var(--fs-body-xs);
@@ -306,15 +314,25 @@ h6 { font-size: var(--fs-h6); }
   text-transform: var(--tt-upper);
   color: var(--color-text);
   padding-bottom: var(--space-4);
-  border-bottom: 1px solid currentColor;
-  transition: opacity var(--duration-fast) var(--ease);
+  background: linear-gradient(to right, currentColor, currentColor)
+              0 100% / 100% 1px no-repeat;
+  transition: background-size var(--duration-hover) ease-in-out;
 }
 
-.link-underline:hover { opacity: 0.6; }
+.link-underline:hover { background-size: 0 1px; }
 
 /* ============ 5. BUTTONS ============ */
+/* Prestige's wipe: the fill sweeps off one edge while the text colour
+   inverts. Driven by transform on a pseudo-element rather than by
+   background-size -- scaleX is composited on the GPU, so it stays smooth,
+   whereas animating background-size repaints the gradient every frame. */
 .btn {
+  --btn-fill: var(--color-espresso);
+  --btn-ink: var(--color-ivory);
+
   display: inline-flex;
+  position: relative;
+  isolation: isolate;
   align-items: center;
   justify-content: center;
   gap: var(--space-8);
@@ -324,36 +342,61 @@ h6 { font-size: var(--fs-h6); }
   letter-spacing: var(--ls-wider);
   text-transform: var(--tt-upper);
   border-radius: var(--radius-none);
-  border: 1px solid transparent;
-  transition: background-color var(--duration-fast) var(--ease),
-              color var(--duration-fast) var(--ease),
-              border-color var(--duration-fast) var(--ease);
+  border: 1px solid var(--btn-fill);
+  color: var(--btn-ink);
+  background-color: transparent;
+  overflow: hidden;
+  transition: color var(--duration-fast) ease-in-out,
+              border-color var(--duration-wipe) var(--ease-prestige);
 }
 
-.btn--solid { background-color: var(--color-espresso); color: var(--color-ivory); }
-.btn--solid:hover { background-color: var(--color-cocoa); }
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--btn-fill);
+  transform: scaleX(1);
+  transform-origin: right center;
+  transition: transform var(--duration-wipe) var(--ease-prestige);
+}
 
-.btn--outline { background-color: transparent; color: var(--color-espresso); border-color: var(--color-espresso); }
-.btn--outline:hover { background-color: var(--color-espresso); color: var(--color-ivory); }
+.btn:hover { color: var(--btn-fill); }
+.btn:hover::before { transform: scaleX(0); }
 
-.btn--ghost { background-color: transparent; color: var(--color-white); border-color: var(--color-white); }
-.btn--ghost:hover { background-color: var(--color-white); color: var(--color-espresso); }
+/* ---- filled variants: only the two colours change ---- */
+.btn--solid  { --btn-fill: var(--color-espresso); --btn-ink: var(--color-ivory); }
+.btn--accent { --btn-fill: var(--color-camel);    --btn-ink: var(--color-white); }
+.btn--light  { --btn-fill: var(--color-ivory);    --btn-ink: var(--color-espresso); }
 
-.btn--light { background-color: var(--color-ivory); color: var(--color-espresso); }
-.btn--light:hover { background-color: var(--color-sand); }
+/* ---- outline variants: the fill sweeps in instead of out ---- */
+.btn--outline,
+.btn--ghost { color: var(--btn-fill); }
 
-.btn--accent { background-color: var(--color-camel); color: var(--color-white); }
-.btn--accent:hover { background-color: var(--color-mocha); }
+.btn--outline::before,
+.btn--ghost::before {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.btn--outline:hover,
+.btn--ghost:hover { color: var(--btn-ink); }
+
+.btn--outline:hover::before,
+.btn--ghost:hover::before { transform: scaleX(1); }
+
+.btn--outline { --btn-fill: var(--color-espresso); --btn-ink: var(--color-ivory); }
+.btn--ghost   { --btn-fill: var(--color-white);    --btn-ink: var(--color-espresso); }
 
 .btn--wide { padding: var(--space-14) var(--space-32); letter-spacing: var(--ls-wider); }
 
+/* inherits the wipe from .btn; only size and colours differ */
 .btn--card {
+  --btn-fill: var(--color-espresso);
+  --btn-ink: var(--color-ivory);
   width: 100%;
   padding: var(--space-12) var(--space-20);
-  background-color: var(--color-espresso);
-  color: var(--color-ivory);
 }
-.btn--card:hover { background-color: var(--color-cocoa); }
 
 /* ============ 6. ANNOUNCEMENT BAR ============ */
 /* The top bar floats over the hero. On scroll JS adds .is-stuck, which
@@ -578,6 +621,22 @@ h6 { font-size: var(--fs-h6); }
 
 .hero__media { display: flex; position: absolute; inset: 0; overflow: hidden; }
 
+/* Scrim weighted to the left, where the copy sits, so the model on the right
+   keeps her highlights. Pseudo-element, so the hero needs no extra markup. */
+.hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right,
+      rgba(28, 23, 21, 0.62) 0%,
+      rgba(28, 23, 21, 0.32) 38%,
+      rgba(28, 23, 21, 0) 66%),
+    linear-gradient(to top,
+      rgba(28, 23, 21, 0.3) 0%,
+      rgba(28, 23, 21, 0) 55%);
+}
+
 /* The frame is anchored right so the model is never clipped when a narrower
    viewport crops the 2:1 image horizontally. */
 .hero__img {
@@ -761,8 +820,8 @@ h6 { font-size: var(--fs-h6); }
   height: 100%;
   object-fit: cover;
   object-position: var(--promo-focal);
-  transform: scale(1.05);
-  transition: transform 1200ms var(--ease);
+  transform: scale(1.06);
+  transition: transform var(--duration-zoom) var(--ease-zoom);
 }
 
 .promo-banner.is-visible .promo-banner__img { transform: scale(1); }
@@ -810,7 +869,9 @@ h6 { font-size: var(--fs-h6); }
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-20);
-  max-width: 400px;
+  /* must clear the h2 at --fs-h2 with --ls-tab tracking, or the banner's
+     overflow:hidden slices the last letter */
+  max-width: 560px;
   color: var(--promo-text);
   opacity: 0;
   transform: translateY(24px);
@@ -852,6 +913,9 @@ h6 { font-size: var(--fs-h6); }
 
 /* ---- button ---- */
 .promo-banner__btn {
+  --btn-fill: var(--color-white);
+  --btn-ink: var(--color-espresso);
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -861,27 +925,39 @@ h6 { font-size: var(--fs-h6); }
   letter-spacing: var(--ls-wider);
   text-transform: var(--tt-upper);
   border-radius: var(--radius-none);
-  border: 1px solid var(--color-white);
-  background-color: var(--color-white);
-  color: var(--color-espresso);
-  transition: background-color 300ms var(--ease), color 300ms var(--ease), border-color 300ms var(--ease);
-}
-
-.promo-banner__btn:hover {
+  border: 1px solid var(--btn-fill);
+  color: var(--btn-ink);
   background-color: transparent;
-  border-color: var(--color-white);
-  color: var(--color-white);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: color var(--duration-fast) ease-in-out,
+              border-color var(--duration-wipe) var(--ease-prestige);
 }
 
-.promo-banner--btn-outline .promo-banner__btn {
-  background-color: transparent;
-  color: var(--color-white);
+.promo-banner__btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--btn-fill);
+  transform: scaleX(1);
+  transform-origin: right center;
+  transition: transform var(--duration-wipe) var(--ease-prestige);
 }
 
-.promo-banner--btn-outline .promo-banner__btn:hover {
-  background-color: var(--color-white);
-  color: var(--color-espresso);
+.promo-banner__btn:hover { color: var(--btn-fill); }
+.promo-banner__btn:hover::before { transform: scaleX(0); }
+
+.promo-banner--btn-outline .promo-banner__btn { color: var(--btn-fill); }
+
+.promo-banner--btn-outline .promo-banner__btn::before {
+  transform: scaleX(0);
+  transform-origin: left center;
 }
+
+.promo-banner--btn-outline .promo-banner__btn:hover { color: var(--btn-ink); }
+.promo-banner--btn-outline .promo-banner__btn:hover::before { transform: scaleX(1); }
 
 .promo-banner__btn:focus-visible { outline: 2px solid var(--color-white); outline-offset: 4px; }
 
@@ -976,11 +1052,12 @@ h6 { font-size: var(--fs-h6); }
   font-size: var(--fs-body-sm);
   color: var(--color-text);
   padding-bottom: var(--space-2);
-  border-bottom: 1px solid currentColor;
-  transition: opacity var(--duration-fast) var(--ease);
+  background: linear-gradient(to right, currentColor, currentColor)
+              0 100% / 100% 1px no-repeat;
+  transition: background-size var(--duration-hover) ease-in-out;
 }
 
-.feature-banner__link:hover { opacity: 0.6; }
+.feature-banner__link:hover { background-size: 0 1px; }
 .feature-banner__link:focus-visible { outline: 1px solid var(--color-cocoa); outline-offset: 4px; }
 
 /* ============ 18b. CRAFT (banner + reviews merged) ============ */
@@ -1007,7 +1084,11 @@ h6 { font-size: var(--fs-h6); }
   height: 100%;
   object-fit: cover;
   object-position: var(--craft-focal);
+  transform: scale(1.06);
+  transition: transform var(--duration-zoom) var(--ease-zoom);
 }
+
+.craft.is-visible .craft__img { transform: scale(1); }
 
 .craft__overlay {
   display: flex;
@@ -1295,6 +1376,68 @@ h6 { font-size: var(--fs-h6); }
 }
 .newsletter__note:empty { display: none; }
 
+/* ============ 23b. WELCOME POP-UP ============ */
+/* Reuses .modal for the backdrop, open/close transition and z-index. */
+/* .modal__panel is declared later in this file, so this needs the extra
+   specificity to win on width. */
+.welcome .welcome__panel {
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+}
+
+.welcome__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-10);
+  padding: var(--space-40) var(--space-32) var(--space-32);
+  text-align: center;
+}
+
+.welcome__title { font-size: var(--fs-h4); }
+
+.welcome__text {
+  font-size: var(--fs-body-sm);
+  color: var(--color-cocoa);
+  max-width: 320px;
+}
+
+.welcome__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+  width: 100%;
+  padding-top: var(--space-8);
+}
+
+.welcome__input {
+  width: 100%;
+  padding: var(--space-14) var(--space-16);
+  background-color: var(--color-white);
+  border: var(--border-hairline);
+  border-radius: var(--radius-none);
+  font-size: var(--fs-body-sm);
+  color: var(--color-text);
+}
+
+.welcome__input:focus { outline: 1px solid var(--color-cocoa); }
+
+.welcome__note { font-size: var(--fs-body-xs); color: var(--color-cocoa); }
+.welcome__note:empty { display: none; }
+
+.welcome__dismiss {
+  font-size: var(--fs-body-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: var(--tt-upper);
+  color: var(--color-mocha);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: var(--space-2);
+  transition: color var(--duration-fast) var(--ease);
+}
+
+.welcome__dismiss:hover { color: var(--color-text); }
+
 /* ============ 24. FOOTER ============ */
 .site-footer { display: flex; flex-direction: column; background-color: var(--color-espresso); color: var(--color-cream); }
 
@@ -1323,8 +1466,16 @@ h6 { font-size: var(--fs-h6); }
 }
 
 .footer-col__list { display: flex; flex-direction: column; gap: var(--space-10); }
-.footer-col__link { font-size: var(--fs-body-sm); color: var(--color-beige); transition: color var(--duration-fast) var(--ease); }
-.footer-col__link:hover { color: var(--color-white); }
+/* Prestige .link-reverse: underline grows in from the left on hover. */
+.footer-col__link {
+  font-size: var(--fs-body-sm);
+  color: var(--color-beige);
+  background: linear-gradient(to right, currentColor, currentColor)
+              0 100% / 0 1px no-repeat;
+  transition: background-size var(--duration-hover) ease-in-out,
+              color var(--duration-fast) var(--ease);
+}
+.footer-col__link:hover { background-size: 100% 1px; color: var(--color-white); }
 
 .footer-social { display: flex; flex-direction: row; gap: var(--space-16); padding-top: var(--space-4); }
 .footer-social__link { display: flex; font-size: var(--icon-lg); transition: color var(--duration-fast) var(--ease); }
@@ -1502,8 +1653,13 @@ h6 { font-size: var(--fs-h6); }
   height: 100%;
   padding: var(--bs-img-pad);
   object-fit: contain;
-  transition: opacity var(--duration-base) var(--ease);
+  transform-origin: center;
+  transition: opacity var(--duration-fast) ease-in-out,
+              transform var(--duration-zoom) var(--ease-zoom);
 }
+
+/* slow push-in while the pointer rests on the card */
+.bs-card:hover .bs-card__img { transform: scale(1.045); }
 
 .bs-card__img--back { opacity: 0; }
 
@@ -1544,11 +1700,14 @@ h6 { font-size: var(--fs-h6); }
   box-shadow: var(--shadow-soft);
   opacity: 0;
   transform: translateY(6px);
-  transition: opacity var(--duration-base) var(--ease),
-              transform var(--duration-base) var(--ease),
-              background-color var(--duration-fast) var(--ease),
-              color var(--duration-fast) var(--ease);
+  transition: opacity var(--duration-fast) ease-in-out,
+              transform var(--duration-fast) ease-in-out,
+              background-color var(--duration-fast) ease-in-out,
+              color var(--duration-fast) ease-in-out;
 }
+
+.bs-card__add i { transition: transform var(--duration-fast) var(--ease-prestige); }
+.bs-card__add:hover i { transform: scale(1.15); }
 
 .bs-card:hover .bs-card__add,
 .bs-card__add:focus-visible { opacity: 1; transform: translateY(0); }

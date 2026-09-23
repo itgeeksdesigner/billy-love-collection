@@ -174,6 +174,60 @@
     modal.addEventListener('billylove:added', close);
   }());
 
+  /* ============ 6b. WELCOME POP-UP ============ */
+  /* Opens on every load by design -- nothing is remembered between visits. */
+  (function welcome() {
+    var modal = qs('#welcome');
+    if (!modal) { return; }
+
+    var form = qs('[data-welcome-form]', modal);
+    var note = qs('[data-welcome-note]', modal);
+    var closeBtn = qs('[data-close-welcome]', modal);
+    var lastFocused = null;
+
+    function open() {
+      lastFocused = document.activeElement;
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      body.classList.add('is-locked');
+      if (closeBtn) { closeBtn.focus(); }
+    }
+
+    function close() {
+      if (!modal.classList.contains('is-open')) { return; }
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      body.classList.remove('is-locked');
+      if (lastFocused && lastFocused.focus) { lastFocused.focus(); }
+    }
+
+    qsa('[data-close-welcome]', modal).forEach(function (btn) {
+      btn.addEventListener('click', close);
+    });
+
+    modal.addEventListener('click', function (event) {
+      if (event.target === modal) { close(); }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') { close(); }
+    });
+
+    if (form) {
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        var input = qs('.welcome__input', form);
+        if (!input || !input.value) { return; }
+        if (note) { note.textContent = 'Thank you. Your code is on its way to ' + input.value + '.'; }
+        form.reset();
+        window.setTimeout(close, 1800);
+      });
+    }
+
+    // Short beat so the page paints before the panel appears.
+    window.setTimeout(open, 900);
+  }());
+
   /* ============ 7. ADD TO BAG / BUY NOW ============ */
   (function cart() {
     var countEl = qs('[data-cart-count]');

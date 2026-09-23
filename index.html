@@ -605,6 +605,28 @@
   </div>
 </footer>
 
+<!-- ================= WELCOME POP-UP ================= -->
+<!-- Opens on every page load. Closes on the X, the backdrop, Escape or submit. -->
+<div class="modal welcome" id="welcome" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle" aria-hidden="true">
+  <div class="modal__panel welcome__panel">
+    <button class="modal__close" type="button" data-close-welcome aria-label="Close welcome message"><i class="ph ph-x"></i></button>
+
+    <div class="welcome__content">
+      <span class="eyebrow">Welcome to Billy Love</span>
+      <h2 class="welcome__title" id="welcomeTitle">10% Off Your First Order</h2>
+      <p class="welcome__text">Join the list for early access to drops, restocks and members-only offers.</p>
+
+      <form class="welcome__form" data-welcome-form>
+        <input class="welcome__input" type="email" name="email" placeholder="Your email address" aria-label="Your email address" required>
+        <button class="btn btn--accent" type="submit">Get my 10% off</button>
+      </form>
+
+      <p class="welcome__note" data-welcome-note role="status"></p>
+      <button class="welcome__dismiss" type="button" data-close-welcome>No thanks, keep browsing</button>
+    </div>
+  </div>
+</div>
+
 <!-- ================= QUICK VIEW MODAL ================= -->
 <div class="modal" id="quickView" aria-hidden="true">
   <div class="modal__panel">

@@ -238,6 +238,9 @@
   html { scroll-behavior: auto; }
   .marquee__track { animation: none; }
   .promo-banner__img { transform: none; }
+  .craft__img { transform: none; }
+  .bs-card:hover .bs-card__img { transform: none; }
+  .bs-card__add:hover i { transform: none; }
   .promo-banner__content { opacity: 1; transform: none; }
   .feature-banner__card { opacity: 1; transform: none; }
   *,
