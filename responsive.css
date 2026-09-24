@@ -153,7 +153,7 @@
     --marquee-fs: 34px;
     --marquee-img-h: 72px;
     --marquee-img-gap: var(--space-32);
-    --marquee-row-pad: var(--space-40);
+    --marquee-row-pad: 19px;
   }
 }
 
@@ -434,7 +434,7 @@
     --marquee-fs: 26px;
     --marquee-img-h: 56px;
     --marquee-img-gap: var(--space-24);
-    --marquee-row-pad: var(--space-32);
+    --marquee-row-pad: 11px;
   }
 }
 
