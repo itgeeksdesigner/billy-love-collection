@@ -11,7 +11,8 @@
    9.  Hero
    26. Best sellers (tabs + carousel)
    11. USP bar
-   12. Marquee
+   12. Marquee keyframes
+   12b. Scrolling marquee
    14. Ratings & swatches
    17. Promo banner
    18. Feature banner
@@ -27,7 +28,7 @@
 /* ---------------------------------------------------------
    PALETTE / TYPE DIRECTIONS — currently live: DIRECTION A
    A. "Warm Nude"   (live) Bodoni Moda + Marcellus + Montserrat
-      ivory #FBF7F2 · sand #E8DCCF · clay #C4A88E · espresso #2B2320
+      ivory #FAF4EC · sand #E7D8C5 · clay #C4A88E · espresso #2B2320
    B. "Soft Blush"  Cormorant Garamond + Montserrat
       --color-ivory:#FDF8F5; --color-cream:#F7EBE6; --color-sand:#EFD9D2;
       --color-clay:#D9A79B;  --color-camel:#C08F83; --color-espresso:#332724;
@@ -42,10 +43,10 @@
 /* ============ 1. ROOT VARIABLES ============ */
 :root {
   /* ---- Colour palette : Warm Nude / Soft Beige ---- */
-  --color-ivory: #FBF7F2;
-  --color-cream: #F5EDE4;
-  --color-sand: #E8DCCF;
-  --color-beige: #DCCBB8;
+  --color-ivory: #FAF4EC;
+  --color-cream: #F2E8DB;
+  --color-sand: #E7D8C5;
+  --color-beige: #D9C4AB;
   --color-clay: #C4A88E;
   --color-camel: #B79C86;
   --color-mocha: #8A7361;
@@ -53,11 +54,11 @@
   --color-espresso: #2B2320;
   --color-ink: #1C1715;
   --color-white: #FFFFFF;
-  --color-mist: #EFEBE6;
+  --color-mist: #EDE2D3;
   --color-blush: #F0DCD6;
   --color-rose: #D9A79B;
   --color-logo-pink: #DD586C;
-  --color-line: #E5DACC;
+  --color-line: #E4D4C0;
   --color-line-dark: #4A3D35;
 
   /* ---- Semantic colours ---- */
@@ -72,7 +73,7 @@
 
   /* ---- Typography families ---- */
   /* --font-heading is used by h1-h6 only. --font-display stays on the
-     smaller serif accents (nav drawer, marquee, tabs, testimonial). */
+     smaller serif accents (nav drawer, tabs, testimonial). */
   --font-heading: "Bodoni Moda", "Didot", "Times New Roman", serif;
   --font-display: "Marcellus", "Times New Roman", serif;
   --font-body: "Montserrat", "Helvetica Neue", Arial, sans-serif;
@@ -697,6 +698,124 @@ h6 { font-size: var(--fs-h6); }
 }
 
 
+/* ============ 9b. HERO SLIDER ============ */
+/* Slides share one grid cell, so the section takes the tallest slide's
+   height and the inactive one simply fades out on top of nothing. */
+.hero-slider { display: grid; position: relative; overflow: hidden; }
+
+.hero-slider > .hero {
+  grid-area: 1 / 1;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity var(--duration-zoom) var(--ease), visibility var(--duration-zoom) var(--ease);
+}
+
+.hero-slider > .hero.is-active { visibility: visible; opacity: 1; }
+
+/* Bottom-right pager: small muted dots, the current one a white ring. */
+.hero-slider__dots {
+  display: flex;
+  position: absolute;
+  right: var(--space-32);
+  bottom: var(--space-28);
+  z-index: 3;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* 20px hit area around a small visual dot */
+.hero-slider__dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.hero-slider__dot::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-circle);
+  background-color: rgba(255, 255, 255, 0.55);
+  transition: width var(--duration-fast) var(--ease), height var(--duration-fast) var(--ease),
+              background-color var(--duration-fast) var(--ease), box-shadow var(--duration-fast) var(--ease);
+}
+
+.hero-slider__dot:hover::before { background-color: var(--color-white); }
+
+.hero-slider__dot.is-active::before {
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+  box-shadow: inset 0 0 0 2px var(--color-white);
+}
+
+/* ---- slide 2: centred copy inside a hairline frame ---- */
+/* No photo-wide scrim here; the frame carries its own soft shade instead. */
+.hero--centered .hero__media::after { display: none; }
+
+/* slide 2 only: a barely-there 5% wash over the photo */
+.hero--centered.hero--tint .hero__media::after {
+  display: block;
+  background-image: none;
+  background-color: rgba(28, 23, 21, 0.05);
+}
+
+.hero--centered .hero__container { align-items: flex-end; }
+
+.hero__frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-20);
+  width: 100%;
+  max-width: 540px;
+  /* box sits on the right of the slide, clear of the model */
+  margin-right: var(--space-40);
+  padding: var(--space-48) var(--space-32);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background-image: radial-gradient(ellipse at center,
+    rgba(28, 23, 21, 0.38) 0%,
+    rgba(28, 23, 21, 0.16) 55%,
+    rgba(28, 23, 21, 0) 100%);
+  text-align: center;
+  text-shadow: 0 1px 12px rgba(28, 23, 21, 0.35);
+}
+
+/* ---- slide 3: same centred stack, no border, sits mid-slide ---- */
+.hero--plain .hero__container { align-items: center; }
+
+.hero__frame--plain {
+  max-width: 900px;
+  margin-right: 0;
+  border-color: transparent;
+}
+
+.hero__eyebrow {
+  font-size: var(--fs-body-sm);
+  letter-spacing: var(--ls-widest);
+  text-transform: var(--tt-upper);
+  color: var(--color-white);
+}
+
+.hero__title--light {
+  font-family: var(--font-body);
+  font-size: min(44px, var(--fs-h1));
+  font-weight: var(--fw-light);
+  line-height: var(--lh-heading);
+  letter-spacing: 0.14em;
+}
+
+.hero__btn {
+  margin-top: var(--space-4);
+  padding: var(--space-16) var(--space-32);
+  font-size: var(--fs-body-sm);
+  letter-spacing: var(--ls-widest);
+  text-shadow: none;
+}
+
 /* ============ 11. USP BAR ============ */
 .usp {
   display: flex;
@@ -745,47 +864,78 @@ h6 { font-size: var(--fs-h6); }
 
 .usp__text { font-size: var(--fs-body-sm); color: var(--color-text-muted); line-height: var(--lh-snug); max-width: 260px; }
 
-/* ============ 12. MARQUEE ============ */
-.marquee {
-  display: flex;
-  background-color: var(--color-espresso);
-  color: var(--color-cream);
-  padding-top: var(--space-20);
-  padding-bottom: var(--space-20);
-  overflow: hidden;
-}
-
-.marquee__track {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: var(--space-40);
-  white-space: nowrap;
-  animation: marquee-scroll 28s linear infinite;
-}
-
-.marquee__item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: var(--space-40);
-  font-family: var(--font-display);
-  font-size: var(--fs-h4);
-  letter-spacing: var(--ls-wider);
-  text-transform: var(--tt-upper);
-}
-
-.marquee__star { display: flex; font-size: var(--fs-body-sm); color: var(--color-clay); }
-
+/* ============ 12. MARQUEE KEYFRAMES (used by 12b) ============ */
 @keyframes marquee-scroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 
+/* ============ 12b. SCROLLING MARQUEE (text + product cutouts) ============ */
+/* Each row slides its track by -50% (two identical groups), so it loops with
+   no seam. Set --marquee-duration inline per row; --reverse flips direction. */
+.scroll-marquee {
+  --marquee-fs: 52px;
+  --marquee-img-h: 96px;
+  --marquee-img-gap: var(--space-48);
+  --marquee-row-pad: var(--space-56);
+  display: flex;
+  flex-direction: column;
+  /* same ivory as the page; only the hairline row borders mark the band */
+  background-color: var(--color-ivory);
+  overflow: hidden;
+}
+
+.scroll-marquee__row {
+  display: flex;
+  overflow: hidden;
+  padding-top: var(--marquee-row-pad);
+  padding-bottom: var(--marquee-row-pad);
+  border-top: 1px solid var(--color-line);
+  color: var(--color-camel);
+  transition: color var(--duration-base) var(--ease);
+}
+
+.scroll-marquee__row:last-child { border-bottom: 1px solid var(--color-line); }
+.scroll-marquee__row:hover,
+.scroll-marquee__row:focus-visible { color: var(--color-mocha); }
+.scroll-marquee__row:focus-visible { outline: 1px solid var(--color-mocha); outline-offset: -4px; }
+
+.scroll-marquee__track {
+  display: flex;
+  flex: 0 0 auto;
+  width: max-content;
+  animation: marquee-scroll var(--marquee-duration, 40s) linear infinite;
+}
+
+.scroll-marquee__row--reverse .scroll-marquee__track { animation-direction: reverse; }
+.scroll-marquee__row:hover .scroll-marquee__track { animation-play-state: paused; }
+
+.scroll-marquee__group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.scroll-marquee__text {
+  font-family: var(--font-body);
+  font-size: var(--marquee-fs);
+  font-weight: var(--fw-light);
+  line-height: 1;
+  letter-spacing: 0.15em;
+  text-transform: var(--tt-upper);
+  white-space: nowrap;
+}
+
+.scroll-marquee__img {
+  width: auto;
+  height: var(--marquee-img-h);
+  object-fit: contain;
+  margin: 0 var(--marquee-img-gap);
+}
+
 /* ============ 14. RATINGS & SWATCHES ============ */
 /* Shared by the quick view modal, featured product and pickers. */
 .rating { display: flex; flex-direction: row; align-items: center; gap: var(--space-2); font-size: var(--fs-body-xs); color: var(--color-star); }
-.rating--light { color: var(--color-clay); justify-content: center; }
 .rating__count { display: flex; padding-left: var(--space-6); color: var(--color-text-muted); }
 
 .size-swatches { display: flex; flex-direction: row; flex-wrap: wrap; gap: var(--space-6); padding-top: var(--space-4); }
@@ -1019,12 +1169,13 @@ h6 { font-size: var(--fs-h6); }
 
 /* card pinned toward the top of the image rather than optically centred */
 /* Inside .craft the photo lives on the section, so this block is just the
-   card: no background, no min-height of its own. */
+   card: no background, no min-height of its own. It fills the section so
+   the card is centred on the image. */
 .feature-banner--bare {
   position: relative;
   z-index: 2;
   min-height: 0;
-  flex: 0 0 auto;
+  flex: 1 0 auto;
   justify-content: center;
   padding: var(--space-60) 0;
 }
@@ -1081,13 +1232,10 @@ h6 { font-size: var(--fs-h6); }
 .feature-banner__link:hover { background-size: 0 1px; }
 .feature-banner__link:focus-visible { outline: 1px solid var(--color-cocoa); outline-offset: 4px; }
 
-/* ============ 18b. CRAFT (banner + reviews merged) ============ */
-/* The two blocks butt straight together: the dark review strip starts where
-   the image ends, so the pair reads as one section rather than two. */
+/* ============ 18b. CRAFT (card over the banner image) ============ */
 .craft {
   --craft-min-height: 640px;
   --craft-overlay: 0.15;
-  --craft-reviews-alpha: 0.9;   /* 90% opaque panel, photo just showing through */
   --craft-focal: center center;
 
   display: flex;
@@ -1118,39 +1266,27 @@ h6 { font-size: var(--fs-h6); }
   background-color: rgba(28, 23, 21, var(--craft-overlay));
 }
 
-.craft__reviews {
-  display: flex;
-  position: relative;
-  z-index: 2;
-  flex-direction: column;
-  /* content-sized, so the 60px padding is exactly what shows */
-  flex: 0 0 auto;
-  width: 100%;
-  padding: var(--space-60) 0;
-  background-color: rgba(43, 35, 32, var(--craft-reviews-alpha));
-  color: var(--color-text-light);
-}
+/* ============ 18c. REVIEWS (own section below the craft banner) ============ */
+/* Standard .section padding on the page ivory, so it reads as a light
+   break after the dark craft photo rather than a continuation of it. */
+.reviews { background-color: var(--color-ivory); }
 
-.craft__reviews-inner { display: flex; flex-direction: row; justify-content: center; }
+.reviews__inner { display: flex; flex-direction: row; justify-content: center; }
 
-/* ---- light-on-dark variant of the review type ---- */
-.testimonials--light .testimonial__text { font-size: var(--fs-h3); color: var(--color-white); }
-.testimonials--light .testimonial__author { color: var(--color-clay); }
+.reviews .rating { justify-content: center; }
+.reviews .testimonial__text { font-size: var(--fs-h3); }
+.reviews .testimonial__author { color: var(--color-mocha); }
 
 .testimonial__support {
   font-size: var(--fs-body-xs);
   line-height: var(--lh-loose);
   letter-spacing: var(--ls-wide);
   text-transform: var(--tt-upper);
-  color: var(--color-beige);
+  color: var(--color-cocoa);
   /* wide enough to hold the longest review on two lines */
   max-width: 560px;
   text-wrap: balance;
 }
-
-.craft__reviews .testimonials__dot { background-color: rgba(255, 255, 255, 0.35); }
-.craft__reviews .testimonials__dot:hover { background-color: var(--color-camel); }
-.craft__reviews .testimonials__dot.is-active { background-color: var(--color-clay); }
 
 /* ============ 19. TESTIMONIALS ============ */
 /* one review at a time; the active slide holds the height, the rest overlay it */
@@ -1404,67 +1540,97 @@ h6 { font-size: var(--fs-h6); }
 }
 .newsletter__note:empty { display: none; }
 
-/* ============ 23b. WELCOME POP-UP ============ */
-/* Reuses .modal for the backdrop, open/close transition and z-index. */
-/* .modal__panel is declared later in this file, so this needs the extra
-   specificity to win on width. */
-.welcome .welcome__panel {
-  flex-direction: column;
-  width: 100%;
-  max-width: 400px;
-}
-
-.welcome__content {
+/* ============ 23b. NEWSLETTER POP-UP ============ */
+/* Fixed card in the bottom-right corner; slides up and fades in on .is-open. */
+.welcome {
   display: flex;
+  position: fixed;
+  right: var(--space-24);
+  bottom: var(--space-24);
+  z-index: var(--z-modal);
   flex-direction: column;
   align-items: center;
-  gap: var(--space-10);
-  padding: var(--space-40) var(--space-32) var(--space-32);
+  gap: var(--space-20);
+  width: calc(100% - var(--space-48));
+  max-width: 390px;
+  padding: var(--space-40) var(--space-40) var(--space-40);
+  background-color: var(--color-ink);
+  color: var(--color-white);
   text-align: center;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity var(--duration-slow) var(--ease),
+              transform var(--duration-slow) var(--ease),
+              visibility var(--duration-slow) var(--ease);
 }
 
-.welcome__title { font-size: var(--fs-h4); }
+.welcome.is-open { visibility: visible; opacity: 1; transform: translateY(0); }
+
+.welcome__close {
+  display: flex;
+  position: absolute;
+  top: var(--space-16);
+  right: var(--space-16);
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  font-size: var(--icon-lg);
+  color: var(--color-white);
+  transition: transform var(--duration-base) var(--ease);
+}
+
+.welcome__close:hover { transform: rotate(90deg); }
+
+.welcome__title {
+  padding: 0 var(--space-16);
+  font-family: var(--font-body);
+  font-size: var(--fs-body-xl);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-widest);
+  text-transform: var(--tt-upper);
+  color: var(--color-white);
+}
 
 .welcome__text {
   font-size: var(--fs-body-sm);
-  color: var(--color-cocoa);
-  max-width: 320px;
+  line-height: var(--lh-body);
+  color: var(--color-white);
 }
 
 .welcome__form {
   display: flex;
   flex-direction: column;
-  gap: var(--space-10);
+  gap: var(--space-20);
   width: 100%;
-  padding-top: var(--space-8);
+  padding-top: var(--space-4);
 }
 
 .welcome__input {
   width: 100%;
   padding: var(--space-14) var(--space-16);
-  background-color: var(--color-white);
-  border: var(--border-hairline);
+  background-color: transparent;
+  border: 1px solid var(--color-line-dark);
   border-radius: var(--radius-none);
   font-size: var(--fs-body-sm);
-  color: var(--color-text);
+  color: var(--color-white);
+  transition: border-color var(--duration-fast) var(--ease);
 }
 
-.welcome__input:focus { outline: 1px solid var(--color-cocoa); }
+.welcome__input::placeholder { color: var(--color-mist); opacity: 0.8; }
+.welcome__input:focus { outline: none; border-color: var(--color-white); }
 
-.welcome__note { font-size: var(--fs-body-xs); color: var(--color-cocoa); }
+.welcome__submit { width: 100%; letter-spacing: var(--ls-widest); }
+
+.welcome__note { font-size: var(--fs-body-xs); color: var(--color-mist); }
 .welcome__note:empty { display: none; }
 
-.welcome__dismiss {
-  font-size: var(--fs-body-xs);
-  letter-spacing: var(--ls-wide);
-  text-transform: var(--tt-upper);
-  color: var(--color-mocha);
-  border-bottom: 1px solid currentColor;
-  padding-bottom: var(--space-2);
-  transition: color var(--duration-fast) var(--ease);
+@media (prefers-reduced-motion: reduce) {
+  .welcome { transform: none; }
 }
-
-.welcome__dismiss:hover { color: var(--color-text); }
 
 /* ============ 24. FOOTER ============ */
 .site-footer { display: flex; flex-direction: column; background-color: var(--color-espresso); color: var(--color-cream); }

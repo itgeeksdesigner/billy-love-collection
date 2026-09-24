@@ -73,6 +73,8 @@
   .usp__item { flex: 1 1 calc(50% - var(--space-24)); }
 
   .modal__content { padding: var(--space-32); }
+
+  .scroll-marquee { --marquee-fs: 42px; --marquee-img-h: 84px; }
 }
 
 /* ============ TABLET PORTRAIT — 768px ============ */
@@ -101,6 +103,8 @@
   .announcement__viewport { min-width: 0; }
 
   .hero { padding-top: var(--space-48); padding-bottom: var(--space-48); }
+  .hero--centered .hero__container { align-items: center; }
+  .hero__frame { margin-right: 0; }
   .hero__content { max-width: 440px; }
 
 
@@ -144,11 +148,17 @@
     padding: var(--space-32) var(--space-20) var(--space-24);
     overflow-y: auto;
   }
+
+  .scroll-marquee {
+    --marquee-fs: 34px;
+    --marquee-img-h: 72px;
+    --marquee-img-gap: var(--space-32);
+    --marquee-row-pad: var(--space-40);
+  }
 }
 
 /* ============ MOBILE — 575px ============ */
 @media (max-width: 575px) {
-  .craft__reviews { padding: var(--space-40) 0; }
   .feature-banner--bare { padding: var(--space-40) 0; }
 
   :root {
@@ -267,6 +277,28 @@
     white-space: nowrap;
   }
 
+  /* ---- slide 2 keeps its copy over the photo on phones ----
+     It fills whatever height slide 1 sets (photo + copy) and puts the
+     photo back behind the copy, which the stacked slide 1 undid above. */
+  .hero--centered {
+    justify-content: center;
+    padding-top: var(--space-24);
+    padding-bottom: var(--space-24);
+  }
+
+  .hero--centered .hero__media { position: absolute; inset: 0; aspect-ratio: auto; }
+  .hero--centered .hero__container { padding-top: 0; }
+
+  .hero__frame { gap: var(--space-16); padding: var(--space-40) var(--space-20); }
+  .hero__btn { padding: var(--space-16) var(--space-24); }
+
+  /* While slide 1 is hidden, the overlay slides set the height themselves
+     and the dots sit in their bottom-right corner. When slide 1 returns,
+     swap back to: .hero-slider__dots { top: calc(75vw - var(--space-32));
+     right: var(--space-12); bottom: auto; } and drop the min-height. */
+  .hero--centered { min-height: 100vw; }
+  .hero-slider__dots { right: var(--space-12); bottom: var(--space-12); }
+
   .section__head--row { flex-direction: column; align-items: flex-start; }
 
   /* ---- USP bar becomes a one-at-a-time slider with dots ---- */
@@ -286,8 +318,6 @@
   .usp__dots { display: flex; }
 
 
-  .marquee__item { font-size: var(--fs-h5); gap: var(--space-24); }
-  .marquee__track { gap: var(--space-24); }
 
 
   /* no hover on touch: keep the quick-add visible */
@@ -395,8 +425,17 @@
   .modal__content { padding: var(--space-20); }
   .modal__content .btn { width: 100%; }
 
+  .welcome { right: var(--space-16); bottom: var(--space-16); width: calc(100% - var(--space-32)); padding: var(--space-40) var(--space-24) var(--space-28); }
+
   .toast { left: var(--space-16); right: var(--space-16); transform: translate(0, 20px); justify-content: center; }
   .toast.is-visible { transform: translate(0, 0); }
+
+  .scroll-marquee {
+    --marquee-fs: 26px;
+    --marquee-img-h: 56px;
+    --marquee-img-gap: var(--space-24);
+    --marquee-row-pad: var(--space-32);
+  }
 }
 
 /* ============ SMALL MOBILE — 380px ============ */
@@ -417,7 +456,7 @@
 /* ============ REDUCED MOTION ============ */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .marquee__track { animation: none; }
+  .scroll-marquee__track { animation: none; }
   .promo-banner__img { transform: none; }
   .craft__img { transform: none; }
   .bs-card:hover .bs-card__img { transform: none; }

@@ -44,6 +44,8 @@
         <li class="site-nav__item"><a class="site-nav__link" href="#">Men</a></li>
         <li class="site-nav__item"><a class="site-nav__link" href="#">Pajamas</a></li>
         <li class="site-nav__item"><a class="site-nav__link" href="#">New In</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="#">About</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="#">Contact</a></li>
       </ul>
     </nav>
 
@@ -76,6 +78,8 @@
       <li class="drawer__item"><a class="drawer__link" href="#">Men</a></li>
       <li class="drawer__item"><a class="drawer__link" href="#">Pajamas</a></li>
       <li class="drawer__item"><a class="drawer__link" href="#">New In</a></li>
+      <li class="drawer__item"><a class="drawer__link" href="#">About</a></li>
+      <li class="drawer__item"><a class="drawer__link" href="#">Contact</a></li>
       <li class="drawer__item"><a class="drawer__link" href="#">Journal</a></li>
       <li class="drawer__item"><a class="drawer__link" href="#">Account</a></li>
     </ul>
@@ -86,11 +90,20 @@
   </div>
 </div>
 
-<!-- ================= HERO ================= -->
-<section class="hero" id="top">
+<!-- ================= HERO SLIDER =================
+  Slides stacked in one grid cell and cross-faded; script.js section 1b
+  moves .is-active every few seconds and on dot clicks. -->
+<section class="hero-slider" id="top" aria-roledescription="carousel" aria-label="Featured collections" data-hero-slider>
+
+<!-- HIDDEN FOR NOW: slide 1 (copy on the left). To restore, delete this
+     wrapper, put back its "Show slide 1" dot, give it is-active + fetchpriority,
+     and set slide 2's h1 back to h2. Nested comment markers are spaced out
+     ("<! --", "-- >") so they don't close this comment early.
+slide 1: copy on the left
+<div class="hero is-active" role="group" aria-roledescription="slide" aria-label="1 of 3" data-hero-slide>
   <picture class="hero__media">
-    <!-- phones get a 4:3 crop taken from the right of the frame, so the left
-         of the scene is clipped rather than the whole image being zoomed -->
+    <! -- phones get a 4:3 crop taken from the right of the frame, so the left
+         of the scene is clipped rather than the whole image being zoomed -- >
     <source media="(max-width: 575px)" srcset="images/hero-mobile.webp" width="1200" height="900">
     <img class="hero__img"
          src="images/hero.webp"
@@ -112,6 +125,59 @@
       </div>
     </div>
   </div>
+</div>
+-->
+
+<!-- slide 2: centred copy inside a hairline frame -->
+<div class="hero hero--centered hero--tint is-active" role="group" aria-roledescription="slide" aria-label="1 of 2" data-hero-slide>
+  <picture class="hero__media">
+    <!-- phones get a 4:3 crop centred on the model -->
+    <source media="(max-width: 575px)" srcset="images/hero2-mobile.webp" width="1200" height="900">
+    <img class="hero__img"
+         src="images/hero2.webp"
+         srcset="images/hero2-960.webp 960w,
+                 images/hero2-1440.webp 1440w,
+                 images/hero2.webp 1915w"
+         sizes="100vw"
+         alt="Model leaning against a sunlit stone building in the Billy Love camo crop tee and joggers"
+         fetchpriority="high" width="1915" height="821">
+  </picture>
+  <div class="container hero__container">
+    <div class="hero__frame">
+      <span class="hero__eyebrow">The Camo Edit</span>
+      <h1 class="hero__title hero__title--light">Bold &amp;<br>Effortless</h1>
+      <a class="btn btn--light hero__btn" href="#collection">View Collection</a>
+    </div>
+  </div>
+</div>
+
+<!-- slide 3: centred copy, no frame -->
+<div class="hero hero--centered hero--plain" role="group" aria-roledescription="slide" aria-label="2 of 2" aria-hidden="true" data-hero-slide>
+  <picture class="hero__media">
+    <!-- phones get a 4:3 crop centred on the model -->
+    <source media="(max-width: 575px)" srcset="images/hero3-mobile.webp" width="1200" height="900">
+    <img class="hero__img"
+         src="images/hero3.webp"
+         srcset="images/hero3-960.webp 960w,
+                 images/hero3-1440.webp 1440w,
+                 images/hero3.webp 1916w"
+         sizes="100vw"
+         alt="Model seated on the end of a bed in a candlelit bedroom, wearing the pink Billy Love pajama shirt and shorts with white piping"
+         loading="lazy" width="1916" height="821">
+  </picture>
+  <div class="container hero__container">
+    <div class="hero__frame hero__frame--plain">
+      <span class="hero__eyebrow">Pajama Season</span>
+      <h2 class="hero__title hero__title--light">Made for Slow Mornings</h2>
+      <a class="btn btn--light hero__btn" href="#collection">Shop Now</a>
+    </div>
+  </div>
+</div>
+
+<div class="hero-slider__dots">
+  <button class="hero-slider__dot is-active" type="button" aria-label="Show slide 1" aria-current="true" data-hero-dot></button>
+  <button class="hero-slider__dot" type="button" aria-label="Show slide 2" data-hero-dot></button>
+</div>
 </section>
 
 <!-- ================= BEST SELLERS (tabbed carousel) ================= -->
@@ -132,66 +198,66 @@
         <div class="carousel" data-carousel>
           <button class="carousel__btn carousel__btn--prev" type="button" data-carousel-prev aria-label="Previous women's products"><i class="ph ph-arrow-left"></i></button>
           <div class="carousel__track" data-carousel-track tabindex="0" role="group" aria-label="Women's best sellers, use arrow keys to scroll">
-            <article class="bs-card bs-card--photo" data-product="Pajama Set — Pink" data-price="$68.00" data-image="images/p3.webp">
+            <article class="bs-card bs-card--photo" data-product="Pajama Set — Pink" data-price="$68.00" data-image="images/product4.png">
               <div class="bs-card__media">
                 <span class="bs-card__badge">New</span>
                 <a class="bs-card__media-link" href="#" aria-label="Pajama Set — Pink">
-                  <img class="bs-card__img bs-card__img--front" src="images/p3.webp" alt="Model on a bed in the pink pajama set, long-sleeve shirt with white piping and matching shorts" loading="lazy" width="900" height="1200">
+                  <img class="bs-card__img bs-card__img--front" src="images/product4.png" alt="Hot pink pajama set with long-sleeve button shirt, white piping and matching shorts" loading="lazy" width="1086" height="1448">
                 </a>
                 <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Pajama Set — Pink"><i class="ph ph-eye"></i></button>
               </div>
               <h3 class="bs-card__title"><a class="bs-card__link" href="#">Pajama Set — Pink</a></h3>
               <p class="bs-card__price">$68.00</p>
             </article>
-            <article class="bs-card bs-card--photo" data-product="Pajama Set — Leopard" data-price="$74.00" data-image="images/leopard-pajama-set.webp">
+            <article class="bs-card bs-card--photo" data-product="Pajama Set — Leopard" data-price="$74.00" data-image="images/product1.png">
               <div class="bs-card__media">
                 <span class="bs-card__badge">Best Seller</span>
                 <a class="bs-card__media-link" href="#" aria-label="Pajama Set — Leopard">
-                  <img class="bs-card__img bs-card__img--front" src="images/leopard-pajama-set.webp" alt="Model reclining on a sofa in the leopard-print pajama set, long-sleeve shirt with white piping and matching shorts" loading="lazy" width="1200" height="1200">
+                  <img class="bs-card__img bs-card__img--front" src="images/product1.png" alt="Leopard-print pajama set with long-sleeve button shirt, cream piping and matching shorts" loading="lazy" width="1086" height="1448">
                 </a>
                 <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Pajama Set — Leopard"><i class="ph ph-eye"></i></button>
               </div>
               <h3 class="bs-card__title"><a class="bs-card__link" href="#">Pajama Set — Leopard</a></h3>
               <p class="bs-card__price">$74.00</p>
             </article>
-            <article class="bs-card bs-card--photo" data-product="Pajama Set — Peach Hearts" data-price="$68.00" data-image="images/p2.webp">
+            <article class="bs-card bs-card--photo" data-product="Pajama Set — Peach Hearts" data-price="$68.00" data-image="images/product3.png">
               <div class="bs-card__media">
                 <span class="bs-card__badge">New</span>
                 <a class="bs-card__media-link" href="#" aria-label="Pajama Set — Peach Hearts">
-                  <img class="bs-card__img bs-card__img--front" src="images/p2.webp" alt="Model seated on a bed in the peach heart-print pajama set, long-sleeve shirt and matching shorts" loading="lazy" width="900" height="1200">
+                  <img class="bs-card__img bs-card__img--front" src="images/product3.png" alt="Peach heart-print pajama set with long-sleeve button shirt and matching shorts" loading="lazy" width="1086" height="1448">
                 </a>
                 <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Pajama Set — Peach Hearts"><i class="ph ph-eye"></i></button>
               </div>
               <h3 class="bs-card__title"><a class="bs-card__link" href="#">Pajama Set — Peach Hearts</a></h3>
               <p class="bs-card__price">$68.00</p>
             </article>
-            <article class="bs-card bs-card--photo" data-product="Billy Love Tracksuit — Pink" data-price="$96.00" data-image="images/p1.webp">
+            <article class="bs-card bs-card--photo" data-product="Billy Love Tracksuit — Pink" data-price="$96.00" data-image="images/product2.png">
               <div class="bs-card__media">
                 <span class="bs-card__badge">New</span>
                 <a class="bs-card__media-link" href="#" aria-label="Billy Love Tracksuit — Pink">
-                  <img class="bs-card__img bs-card__img--front" src="images/p1.webp" alt="Model in the hot pink tracksuit, cropped zip hoodie and matching joggers with gold logo" loading="lazy" width="900" height="1200">
+                  <img class="bs-card__img bs-card__img--front" src="images/product2.png" alt="Hot pink tracksuit with cropped zip hoodie and matching joggers" loading="lazy" width="1086" height="1448">
                 </a>
                 <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Billy Love Tracksuit — Pink"><i class="ph ph-eye"></i></button>
               </div>
               <h3 class="bs-card__title"><a class="bs-card__link" href="#">Billy Love Tracksuit — Pink</a></h3>
               <p class="bs-card__price">$96.00</p>
             </article>
-            <article class="bs-card bs-card--photo" data-product="Billy Love Camo Tank Top" data-price="$42.00" data-image="images/p4.webp">
+            <article class="bs-card bs-card--photo" data-product="Billy Love Camo Tank Top" data-price="$42.00" data-image="images/product5.png">
               <div class="bs-card__media">
                 <span class="bs-card__badge">New</span>
                 <a class="bs-card__media-link" href="#" aria-label="Billy Love Camo Tank Top">
-                  <img class="bs-card__img bs-card__img--front" src="images/p4.webp" alt="Model in the cropped camo top with red Billy Love script, worn with matching camo joggers" loading="lazy" width="900" height="1200">
+                  <img class="bs-card__img bs-card__img--front" src="images/product5.png" alt="Camo set with cropped tee and matching joggers" loading="lazy" width="1086" height="1448">
                 </a>
                 <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Billy Love Camo Tank Top"><i class="ph ph-eye"></i></button>
               </div>
               <h3 class="bs-card__title"><a class="bs-card__link" href="#">Billy Love Camo Tank Top</a></h3>
               <p class="bs-card__price">$42.00</p>
             </article>
-            <article class="bs-card bs-card--photo" data-product="Pajama Set — Red Rib" data-price="$52.00" data-image="images/p5.webp">
+            <article class="bs-card bs-card--photo" data-product="Pajama Set — Red Rib" data-price="$52.00" data-image="images/product6.png">
               <div class="bs-card__media">
                 <span class="bs-card__badge">New</span>
                 <a class="bs-card__media-link" href="#" aria-label="Pajama Set — Red Rib">
-                  <img class="bs-card__img bs-card__img--front" src="images/p5.webp" alt="Model by a fireplace in the red ribbed cami and shorts pajama set with lace trim and rhinestone BL monogram" loading="lazy" width="900" height="1200">
+                  <img class="bs-card__img bs-card__img--front" src="images/product6.png" alt="Red ribbed cami and shorts pajama set with lace trim" loading="lazy" width="1086" height="1448">
                 </a>
                 <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Pajama Set — Red Rib"><i class="ph ph-eye"></i></button>
               </div>
@@ -274,18 +340,6 @@
   </div>
 </section>
 
-<!-- ================= MARQUEE ================= -->
-<div class="marquee">
-  <div class="marquee__track">
-    <span class="marquee__item">Pajama Season <i class="ph-fill ph-asterisk marquee__star"></i></span>
-    <span class="marquee__item">New Drop <i class="ph-fill ph-asterisk marquee__star"></i></span>
-    <span class="marquee__item">Billy Love Collection <i class="ph-fill ph-asterisk marquee__star"></i></span>
-    <span class="marquee__item">Pajama Season <i class="ph-fill ph-asterisk marquee__star"></i></span>
-    <span class="marquee__item">New Drop <i class="ph-fill ph-asterisk marquee__star"></i></span>
-    <span class="marquee__item">Billy Love Collection <i class="ph-fill ph-asterisk marquee__star"></i></span>
-  </div>
-</div>
-
 <!-- ================= FULL COLLECTION ================= -->
 <section class="section" id="collection">
   <div class="container">
@@ -346,81 +400,69 @@
   </div>
 </section>
 
-<!-- ================= CRAFT = reviews over the banner image =================
-  One image spans the whole section. The craft card sits on top of it, with
-  the reviews below in a near-transparent dark panel.
-  Per-instance overrides on .craft:
-    --craft-min-height, --craft-overlay (0-1 dark wash over the photo),
-    --craft-reviews-alpha (0-1 opacity of the review panel), --craft-focal
--->
-<section class="craft" data-reveal>
-
-  <picture class="craft__media">
-    <!-- phones get a 3:4 crop; the landscape file would be cropped far harder -->
-    <source media="(max-width: 575px)" srcset="images/banner2-mobile.webp" width="750" height="1000">
-    <img class="craft__img"
-         src="images/banner2.webp"
-         srcset="images/banner2-960.webp 960w,
-                 images/banner2.webp 1916w"
-         sizes="100vw"
-         alt="Close-up of distressed olive fabric with red drawcords and an embroidered cross and BL heart motif"
-         loading="lazy" width="1916" height="821">
-  </picture>
-  <span class="craft__overlay" aria-hidden="true"></span>
-
-  <!-- ---- craft card, laid over the top of the image ---- -->
-  <div class="feature-banner feature-banner--bare">
-    <div class="container feature-banner__container">
-      <div class="feature-banner__card">
-        <span class="eyebrow">Craftsmanship</span>
-        <h2 class="feature-banner__heading">In Every Detail</h2>
-        <p class="feature-banner__text">Premium fabrics. Authentic details. A higher standard.</p>
-        <a class="btn btn--accent feature-banner__btn" href="#">Explore our craft</a>
+<!-- ================= SCROLLING MARQUEE =================
+  Each row is a link. The track holds two identical groups and slides by
+  -50%, so the loop is seamless. Per row: --marquee-duration sets the speed,
+  --reverse flips the direction. Thumbnails are background-free cutouts in
+  images/marquee/.
+================================================================ -->
+<section class="scroll-marquee" aria-label="Shop highlights">
+  <a class="scroll-marquee__row" href="#" style="--marquee-duration: 40s;" aria-label="Shop new arrivals">
+    <div class="scroll-marquee__track" aria-hidden="true">
+      <div class="scroll-marquee__group">
+        <span class="scroll-marquee__text">New Arrivals</span>
+        <img class="scroll-marquee__img" src="images/marquee/product4.webp" alt="" loading="lazy" width="309" height="400">
+        <span class="scroll-marquee__text">New Arrivals</span>
+        <img class="scroll-marquee__img" src="images/marquee/product1.webp" alt="" loading="lazy" width="289" height="400">
+        <span class="scroll-marquee__text">New Arrivals</span>
+        <img class="scroll-marquee__img" src="images/marquee/product3.webp" alt="" loading="lazy" width="292" height="400">
+        <span class="scroll-marquee__text">New Arrivals</span>
+        <img class="scroll-marquee__img" src="images/marquee/product2.webp" alt="" loading="lazy" width="178" height="400">
+        <span class="scroll-marquee__text">New Arrivals</span>
+        <img class="scroll-marquee__img" src="images/marquee/product6.webp" alt="" loading="lazy" width="239" height="400">
+        <span class="scroll-marquee__text">New Arrivals</span>
+        <img class="scroll-marquee__img" src="images/marquee/product5.webp" alt="" loading="lazy" width="159" height="400">
+      </div>
+      <div class="scroll-marquee__group">
+        <span class="scroll-marquee__text">New Arrivals</span>
+        <img class="scroll-marquee__img" src="images/marquee/product4.webp" alt="" loading="lazy" width="309" height="400">
+        <span class="scroll-marquee__text">New Arrivals</span>
+        <img class="scroll-marquee__img" src="images/marquee/product1.webp" alt="" loading="lazy" width="289" height="400">
+        <span class="scroll-marquee__text">New Arrivals</span>
+        <img class="scroll-marquee__img" src="images/marquee/product3.webp" alt="" loading="lazy" width="292" height="400">
+        <span class="scroll-marquee__text">New Arrivals</span>
+        <img class="scroll-marquee__img" src="images/marquee/product2.webp" alt="" loading="lazy" width="178" height="400">
+        <span class="scroll-marquee__text">New Arrivals</span>
+        <img class="scroll-marquee__img" src="images/marquee/product6.webp" alt="" loading="lazy" width="239" height="400">
+        <span class="scroll-marquee__text">New Arrivals</span>
+        <img class="scroll-marquee__img" src="images/marquee/product5.webp" alt="" loading="lazy" width="159" height="400">
       </div>
     </div>
-  </div>
-
-  <!-- ---- reviews, below the card, over the same image ---- -->
-  <div class="craft__reviews">
-    <div class="container craft__reviews-inner">
-
-
-      <div class="testimonials testimonials--light" data-testimonials role="group"
-           aria-roledescription="carousel" aria-label="Customer reviews">
-        <div class="testimonials__track" data-testimonials-track>
-        <blockquote class="testimonial is-active" data-testimonial>
-          <div class="rating rating--light"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-          <p class="testimonial__text">&ldquo;The pink set is the softest thing I own.&rdquo;</p>
-          <p class="testimonial__support">I ordered a second one the same week and I have barely taken it off since.</p>
-          <cite class="testimonial__author">Jasmine R.</cite>
-        </blockquote>
-        <blockquote class="testimonial" data-testimonial aria-hidden="true">
-          <div class="rating rating--light"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-          <p class="testimonial__text">&ldquo;Finally a brand that gets it right.&rdquo;</p>
-          <p class="testimonial__support">Fit is true to size and the fabric is heavier than I expected. It feels far more expensive than what I actually paid.</p>
-          <cite class="testimonial__author">Marcus D.</cite>
-        </blockquote>
-        <blockquote class="testimonial" data-testimonial aria-hidden="true">
-          <div class="rating rating--light"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-          <p class="testimonial__text">&ldquo;Beautiful from the moment it arrived.&rdquo;</p>
-          <p class="testimonial__support">Shipped in two days and the packaging was lovely. Already reordering in two more colours for me and my sister.</p>
-          <cite class="testimonial__author">Alyssa T.</cite>
-        </blockquote>
-        </div>
+  </a>
+  <a class="scroll-marquee__row scroll-marquee__row--reverse" href="#" style="--marquee-duration: 44s;" aria-label="Shop the full collection">
+    <div class="scroll-marquee__track" aria-hidden="true">
+      <div class="scroll-marquee__group">
+        <span class="scroll-marquee__text">Shop The Collection</span>
+        <img class="scroll-marquee__img" src="images/marquee/c1.webp" alt="" loading="lazy" width="354" height="400">
+        <span class="scroll-marquee__text">Shop The Collection</span>
+        <img class="scroll-marquee__img" src="images/marquee/c2.webp" alt="" loading="lazy" width="357" height="400">
+        <span class="scroll-marquee__text">Shop The Collection</span>
+        <img class="scroll-marquee__img" src="images/marquee/c3.webp" alt="" loading="lazy" width="331" height="400">
+        <span class="scroll-marquee__text">Shop The Collection</span>
+        <img class="scroll-marquee__img" src="images/marquee/c4.webp" alt="" loading="lazy" width="400" height="334">
       </div>
-
-
-    </div>
-
-    <div class="testimonials__nav">
-      <div class="testimonials__dots">
-        <button class="testimonials__dot is-active" type="button" data-testimonial-dot="0" aria-label="Show review 1 of 3" aria-current="true"></button>
-        <button class="testimonials__dot" type="button" data-testimonial-dot="1" aria-label="Show review 2 of 3"></button>
-        <button class="testimonials__dot" type="button" data-testimonial-dot="2" aria-label="Show review 3 of 3"></button>
+      <div class="scroll-marquee__group">
+        <span class="scroll-marquee__text">Shop The Collection</span>
+        <img class="scroll-marquee__img" src="images/marquee/c1.webp" alt="" loading="lazy" width="354" height="400">
+        <span class="scroll-marquee__text">Shop The Collection</span>
+        <img class="scroll-marquee__img" src="images/marquee/c2.webp" alt="" loading="lazy" width="357" height="400">
+        <span class="scroll-marquee__text">Shop The Collection</span>
+        <img class="scroll-marquee__img" src="images/marquee/c3.webp" alt="" loading="lazy" width="331" height="400">
+        <span class="scroll-marquee__text">Shop The Collection</span>
+        <img class="scroll-marquee__img" src="images/marquee/c4.webp" alt="" loading="lazy" width="400" height="334">
       </div>
     </div>
-  </div>
-
+  </a>
 </section>
 
 <!-- ================= PRODUCT OF THE WEEK ================= -->
@@ -454,6 +496,89 @@
       </div>
     </div>
   </div>
+</section>
+
+<!-- ================= CRAFT = card over the banner image =================
+  One image spans the whole section with the craft card centred on it.
+  Per-instance overrides on .craft:
+    --craft-min-height, --craft-overlay (0-1 dark wash over the photo), --craft-focal
+-->
+<section class="craft" data-reveal>
+
+  <picture class="craft__media">
+    <!-- phones get a 3:4 crop; the landscape file would be cropped far harder -->
+    <source media="(max-width: 575px)" srcset="images/banner2-mobile.webp" width="750" height="1000">
+    <img class="craft__img"
+         src="images/banner2.webp"
+         srcset="images/banner2-960.webp 960w,
+                 images/banner2.webp 1916w"
+         sizes="100vw"
+         alt="Close-up of distressed olive fabric with red drawcords and an embroidered cross and BL heart motif"
+         loading="lazy" width="1916" height="821">
+  </picture>
+  <span class="craft__overlay" aria-hidden="true"></span>
+
+  <!-- ---- craft card, laid over the top of the image ---- -->
+  <div class="feature-banner feature-banner--bare">
+    <div class="container feature-banner__container">
+      <div class="feature-banner__card">
+        <span class="eyebrow">Craftsmanship</span>
+        <h2 class="feature-banner__heading">In Every Detail</h2>
+        <p class="feature-banner__text">Premium fabrics. Authentic details. A higher standard.</p>
+        <a class="btn btn--accent feature-banner__btn" href="#">Explore our craft</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<!-- Light section after the dark craft banner; one review at a time. -->
+<section class="section reviews" aria-labelledby="reviewsTitle">
+    <div class="container">
+      <div class="section__head section__head--center">
+        <span class="eyebrow">Reviews</span>
+        <h2 class="section__title" id="reviewsTitle">Loved by Our Customers</h2>
+      </div>
+    </div>
+
+    <div class="container reviews__inner">
+
+
+      <div class="testimonials" data-testimonials role="group"
+           aria-roledescription="carousel" aria-label="Customer reviews">
+        <div class="testimonials__track" data-testimonials-track>
+        <blockquote class="testimonial is-active" data-testimonial>
+          <div class="rating"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+          <p class="testimonial__text">&ldquo;The pink set is the softest thing I own.&rdquo;</p>
+          <p class="testimonial__support">I ordered a second one the same week and I have barely taken it off since.</p>
+          <cite class="testimonial__author">Jasmine R.</cite>
+        </blockquote>
+        <blockquote class="testimonial" data-testimonial aria-hidden="true">
+          <div class="rating"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+          <p class="testimonial__text">&ldquo;Finally a brand that gets it right.&rdquo;</p>
+          <p class="testimonial__support">Fit is true to size and the fabric is heavier than I expected. It feels far more expensive than what I actually paid.</p>
+          <cite class="testimonial__author">Marcus D.</cite>
+        </blockquote>
+        <blockquote class="testimonial" data-testimonial aria-hidden="true">
+          <div class="rating"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+          <p class="testimonial__text">&ldquo;Beautiful from the moment it arrived.&rdquo;</p>
+          <p class="testimonial__support">Shipped in two days and the packaging was lovely. Already reordering in two more colours for me and my sister.</p>
+          <cite class="testimonial__author">Alyssa T.</cite>
+        </blockquote>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="testimonials__nav">
+      <div class="testimonials__dots">
+        <button class="testimonials__dot is-active" type="button" data-testimonial-dot="0" aria-label="Show review 1 of 3" aria-current="true"></button>
+        <button class="testimonials__dot" type="button" data-testimonial-dot="1" aria-label="Show review 2 of 3"></button>
+        <button class="testimonials__dot" type="button" data-testimonial-dot="2" aria-label="Show review 3 of 3"></button>
+      </div>
+    </div>
 </section>
 
 <!-- ================= JOURNAL ================= -->
@@ -621,7 +746,23 @@
   </div>
 </footer>
 
-<!-- ================= WELCOME POP-UP ================= -->
+<!-- ================= NEWSLETTER POP-UP ================= -->
+<!-- Slides in from the bottom-right on every page load. No backdrop, so the page stays usable.
+     Closes on the X, Escape or submit. -->
+<div class="welcome" id="welcome" role="dialog" aria-labelledby="welcomeTitle" aria-hidden="true">
+  <button class="welcome__close" type="button" data-close-welcome aria-label="Close newsletter sign-up"><i class="ph ph-x"></i></button>
+
+  <h2 class="welcome__title" id="welcomeTitle">Signup for our newsletter</h2>
+  <p class="welcome__text">Be the first to hear about new drops, restocks and members-only offers.</p>
+
+  <form class="welcome__form" data-welcome-form>
+    <input class="welcome__input" type="email" name="email" placeholder="E-mail" aria-label="E-mail" required>
+    <button class="btn btn--light welcome__submit" type="submit">Subscribe</button>
+  </form>
+
+  <p class="welcome__note" data-welcome-note role="status"></p>
+</div>
+
 <!-- Opens on every page load. Closes on the X, the backdrop, Escape or submit. -->
 <div class="modal welcome" id="welcome" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle" aria-hidden="true">
   <div class="modal__panel welcome__panel">

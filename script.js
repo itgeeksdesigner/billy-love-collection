@@ -7,7 +7,6 @@
    6.  Quick view modal
    7.  Add to bag / buy now
    9.  Newsletter
-   10. Marquee duplication guard
    11. Best sellers tabs
    12. Best sellers carousel
    13. Scroll reveal
@@ -202,10 +201,6 @@
 
     qsa('[data-close-quickview]').forEach(function (btn) { btn.addEventListener('click', close); });
 
-    modal.addEventListener('click', function (event) {
-      if (event.target === modal) { close(); }
-    });
-
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') { close(); }
     });
@@ -213,39 +208,80 @@
     modal.addEventListener('billylove:added', close);
   }());
 
+  /* ============ 1b. HERO SLIDER ============ */
+  /* Cross-fades the hero slides. Autoplay pauses while the pointer or focus
+     is inside, and is skipped entirely for reduced-motion visitors. */
+  (function heroSlider() {
+    var slider = qs('[data-hero-slider]');
+    if (!slider) { return; }
+
+    var slides = qsa('[data-hero-slide]', slider);
+    var dots = qsa('[data-hero-dot]', slider);
+    if (slides.length < 2) { return; }
+
+    var index = 0;
+    var timer = null;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function show(next) {
+      index = (next + slides.length) % slides.length;
+      slides.forEach(function (slide, i) {
+        var isActive = i === index;
+        slide.classList.toggle('is-active', isActive);
+        slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+      });
+      dots.forEach(function (dot, i) {
+        var isActive = i === index;
+        dot.classList.toggle('is-active', isActive);
+        if (isActive) { dot.setAttribute('aria-current', 'true'); } else { dot.removeAttribute('aria-current'); }
+      });
+    }
+
+    function stop() { window.clearInterval(timer); timer = null; }
+    function start() {
+      if (reduceMotion || timer) { return; }
+      timer = window.setInterval(function () { show(index + 1); }, 6000);
+    }
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () { stop(); show(i); start(); });
+    });
+
+    slider.addEventListener('mouseenter', stop);
+    slider.addEventListener('mouseleave', start);
+    slider.addEventListener('focusin', stop);
+    slider.addEventListener('focusout', start);
+
+    start();
+  }());
+
   /* ============ 6b. WELCOME POP-UP ============ */
-  /* Opens on every load by design -- nothing is remembered between visits. */
+  /* Non-blocking corner card: no backdrop, no scroll lock, no focus steal.
+     Opens on every load by design -- nothing is remembered between visits. */
   (function welcome() {
     var modal = qs('#welcome');
     if (!modal) { return; }
 
     var form = qs('[data-welcome-form]', modal);
     var note = qs('[data-welcome-note]', modal);
-    var closeBtn = qs('[data-close-welcome]', modal);
     var lastFocused = null;
 
     function open() {
       lastFocused = document.activeElement;
       modal.classList.add('is-open');
       modal.setAttribute('aria-hidden', 'false');
-      body.classList.add('is-locked');
-      if (closeBtn) { closeBtn.focus(); }
     }
 
     function close() {
       if (!modal.classList.contains('is-open')) { return; }
       modal.classList.remove('is-open');
       modal.setAttribute('aria-hidden', 'true');
-      body.classList.remove('is-locked');
-      if (lastFocused && lastFocused.focus) { lastFocused.focus(); }
+      // Only hand focus back if the visitor was actually inside the pop-up.
+      if (modal.contains(document.activeElement) && lastFocused && lastFocused.focus) { lastFocused.focus(); }
     }
 
     qsa('[data-close-welcome]', modal).forEach(function (btn) {
       btn.addEventListener('click', close);
-    });
-
-    modal.addEventListener('click', function (event) {
-      if (event.target === modal) { close(); }
     });
 
     document.addEventListener('keydown', function (event) {
@@ -257,7 +293,7 @@
         event.preventDefault();
         var input = qs('.welcome__input', form);
         if (!input || !input.value) { return; }
-        if (note) { note.textContent = 'Thank you. Your code is on its way to ' + input.value + '.'; }
+        if (note) { note.textContent = 'Thank you for subscribing. Look out for an email at ' + input.value + '.'; }
         form.reset();
         window.setTimeout(close, 1800);
       });
@@ -616,17 +652,5 @@
 
     window.addEventListener('resize', sync);
     sync();
-  }());
-
-  /* ============ 10. MARQUEE DUPLICATION GUARD ============ */
-  (function marquee() {
-    var track = qs('.marquee__track');
-    if (!track) { return; }
-
-    // The markup ships two identical halves so the -50% scroll loops seamlessly.
-    // If the viewport is wider than the content, duplicate once more.
-    if (track.scrollWidth < window.innerWidth * 2) {
-      track.innerHTML += track.innerHTML;
-    }
   }());
 }());
