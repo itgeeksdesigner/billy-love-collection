@@ -877,7 +877,7 @@ h6 { font-size: var(--fs-h6); }
   --marquee-fs: 52px;
   --marquee-img-h: 96px;
   --marquee-img-gap: var(--space-48);
-  --marquee-row-pad: 25px;
+  --marquee-row-pad: var(--space-10);
   display: flex;
   flex-direction: column;
   /* same ivory as the page; only the hairline row borders mark the band */
