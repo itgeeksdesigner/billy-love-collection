@@ -74,7 +74,7 @@
 
   .modal__content { padding: var(--space-32); }
 
-  .scroll-marquee { --marquee-fs: 42px; --marquee-img-h: 84px; }
+  .scroll-marquee { --marquee-fs: 26px; }
 }
 
 /* ============ TABLET PORTRAIT — 768px ============ */
@@ -150,10 +150,9 @@
   }
 
   .scroll-marquee {
-    --marquee-fs: 34px;
-    --marquee-img-h: 72px;
-    --marquee-img-gap: var(--space-32);
-    --marquee-row-pad: var(--space-14);
+    --marquee-fs: 22px;
+    --marquee-gap: var(--space-28);
+    --marquee-row-pad: var(--space-16);
   }
 }
 
@@ -442,10 +441,9 @@
   .toast.is-visible { transform: translate(0, 0); }
 
   .scroll-marquee {
-    --marquee-fs: 26px;
-    --marquee-img-h: 56px;
-    --marquee-img-gap: var(--space-24);
-    --marquee-row-pad: var(--space-6);
+    --marquee-fs: 18px;
+    --marquee-gap: var(--space-20);
+    --marquee-row-pad: var(--space-14);
   }
 }
 

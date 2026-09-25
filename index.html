@@ -12,8 +12,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Marcellus&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
-<link rel="stylesheet" href="style.css?v=5">
-<link rel="stylesheet" href="responsive.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
+<link rel="stylesheet" href="responsive.css?v=6">
 </head>
 <body>
 
@@ -401,65 +401,39 @@ slide 1: copy on the left
 </section>
 
 <!-- ================= SCROLLING MARQUEE =================
-  Each row is a link. The track holds two identical groups and slides by
-  -50%, so the loop is seamless. Per row: --marquee-duration sets the speed,
-  --reverse flips the direction. Thumbnails are background-free cutouts in
-  images/marquee/.
+  One text-only line, itself a link. The track holds two identical groups and
+  slides by -50%, so the loop is seamless. --marquee-duration sets the speed.
 ================================================================ -->
 <section class="scroll-marquee" aria-label="Shop highlights">
-  <a class="scroll-marquee__row" href="#" style="--marquee-duration: 40s;" aria-label="Shop new arrivals">
+  <a class="scroll-marquee__row" href="#collection" style="--marquee-duration: 40s;" aria-label="Shop new arrivals and the full collection">
     <div class="scroll-marquee__track" aria-hidden="true">
       <div class="scroll-marquee__group">
         <span class="scroll-marquee__text">New Arrivals</span>
-        <img class="scroll-marquee__img" src="images/marquee/product4.webp" alt="" loading="lazy" width="309" height="400">
+        <span class="scroll-marquee__sep"></span>
+        <span class="scroll-marquee__text">Shop The Collection</span>
+        <span class="scroll-marquee__sep"></span>
         <span class="scroll-marquee__text">New Arrivals</span>
-        <img class="scroll-marquee__img" src="images/marquee/product1.webp" alt="" loading="lazy" width="289" height="400">
+        <span class="scroll-marquee__sep"></span>
+        <span class="scroll-marquee__text">Shop The Collection</span>
+        <span class="scroll-marquee__sep"></span>
         <span class="scroll-marquee__text">New Arrivals</span>
-        <img class="scroll-marquee__img" src="images/marquee/product3.webp" alt="" loading="lazy" width="292" height="400">
-        <span class="scroll-marquee__text">New Arrivals</span>
-        <img class="scroll-marquee__img" src="images/marquee/product2.webp" alt="" loading="lazy" width="178" height="400">
-        <span class="scroll-marquee__text">New Arrivals</span>
-        <img class="scroll-marquee__img" src="images/marquee/product6.webp" alt="" loading="lazy" width="239" height="400">
-        <span class="scroll-marquee__text">New Arrivals</span>
-        <img class="scroll-marquee__img" src="images/marquee/product5.webp" alt="" loading="lazy" width="159" height="400">
+        <span class="scroll-marquee__sep"></span>
+        <span class="scroll-marquee__text">Shop The Collection</span>
+        <span class="scroll-marquee__sep"></span>
       </div>
       <div class="scroll-marquee__group">
         <span class="scroll-marquee__text">New Arrivals</span>
-        <img class="scroll-marquee__img" src="images/marquee/product4.webp" alt="" loading="lazy" width="309" height="400">
+        <span class="scroll-marquee__sep"></span>
+        <span class="scroll-marquee__text">Shop The Collection</span>
+        <span class="scroll-marquee__sep"></span>
         <span class="scroll-marquee__text">New Arrivals</span>
-        <img class="scroll-marquee__img" src="images/marquee/product1.webp" alt="" loading="lazy" width="289" height="400">
+        <span class="scroll-marquee__sep"></span>
+        <span class="scroll-marquee__text">Shop The Collection</span>
+        <span class="scroll-marquee__sep"></span>
         <span class="scroll-marquee__text">New Arrivals</span>
-        <img class="scroll-marquee__img" src="images/marquee/product3.webp" alt="" loading="lazy" width="292" height="400">
-        <span class="scroll-marquee__text">New Arrivals</span>
-        <img class="scroll-marquee__img" src="images/marquee/product2.webp" alt="" loading="lazy" width="178" height="400">
-        <span class="scroll-marquee__text">New Arrivals</span>
-        <img class="scroll-marquee__img" src="images/marquee/product6.webp" alt="" loading="lazy" width="239" height="400">
-        <span class="scroll-marquee__text">New Arrivals</span>
-        <img class="scroll-marquee__img" src="images/marquee/product5.webp" alt="" loading="lazy" width="159" height="400">
-      </div>
-    </div>
-  </a>
-  <a class="scroll-marquee__row scroll-marquee__row--reverse" href="#" style="--marquee-duration: 44s;" aria-label="Shop the full collection">
-    <div class="scroll-marquee__track" aria-hidden="true">
-      <div class="scroll-marquee__group">
+        <span class="scroll-marquee__sep"></span>
         <span class="scroll-marquee__text">Shop The Collection</span>
-        <img class="scroll-marquee__img" src="images/marquee/c1.webp" alt="" loading="lazy" width="354" height="400">
-        <span class="scroll-marquee__text">Shop The Collection</span>
-        <img class="scroll-marquee__img" src="images/marquee/c2.webp" alt="" loading="lazy" width="357" height="400">
-        <span class="scroll-marquee__text">Shop The Collection</span>
-        <img class="scroll-marquee__img" src="images/marquee/c3.webp" alt="" loading="lazy" width="331" height="400">
-        <span class="scroll-marquee__text">Shop The Collection</span>
-        <img class="scroll-marquee__img" src="images/marquee/c4.webp" alt="" loading="lazy" width="400" height="334">
-      </div>
-      <div class="scroll-marquee__group">
-        <span class="scroll-marquee__text">Shop The Collection</span>
-        <img class="scroll-marquee__img" src="images/marquee/c1.webp" alt="" loading="lazy" width="354" height="400">
-        <span class="scroll-marquee__text">Shop The Collection</span>
-        <img class="scroll-marquee__img" src="images/marquee/c2.webp" alt="" loading="lazy" width="357" height="400">
-        <span class="scroll-marquee__text">Shop The Collection</span>
-        <img class="scroll-marquee__img" src="images/marquee/c3.webp" alt="" loading="lazy" width="331" height="400">
-        <span class="scroll-marquee__text">Shop The Collection</span>
-        <img class="scroll-marquee__img" src="images/marquee/c4.webp" alt="" loading="lazy" width="400" height="334">
+        <span class="scroll-marquee__sep"></span>
       </div>
     </div>
   </a>
@@ -812,6 +786,6 @@ slide 1: copy on the left
 <!-- ================= TOAST ================= -->
 <div class="toast" id="toast" aria-live="polite"><i class="ph ph-check-circle"></i><span class="toast__text" data-toast-text>Added to bag</span></div>
 
-<script src="script.js?v=5"></script>
+<script src="script.js?v=6"></script>
 </body>
 </html>
