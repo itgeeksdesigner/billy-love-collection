@@ -1,791 +1,1706 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Billy Love Collection — Elevated Loungewear &amp; Apparel</title>
-<meta name="description" content="Billy Love Collection. Classy, comfortable pajamas, loungewear and apparel for women and men.">
-<link rel="icon" type="image/png" href="images/favicon.png">
-<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Marcellus&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
-<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
-<link rel="stylesheet" href="style.css?v=6">
-<link rel="stylesheet" href="responsive.css?v=6">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Speedgear Racing | Official Motorsport Apparel, Die-cast &amp; Collectibles</title>
+  <meta name="description" content="Shop official Formula 1, IndyCar, MotoGP, IMSA and World Rally team apparel, headwear, die-cast models and collectibles at Speedgear. Free ground shipping on orders of $75 or more.">
+  <link rel="canonical" href="https://speedgear.com/">
+  <meta name="theme-color" content="#000000">
+
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300..900&amp;family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="responsive.css">
+
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-<!-- ================= OVERLAY TOP BAR (announcement + header) ================= -->
-<div class="site-top" id="siteTop">
-
-<!-- ================= ANNOUNCEMENT BAR ================= -->
-<div class="announcement">
-  <div class="container announcement__container">
-    <button class="announcement__arrow" type="button" data-announce-prev aria-label="Previous announcement"><i class="ph ph-caret-left"></i></button>
-    <div class="announcement__viewport">
-      <p class="announcement__item is-active">Free US shipping on orders over $75</p>
-      <p class="announcement__item">New drop — Pajama Season is here</p>
-      <p class="announcement__item">Easy 30-day returns, always</p>
-    </div>
-    <button class="announcement__arrow" type="button" data-announce-next aria-label="Next announcement"><i class="ph ph-caret-right"></i></button>
-  </div>
-</div>
-
-<!-- ================= HEADER ================= -->
-<header class="site-header" id="siteHeader">
-  <div class="container site-header__container">
-    <button class="site-actions__btn site-actions__btn--mobile" type="button" data-open-menu aria-label="Menu"><i class="ph ph-list"></i></button>
-
-    <nav class="site-nav" aria-label="Primary">
-      <ul class="site-nav__list">
-        <li class="site-nav__item"><a class="site-nav__link" href="#">Women</a></li>
-        <li class="site-nav__item"><a class="site-nav__link" href="#">Men</a></li>
-        <li class="site-nav__item"><a class="site-nav__link" href="#">Pajamas</a></li>
-        <li class="site-nav__item"><a class="site-nav__link" href="#">New In</a></li>
-        <li class="site-nav__item"><a class="site-nav__link" href="#">About</a></li>
-        <li class="site-nav__item"><a class="site-nav__link" href="#">Contact</a></li>
+  <!-- ============ Announcement bar ============ -->
+  <div class="announcement" data-announcement>
+    <div class="container announcement__inner">
+      <button class="announcement__nav" type="button" data-announcement-prev aria-label="Previous announcements"><i class="ph ph-caret-left"></i></button>
+      <ul class="announcement__track" aria-live="polite">
+        <li class="announcement__item is-visible"><i class="ph ph-truck"></i> FREE Ground Shipping On Orders Of $75+</li>
+        <li class="announcement__item is-visible">Sale Promo 15% OFF Code: STOCK15</li>
+        <li class="announcement__item is-visible"><i class="ph ph-shield-check"></i> <a href="#">Price Guarantee</a></li>
+        <li class="announcement__item"><i class="ph ph-flag-checkered"></i> Race Club Members Use Code: S71113845DNA</li>
+        <li class="announcement__item"><i class="ph ph-phone"></i> <a href="#">Customer Service 1-800-777-4453</a></li>
+        <li class="announcement__item"><i class="ph ph-storefront"></i> <a href="#">Registration for Wholesale</a></li>
       </ul>
-    </nav>
+      <button class="announcement__nav" type="button" data-announcement-next aria-label="Next announcements"><i class="ph ph-caret-right"></i></button>
+    </div>
+  </div>
 
-    <a class="site-logo" href="#">
-      <img class="site-logo__img" src="images/logo.webp" alt="Billy Love Collection" width="400" height="432">
-    </a>
-
-    <div class="site-actions">
-      <button class="site-actions__btn" type="button" aria-label="Search"><i class="ph ph-magnifying-glass"></i></button>
-      <a class="site-actions__btn site-actions__btn--desktop" href="#" aria-label="Account"><i class="ph ph-user"></i></a>
-      <button class="site-actions__btn" type="button" aria-label="Cart">
-        <i class="ph ph-handbag-simple"></i>
-        <span class="site-actions__count" data-cart-count>0</span>
+  <!-- ============ Header ============ -->
+  <header class="site-header" data-header>
+    <div class="container site-header__main">
+      <button class="icon-btn site-header__menu-toggle" type="button" data-drawer-open aria-controls="mobile-drawer" aria-expanded="false" aria-label="Open menu">
+        <i class="ph ph-list"></i>
       </button>
-    </div>
-  </div>
-</header>
 
-</div>
-
-<!-- ================= MOBILE DRAWER ================= -->
-<div class="drawer" id="mobileDrawer" aria-hidden="true">
-  <div class="drawer__panel">
-    <div class="drawer__head">
-      <span class="drawer__title">Menu</span>
-      <button class="drawer__close" type="button" data-close-menu aria-label="Close menu"><i class="ph ph-x"></i></button>
-    </div>
-    <ul class="drawer__list">
-      <li class="drawer__item"><a class="drawer__link" href="#">Women</a></li>
-      <li class="drawer__item"><a class="drawer__link" href="#">Men</a></li>
-      <li class="drawer__item"><a class="drawer__link" href="#">Pajamas</a></li>
-      <li class="drawer__item"><a class="drawer__link" href="#">New In</a></li>
-      <li class="drawer__item"><a class="drawer__link" href="#">About</a></li>
-      <li class="drawer__item"><a class="drawer__link" href="#">Contact</a></li>
-      <li class="drawer__item"><a class="drawer__link" href="#">Journal</a></li>
-      <li class="drawer__item"><a class="drawer__link" href="#">Account</a></li>
-    </ul>
-    <div class="drawer__social">
-      <a class="drawer__social-link" href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
-      <a class="drawer__social-link" href="#" aria-label="TikTok"><i class="ph ph-tiktok-logo"></i></a>
-    </div>
-  </div>
-</div>
-
-<!-- ================= HERO SLIDER =================
-  Slides stacked in one grid cell and cross-faded; script.js section 1b
-  moves .is-active every few seconds and on dot clicks. -->
-<section class="hero-slider" id="top" aria-roledescription="carousel" aria-label="Featured collections" data-hero-slider>
-
-<!-- HIDDEN FOR NOW: slide 1 (copy on the left). To restore, delete this
-     wrapper, put back its "Show slide 1" dot, give it is-active + fetchpriority,
-     and set slide 2's h1 back to h2. Nested comment markers are spaced out
-     ("<! --", "-- >") so they don't close this comment early.
-slide 1: copy on the left
-<div class="hero is-active" role="group" aria-roledescription="slide" aria-label="1 of 3" data-hero-slide>
-  <picture class="hero__media">
-    <! -- phones get a 4:3 crop taken from the right of the frame, so the left
-         of the scene is clipped rather than the whole image being zoomed -- >
-    <source media="(max-width: 575px)" srcset="images/hero-mobile.webp" width="1200" height="900">
-    <img class="hero__img"
-         src="images/hero.webp"
-         srcset="images/hero-960.webp 960w,
-                 images/hero-1440.webp 1440w,
-                 images/hero.webp 1916w"
-         sizes="100vw"
-         alt="Model in the Billy Love camo crop tee against a warm studio backdrop"
-         fetchpriority="high" width="1916" height="821">
-  </picture>
-  <div class="container hero__container">
-    <div class="hero__content">
-      <span class="eyebrow eyebrow--light">Loungewear Reimagined</span>
-      <h1 class="hero__title">More Than a<br>Brand</h1>
-      <p class="hero__text">Premium essentials for a bolder tomorrow. Designed for comfort. Built for a lifestyle.</p>
-      <div class="hero__actions">
-        <a class="btn btn--accent" href="#">Shop Pajamas</a>
-        <a class="btn btn--ghost" href="#">Shop New In</a>
-      </div>
-    </div>
-  </div>
-</div>
--->
-
-<!-- slide 2: centred copy inside a hairline frame -->
-<div class="hero hero--centered hero--tint is-active" role="group" aria-roledescription="slide" aria-label="1 of 2" data-hero-slide>
-  <picture class="hero__media">
-    <!-- phones get a 4:3 crop centred on the model -->
-    <source media="(max-width: 575px)" srcset="images/hero2-mobile.webp" width="1200" height="900">
-    <img class="hero__img"
-         src="images/hero2.webp"
-         srcset="images/hero2-960.webp 960w,
-                 images/hero2-1440.webp 1440w,
-                 images/hero2.webp 1915w"
-         sizes="100vw"
-         alt="Model leaning against a sunlit stone building in the Billy Love camo crop tee and joggers"
-         fetchpriority="high" width="1915" height="821">
-  </picture>
-  <div class="container hero__container">
-    <div class="hero__frame">
-      <span class="hero__eyebrow">The Camo Edit</span>
-      <h1 class="hero__title hero__title--light">Bold &amp;<br>Effortless</h1>
-      <a class="btn btn--light hero__btn" href="#collection">View Collection</a>
-    </div>
-  </div>
-</div>
-
-<!-- slide 3: centred copy, no frame -->
-<div class="hero hero--centered hero--plain" role="group" aria-roledescription="slide" aria-label="2 of 2" aria-hidden="true" data-hero-slide>
-  <picture class="hero__media">
-    <!-- phones get a 4:3 crop centred on the model -->
-    <source media="(max-width: 575px)" srcset="images/hero3-mobile.webp" width="1200" height="900">
-    <img class="hero__img"
-         src="images/hero3.webp"
-         srcset="images/hero3-960.webp 960w,
-                 images/hero3-1440.webp 1440w,
-                 images/hero3.webp 1916w"
-         sizes="100vw"
-         alt="Model seated on the end of a bed in a candlelit bedroom, wearing the pink Billy Love pajama shirt and shorts with white piping"
-         loading="lazy" width="1916" height="821">
-  </picture>
-  <div class="container hero__container">
-    <div class="hero__frame hero__frame--plain">
-      <span class="hero__eyebrow">Pajama Season</span>
-      <h2 class="hero__title hero__title--light">Made for Slow Mornings</h2>
-      <a class="btn btn--light hero__btn" href="#collection">Shop Now</a>
-    </div>
-  </div>
-</div>
-
-<div class="hero-slider__dots">
-  <button class="hero-slider__dot is-active" type="button" aria-label="Show slide 1" aria-current="true" data-hero-dot></button>
-  <button class="hero-slider__dot" type="button" aria-label="Show slide 2" data-hero-dot></button>
-</div>
-</section>
-
-<!-- ================= BEST SELLERS (tabbed carousel) ================= -->
-<section class="section bestsellers" id="shop-gender">
-  <div class="container">
-
-    <div class="bestsellers__head">
-      <span class="eyebrow">Our Best Sellers</span>
-      <div class="tabs" role="tablist" aria-label="Best sellers by category">
-        <button class="tab is-active" type="button" role="tab" id="shop-women" aria-controls="panel-women" aria-selected="true" tabindex="0" data-cta-label="All Women's Styles" data-cta-href="#">Women</button>
-        <button class="tab" type="button" role="tab" id="shop-men" aria-controls="panel-men" aria-selected="false" tabindex="-1" data-cta-label="All Men's Styles" data-cta-href="#">Men</button>
-      </div>
-    </div>
-
-    <div class="bestsellers__panels">
-
-      <div class="bestsellers__panel is-active" role="tabpanel" id="panel-women" aria-labelledby="shop-women">
-        <div class="carousel" data-carousel>
-          <button class="carousel__btn carousel__btn--prev" type="button" data-carousel-prev aria-label="Previous women's products"><i class="ph ph-arrow-left"></i></button>
-          <div class="carousel__track" data-carousel-track tabindex="0" role="group" aria-label="Women's best sellers, use arrow keys to scroll">
-            <article class="bs-card bs-card--photo" data-product="Pajama Set — Pink" data-price="$68.00" data-image="images/product4.png">
-              <div class="bs-card__media">
-                <span class="bs-card__badge">New</span>
-                <a class="bs-card__media-link" href="#" aria-label="Pajama Set — Pink">
-                  <img class="bs-card__img bs-card__img--front" src="images/product4.png" alt="Hot pink pajama set with long-sleeve button shirt, white piping and matching shorts" loading="lazy" width="1086" height="1448">
-                </a>
-                <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Pajama Set — Pink"><i class="ph ph-eye"></i></button>
-              </div>
-              <h3 class="bs-card__title"><a class="bs-card__link" href="#">Pajama Set — Pink</a></h3>
-              <p class="bs-card__price">$68.00</p>
-            </article>
-            <article class="bs-card bs-card--photo" data-product="Pajama Set — Leopard" data-price="$74.00" data-image="images/product1.png">
-              <div class="bs-card__media">
-                <span class="bs-card__badge">Best Seller</span>
-                <a class="bs-card__media-link" href="#" aria-label="Pajama Set — Leopard">
-                  <img class="bs-card__img bs-card__img--front" src="images/product1.png" alt="Leopard-print pajama set with long-sleeve button shirt, cream piping and matching shorts" loading="lazy" width="1086" height="1448">
-                </a>
-                <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Pajama Set — Leopard"><i class="ph ph-eye"></i></button>
-              </div>
-              <h3 class="bs-card__title"><a class="bs-card__link" href="#">Pajama Set — Leopard</a></h3>
-              <p class="bs-card__price">$74.00</p>
-            </article>
-            <article class="bs-card bs-card--photo" data-product="Pajama Set — Peach Hearts" data-price="$68.00" data-image="images/product3.png">
-              <div class="bs-card__media">
-                <span class="bs-card__badge">New</span>
-                <a class="bs-card__media-link" href="#" aria-label="Pajama Set — Peach Hearts">
-                  <img class="bs-card__img bs-card__img--front" src="images/product3.png" alt="Peach heart-print pajama set with long-sleeve button shirt and matching shorts" loading="lazy" width="1086" height="1448">
-                </a>
-                <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Pajama Set — Peach Hearts"><i class="ph ph-eye"></i></button>
-              </div>
-              <h3 class="bs-card__title"><a class="bs-card__link" href="#">Pajama Set — Peach Hearts</a></h3>
-              <p class="bs-card__price">$68.00</p>
-            </article>
-            <article class="bs-card bs-card--photo" data-product="Billy Love Tracksuit — Pink" data-price="$96.00" data-image="images/product2.png">
-              <div class="bs-card__media">
-                <span class="bs-card__badge">New</span>
-                <a class="bs-card__media-link" href="#" aria-label="Billy Love Tracksuit — Pink">
-                  <img class="bs-card__img bs-card__img--front" src="images/product2.png" alt="Hot pink tracksuit with cropped zip hoodie and matching joggers" loading="lazy" width="1086" height="1448">
-                </a>
-                <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Billy Love Tracksuit — Pink"><i class="ph ph-eye"></i></button>
-              </div>
-              <h3 class="bs-card__title"><a class="bs-card__link" href="#">Billy Love Tracksuit — Pink</a></h3>
-              <p class="bs-card__price">$96.00</p>
-            </article>
-            <article class="bs-card bs-card--photo" data-product="Billy Love Camo Tank Top" data-price="$42.00" data-image="images/product5.png">
-              <div class="bs-card__media">
-                <span class="bs-card__badge">New</span>
-                <a class="bs-card__media-link" href="#" aria-label="Billy Love Camo Tank Top">
-                  <img class="bs-card__img bs-card__img--front" src="images/product5.png" alt="Camo set with cropped tee and matching joggers" loading="lazy" width="1086" height="1448">
-                </a>
-                <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Billy Love Camo Tank Top"><i class="ph ph-eye"></i></button>
-              </div>
-              <h3 class="bs-card__title"><a class="bs-card__link" href="#">Billy Love Camo Tank Top</a></h3>
-              <p class="bs-card__price">$42.00</p>
-            </article>
-            <article class="bs-card bs-card--photo" data-product="Pajama Set — Red Rib" data-price="$52.00" data-image="images/product6.png">
-              <div class="bs-card__media">
-                <span class="bs-card__badge">New</span>
-                <a class="bs-card__media-link" href="#" aria-label="Pajama Set — Red Rib">
-                  <img class="bs-card__img bs-card__img--front" src="images/product6.png" alt="Red ribbed cami and shorts pajama set with lace trim" loading="lazy" width="1086" height="1448">
-                </a>
-                <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Pajama Set — Red Rib"><i class="ph ph-eye"></i></button>
-              </div>
-              <h3 class="bs-card__title"><a class="bs-card__link" href="#">Pajama Set — Red Rib</a></h3>
-              <p class="bs-card__price">$52.00</p>
-            </article>
-          </div>
-          <button class="carousel__btn carousel__btn--next" type="button" data-carousel-next aria-label="Next women's products"><i class="ph ph-arrow-right"></i></button>
-        </div>
-      </div>
-
-      <div class="bestsellers__panel" role="tabpanel" id="panel-men" aria-labelledby="shop-men" hidden>
-        <div class="carousel" data-carousel>
-          <button class="carousel__btn carousel__btn--prev" type="button" data-carousel-prev aria-label="Previous men's products"><i class="ph ph-arrow-left"></i></button>
-          <div class="carousel__track" data-carousel-track tabindex="0" role="group" aria-label="Men's best sellers, use arrow keys to scroll">
-            <article class="bs-card bs-card--photo" data-product="Billy Love Camo Tee" data-price="$48.00" data-image="images/m1.webp">
-              <div class="bs-card__media">
-                <span class="bs-card__badge">New</span>
-                <a class="bs-card__media-link" href="#" aria-label="Billy Love Camo Tee">
-                  <img class="bs-card__img bs-card__img--front" src="images/m1.webp" alt="Model in the camo ringer tee with red Billy Love script and red collar and cuff trim" loading="lazy" width="1200" height="1200">
-                </a>
-                <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Billy Love Camo Tee"><i class="ph ph-eye"></i></button>
-              </div>
-              <h3 class="bs-card__title"><a class="bs-card__link" href="#">Billy Love Camo Tee</a></h3>
-              <p class="bs-card__price">$48.00</p>
-            </article>
-            <article class="bs-card bs-card--photo" data-product="Billy Love Dice &amp; Smoke Sweatshirt" data-price="$98.00" data-image="images/m2.webp">
-              <div class="bs-card__media">
-                <span class="bs-card__badge">New</span>
-                <a class="bs-card__media-link" href="#" aria-label="Billy Love Dice &amp; Smoke Sweatshirt">
-                  <img class="bs-card__img bs-card__img--front" src="images/m2.webp" alt="Model in the distressed washed-black sweatshirt with Billy Love script, flaming dice graphic and embroidered patches" loading="lazy" width="697" height="1130">
-                </a>
-                <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Billy Love Dice &amp; Smoke Sweatshirt"><i class="ph ph-eye"></i></button>
-              </div>
-              <h3 class="bs-card__title"><a class="bs-card__link" href="#">Billy Love Dice &amp; Smoke Sweatshirt</a></h3>
-              <p class="bs-card__price">$98.00</p>
-            </article>
-          </div>
-          <button class="carousel__btn carousel__btn--next" type="button" data-carousel-next aria-label="Next men's products"><i class="ph ph-arrow-right"></i></button>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="bestsellers__cta">
-      <a class="btn btn--solid btn--wide" href="#" data-tab-cta>All Women's Styles</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= MEN'S BANNER =================
-  Layout options (swap the modifier class on .promo-banner):
-    height     promo-banner--small | --medium | --large | --full
-    position   promo-banner--bottom-left | --center-left | --center | --bottom-center
-    button     promo-banner--btn-solid | --btn-outline
-  Per-instance overrides live on the element's style hook in style.css:
-    --promo-overlay (0-1), --promo-text (colour), --promo-focal (object-position)
--->
-<section class="promo-banner promo-banner--medium promo-banner--bottom-left promo-banner--btn-solid" data-reveal>
-  <picture class="promo-banner__media">
-    <source media="(max-width: 575px)" srcset="images/banner1-mobile.webp" width="1200" height="900">
-    <img class="promo-banner__img"
-         src="images/banner1.webp"
-         srcset="images/banner1-960.webp 960w,
-                 images/banner1-1440.webp 1440w,
-                 images/banner1.webp 1916w"
-         sizes="100vw"
-         alt="Billy Love loungewear shot in warm natural light"
-         loading="lazy" width="1916" height="821">
-  </picture>
-  <span class="promo-banner__overlay" aria-hidden="true"></span>
-  <div class="container promo-banner__inner">
-    <div class="promo-banner__content">
-      <span class="promo-banner__subheading">Billy Love Collection</span>
-      <h2 class="promo-banner__heading">Iconic Comfort</h2>
-      <p class="promo-banner__text">Timeless essentials. Modern attitude. Always Billy Love.</p>
-      <a class="promo-banner__btn" href="#">Shop the collection</a>
-    </div>
-  </div>
-</section>
-
-<!-- ================= FULL COLLECTION ================= -->
-<section class="section" id="collection">
-  <div class="container">
-    <div class="section__head section__head--center">
-      <span class="eyebrow">Shop all</span>
-      <h2 class="section__title">The Full Collection</h2>
-    </div>
-    <div class="carousel" data-carousel>
-      <button class="carousel__btn carousel__btn--prev" type="button" data-carousel-prev aria-label="Previous products"><i class="ph ph-arrow-left"></i></button>
-      <div class="carousel__track" data-carousel-track tabindex="0" role="group" aria-label="The full collection, use arrow keys to scroll">
-        <article class="bs-card bs-card--flat" data-product="Billy Love Camo Tee" data-price="$48.00" data-image="images/c1.webp">
-          <div class="bs-card__media">
-            <span class="bs-card__badge">New</span>
-            <a class="bs-card__media-link" href="#" aria-label="Billy Love Camo Tee">
-              <img class="bs-card__img bs-card__img--front" src="images/c1.webp" alt="Camo ringer tee with red collar and cuff trim and red Billy Love script across the chest" loading="lazy" width="1086" height="1448">
-            </a>
-            <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Billy Love Camo Tee"><i class="ph ph-eye"></i></button>
-          </div>
-          <h3 class="bs-card__title"><a class="bs-card__link" href="#">Billy Love Camo Tee</a></h3>
-          <p class="bs-card__price">$48.00</p>
-        </article>
-        <article class="bs-card bs-card--flat" data-product="Billy Love Dice &amp; Smoke Sweatshirt" data-price="$98.00" data-image="images/c2.webp">
-          <div class="bs-card__media">
-            <span class="bs-card__badge">New</span>
-            <a class="bs-card__media-link" href="#" aria-label="Billy Love Dice &amp; Smoke Sweatshirt">
-              <img class="bs-card__img bs-card__img--front" src="images/c2.webp" alt="Washed charcoal crewneck sweatshirt with red Billy Love graphic print on the chest" loading="lazy" width="1086" height="1448">
-            </a>
-            <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Billy Love Dice &amp; Smoke Sweatshirt"><i class="ph ph-eye"></i></button>
-          </div>
-          <h3 class="bs-card__title"><a class="bs-card__link" href="#">Billy Love Dice &amp; Smoke Sweatshirt</a></h3>
-          <p class="bs-card__price">$98.00</p>
-        </article>
-        <article class="bs-card bs-card--flat" data-product="Billy Love Camo Hoodie" data-price="$88.00" data-image="images/c3.webp">
-          <div class="bs-card__media">
-            <span class="bs-card__badge">New</span>
-            <a class="bs-card__media-link" href="#" aria-label="Billy Love Camo Hoodie">
-              <img class="bs-card__img bs-card__img--front" src="images/c3.webp" alt="Camo pullover hoodie with red Billy Love script graphic across the chest" loading="lazy" width="1086" height="1448">
-            </a>
-            <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Billy Love Camo Hoodie"><i class="ph ph-eye"></i></button>
-          </div>
-          <h3 class="bs-card__title"><a class="bs-card__link" href="#">Billy Love Camo Hoodie</a></h3>
-          <p class="bs-card__price">$88.00</p>
-        </article>
-        <article class="bs-card bs-card--flat" data-product="Billy Love Camo Crop Tee" data-price="$42.00" data-image="images/c4.webp">
-          <div class="bs-card__media">
-            <span class="bs-card__badge">New</span>
-            <a class="bs-card__media-link" href="#" aria-label="Billy Love Camo Crop Tee">
-              <img class="bs-card__img bs-card__img--front" src="images/c4.webp" alt="Cropped camo tee with red collar and cuff trim and red Billy Love script" loading="lazy" width="1086" height="1448">
-            </a>
-            <button class="bs-card__add" type="button" data-quickview aria-label="Quick view Billy Love Camo Crop Tee"><i class="ph ph-eye"></i></button>
-          </div>
-          <h3 class="bs-card__title"><a class="bs-card__link" href="#">Billy Love Camo Crop Tee</a></h3>
-          <p class="bs-card__price">$42.00</p>
-        </article>
-      </div>
-      <button class="carousel__btn carousel__btn--next" type="button" data-carousel-next aria-label="Next products"><i class="ph ph-arrow-right"></i></button>
-    </div>
-  </div>
-</section>
-
-<!-- ================= SCROLLING MARQUEE =================
-  One text-only line, itself a link. The track holds two identical groups and
-  slides by -50%, so the loop is seamless. --marquee-duration sets the speed.
-================================================================ -->
-<section class="scroll-marquee" aria-label="Shop highlights">
-  <a class="scroll-marquee__row" href="#collection" style="--marquee-duration: 40s;" aria-label="Shop new arrivals and the full collection">
-    <div class="scroll-marquee__track" aria-hidden="true">
-      <div class="scroll-marquee__group">
-        <span class="scroll-marquee__text">New Arrivals</span>
-        <span class="scroll-marquee__sep"></span>
-        <span class="scroll-marquee__text">Shop The Collection</span>
-        <span class="scroll-marquee__sep"></span>
-        <span class="scroll-marquee__text">New Arrivals</span>
-        <span class="scroll-marquee__sep"></span>
-        <span class="scroll-marquee__text">Shop The Collection</span>
-        <span class="scroll-marquee__sep"></span>
-        <span class="scroll-marquee__text">New Arrivals</span>
-        <span class="scroll-marquee__sep"></span>
-        <span class="scroll-marquee__text">Shop The Collection</span>
-        <span class="scroll-marquee__sep"></span>
-      </div>
-      <div class="scroll-marquee__group">
-        <span class="scroll-marquee__text">New Arrivals</span>
-        <span class="scroll-marquee__sep"></span>
-        <span class="scroll-marquee__text">Shop The Collection</span>
-        <span class="scroll-marquee__sep"></span>
-        <span class="scroll-marquee__text">New Arrivals</span>
-        <span class="scroll-marquee__sep"></span>
-        <span class="scroll-marquee__text">Shop The Collection</span>
-        <span class="scroll-marquee__sep"></span>
-        <span class="scroll-marquee__text">New Arrivals</span>
-        <span class="scroll-marquee__sep"></span>
-        <span class="scroll-marquee__text">Shop The Collection</span>
-        <span class="scroll-marquee__sep"></span>
-      </div>
-    </div>
-  </a>
-</section>
-
-<!-- ================= PRODUCT OF THE WEEK ================= -->
-<section class="section">
-  <div class="container">
-    <div class="section__head section__head--center">
-      <span class="eyebrow">One to watch</span>
-      <h2 class="section__title">Product of the Week</h2>
-    </div>
-    <div class="potw" data-product="Pajama Set — Leopard" data-price="$74.00">
-      <div class="potw__media">
-        <img class="potw__img" src="images/leopard-pajama-set.webp" alt="Model reclining on a sofa in the leopard-print pajama set, long-sleeve shirt with white piping and matching shorts" loading="lazy" width="1200" height="1200">
-      </div>
-      <div class="potw__content">
-        <div class="rating"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><span class="rating__count">(88 reviews)</span></div>
-        <h3 class="potw__title">Pajama Set — Leopard</h3>
-        <p class="potw__price">$74.00</p>
-        <p class="potw__text">A relaxed two-piece in a soft-brushed leopard print. Elasticated waist, piped trim, and a shirt you will wear far beyond the bedroom.</p>
-        <span class="potw__label">Select size</span>
-        <div class="size-swatches size-swatches--lg">
-          <button class="size-swatch" type="button">S</button>
-          <button class="size-swatch" type="button">M</button>
-          <button class="size-swatch" type="button">L</button>
-          <button class="size-swatch" type="button">XL</button>
-          <button class="size-swatch" type="button">XXL</button>
-        </div>
-        <div class="potw__actions">
-          <button class="btn btn--solid" type="button" data-add-to-cart>Add to Bag</button>
-          <button class="btn btn--outline" type="button" data-buy-now>Buy It Now</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= CRAFT = card over the banner image =================
-  One image spans the whole section with the craft card centred on it.
-  Per-instance overrides on .craft:
-    --craft-min-height, --craft-overlay (0-1 dark wash over the photo), --craft-focal
--->
-<section class="craft" data-reveal>
-
-  <picture class="craft__media">
-    <!-- phones get a 3:4 crop; the landscape file would be cropped far harder -->
-    <source media="(max-width: 575px)" srcset="images/banner2-mobile.webp" width="750" height="1000">
-    <img class="craft__img"
-         src="images/banner2.webp"
-         srcset="images/banner2-960.webp 960w,
-                 images/banner2.webp 1916w"
-         sizes="100vw"
-         alt="Close-up of distressed olive fabric with red drawcords and an embroidered cross and BL heart motif"
-         loading="lazy" width="1916" height="821">
-  </picture>
-  <span class="craft__overlay" aria-hidden="true"></span>
-
-  <!-- ---- craft card, laid over the top of the image ---- -->
-  <div class="feature-banner feature-banner--bare">
-    <div class="container feature-banner__container">
-      <div class="feature-banner__card">
-        <span class="eyebrow">Craftsmanship</span>
-        <h2 class="feature-banner__heading">In Every Detail</h2>
-        <p class="feature-banner__text">Premium fabrics. Authentic details. A higher standard.</p>
-        <a class="btn btn--accent feature-banner__btn" href="#">Explore our craft</a>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<!-- ================= REVIEWS ================= -->
-<!-- Light section after the dark craft banner; one review at a time. -->
-<section class="section reviews" aria-labelledby="reviewsTitle">
-    <div class="container">
-      <div class="section__head section__head--center">
-        <span class="eyebrow">Reviews</span>
-        <h2 class="section__title" id="reviewsTitle">Loved by Our Customers</h2>
-      </div>
-    </div>
-
-    <div class="container reviews__inner">
-
-
-      <div class="testimonials" data-testimonials role="group"
-           aria-roledescription="carousel" aria-label="Customer reviews">
-        <div class="testimonials__track" data-testimonials-track>
-        <blockquote class="testimonial is-active" data-testimonial>
-          <div class="rating"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-          <p class="testimonial__text">&ldquo;The pink set is the softest thing I own.&rdquo;</p>
-          <p class="testimonial__support">I ordered a second one the same week and I have barely taken it off since.</p>
-          <cite class="testimonial__author">Jasmine R.</cite>
-        </blockquote>
-        <blockquote class="testimonial" data-testimonial aria-hidden="true">
-          <div class="rating"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-          <p class="testimonial__text">&ldquo;Finally a brand that gets it right.&rdquo;</p>
-          <p class="testimonial__support">Fit is true to size and the fabric is heavier than I expected. It feels far more expensive than what I actually paid.</p>
-          <cite class="testimonial__author">Marcus D.</cite>
-        </blockquote>
-        <blockquote class="testimonial" data-testimonial aria-hidden="true">
-          <div class="rating"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-          <p class="testimonial__text">&ldquo;Beautiful from the moment it arrived.&rdquo;</p>
-          <p class="testimonial__support">Shipped in two days and the packaging was lovely. Already reordering in two more colours for me and my sister.</p>
-          <cite class="testimonial__author">Alyssa T.</cite>
-        </blockquote>
-        </div>
-      </div>
-
-
-    </div>
-
-    <div class="testimonials__nav">
-      <div class="testimonials__dots">
-        <button class="testimonials__dot is-active" type="button" data-testimonial-dot="0" aria-label="Show review 1 of 3" aria-current="true"></button>
-        <button class="testimonials__dot" type="button" data-testimonial-dot="1" aria-label="Show review 2 of 3"></button>
-        <button class="testimonials__dot" type="button" data-testimonial-dot="2" aria-label="Show review 3 of 3"></button>
-      </div>
-    </div>
-</section>
-
-<!-- ================= JOURNAL ================= -->
-<section class="section section--cream" id="journal">
-  <div class="container">
-    <div class="section__head section__head--center">
-      <span class="eyebrow">From the journal</span>
-      <h2 class="section__title">Notes &amp; Stories</h2>
-    </div>
-    <div class="blog-grid">
-      <article class="blog-card">
-        <img class="blog-card__img" src="images/blog3.webp" alt="Model walking a city street in the pink cropped hoodie and joggers" loading="lazy" width="1000" height="714">
-        <span class="blog-card__meta">Style · 4 min read</span>
-        <h3 class="blog-card__title"><a class="blog-card__link" href="#">How to Style a Pajama Set</a></h3>
-        <span class="link-underline">Read More</span>
-      </article>
-      <article class="blog-card">
-        <img class="blog-card__img" src="images/blog2.webp" alt="Close-up of the distressed Billy Love sweatshirt showing the embroidered patches and washed fabric" loading="lazy" width="1000" height="714">
-        <span class="blog-card__meta">Fabric · 3 min read</span>
-        <h3 class="blog-card__title"><a class="blog-card__link" href="#">The Fabrics We Choose</a></h3>
-        <span class="link-underline">Read More</span>
-      </article>
-      <article class="blog-card">
-        <img class="blog-card__img" src="images/blog1.webp" alt="Model folding freshly laundered camo sets in a sunlit laundry room" loading="lazy" width="1000" height="714">
-        <span class="blog-card__meta">Care · 2 min read</span>
-        <h3 class="blog-card__title"><a class="blog-card__link" href="#">Keeping Your Set Soft</a></h3>
-        <span class="link-underline">Read More</span>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ================= SOCIAL FEED ================= -->
-<section class="section">
-  <div class="container">
-    <div class="section__head section__head--center">
-      <span class="eyebrow">Tag us</span>
-      <h2 class="section__title">#BillyLoveCollection</h2>
-      <div class="social-links">
-        <a class="social-links__item" href="#"><i class="ph ph-instagram-logo"></i>Instagram</a>
-        <a class="social-links__item" href="#"><i class="ph ph-tiktok-logo"></i>TikTok</a>
-      </div>
-    </div>
-    <div class="social-grid">
-      <a class="social-tile" href="#">
-        <img class="social-tile__img" src="images/ig-1.webp" alt="Customer photo: the pink set worn at home" loading="lazy" width="600" height="600">
-        <span class="social-tile__icon"><i class="ph ph-instagram-logo"></i></span>
+      <a class="site-header__logo" href="#" aria-label="Speedgear home">
+        <img src="images/logo-speedgear.png" alt="Speedgear - Authentic Racewear" width="272" height="80">
       </a>
-      <a class="social-tile" href="#">
-        <img class="social-tile__img" src="images/ig-2.webp" alt="Customer photo: the pink set styled on the sofa" loading="lazy" width="600" height="600">
-        <span class="social-tile__icon"><i class="ph ph-tiktok-logo"></i></span>
-      </a>
-      <a class="social-tile" href="#">
-        <img class="social-tile__img" src="images/ig-3.webp" alt="Customer photo: the distressed Billy Love sweatshirt" loading="lazy" width="600" height="600">
-        <span class="social-tile__icon"><i class="ph ph-instagram-logo"></i></span>
-      </a>
-      <a class="social-tile" href="#">
-        <img class="social-tile__img" src="images/ig-4.webp" alt="Customer photo: the distressed Billy Love hoodie held up close" loading="lazy" width="600" height="600">
-        <span class="social-tile__icon"><i class="ph ph-tiktok-logo"></i></span>
-      </a>
-      <a class="social-tile" href="#">
-        <img class="social-tile__img" src="images/ig-5.webp" alt="Customer photo: two friends in the camo and pink sets" loading="lazy" width="600" height="600">
-        <span class="social-tile__icon"><i class="ph ph-instagram-logo"></i></span>
-      </a>
-      <a class="social-tile" href="#">
-        <img class="social-tile__img" src="images/ig-6.webp" alt="Customer photo: the camo set worn out on the street" loading="lazy" width="600" height="600">
-        <span class="social-tile__icon"><i class="ph ph-tiktok-logo"></i></span>
-      </a>
-    </div>
-  </div>
-</section>
 
-<!-- ================= USP BAR ================= -->
-<section class="usp">
-  <div class="container usp__container">
-    <div class="usp__item">
-      <i class="ph ph-truck usp__icon"></i>
-      <h3 class="usp__title">Free US Shipping</h3>
-      <p class="usp__text">On every order over $75, shipped within 48 hours.</p>
-    </div>
-    <div class="usp__item">
-      <i class="ph ph-arrows-counter-clockwise usp__icon"></i>
-      <h3 class="usp__title">30-Day Returns</h3>
-      <p class="usp__text">Not quite right? Send it back, no questions asked.</p>
-    </div>
-    <div class="usp__item">
-      <i class="ph ph-feather usp__icon"></i>
-      <h3 class="usp__title">Premium Fabrics</h3>
-      <p class="usp__text">Soft-touch cottons and blends that hold their shape.</p>
-    </div>
-    <div class="usp__item">
-      <i class="ph ph-lock-simple usp__icon"></i>
-      <h3 class="usp__title">Secure Checkout</h3>
-      <p class="usp__text">Encrypted payments with all major cards accepted.</p>
-    </div>
-  </div>
-
-  <!-- Only rendered on phones, where the bar becomes a one-at-a-time slider. -->
-  <div class="usp__dots">
-    <button class="usp__dot is-active" type="button" data-usp-dot="0" aria-label="Show benefit 1 of 4" aria-current="true"></button>
-    <button class="usp__dot" type="button" data-usp-dot="1" aria-label="Show benefit 2 of 4"></button>
-    <button class="usp__dot" type="button" data-usp-dot="2" aria-label="Show benefit 3 of 4"></button>
-    <button class="usp__dot" type="button" data-usp-dot="3" aria-label="Show benefit 4 of 4"></button>
-  </div>
-</section>
-
-<!-- ================= NEWSLETTER ================= -->
-<!-- Dark band directly above the footer: pitch on the left, form on the right. -->
-<section class="newsletter">
-  <div class="container newsletter__container">
-    <div class="newsletter__intro">
-      <span class="eyebrow eyebrow--light">Join the movement</span>
-      <h2 class="newsletter__title">Be the first to know.</h2>
-    </div>
-    <form class="newsletter__form" data-newsletter>
-      <input class="newsletter__input" type="email" name="email" placeholder="Your email address" aria-label="Your email address" required>
-      <button class="btn btn--accent" type="submit">Subscribe</button>
-    </form>
-    <p class="newsletter__note" data-newsletter-note role="status"></p>
-  </div>
-</section>
-
-<!-- ================= FOOTER ================= -->
-<footer class="site-footer">
-  <div class="container site-footer__top">
-    <div class="footer-col footer-col--brand">
-      <img class="footer-logo" src="images/logo-light.webp" alt="Billy Love Collection" width="400" height="432">
-      <p class="footer-col__text">Elevated loungewear and apparel, designed to be lived in. Shipping across the United States.</p>
-      <div class="footer-social">
-        <a class="footer-social__link" href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
-        <a class="footer-social__link" href="#" aria-label="TikTok"><i class="ph ph-tiktok-logo"></i></a>
-        <a class="footer-social__link" href="#" aria-label="Email"><i class="ph ph-envelope-simple"></i></a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h3 class="footer-col__title">Shop</h3>
-      <ul class="footer-col__list">
-        <li class="footer-col__item"><a class="footer-col__link" href="#">Women</a></li>
-        <li class="footer-col__item"><a class="footer-col__link" href="#">Men</a></li>
-        <li class="footer-col__item"><a class="footer-col__link" href="#">Pajamas</a></li>
-        <li class="footer-col__item"><a class="footer-col__link" href="#">New Arrivals</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h3 class="footer-col__title">Help</h3>
-      <ul class="footer-col__list">
-        <li class="footer-col__item"><a class="footer-col__link" href="#">Shipping &amp; Delivery</a></li>
-        <li class="footer-col__item"><a class="footer-col__link" href="#">Returns &amp; Exchanges</a></li>
-        <li class="footer-col__item"><a class="footer-col__link" href="#">Size Guide</a></li>
-        <li class="footer-col__item"><a class="footer-col__link" href="#">Contact Us</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h3 class="footer-col__title">About</h3>
-      <ul class="footer-col__list">
-        <li class="footer-col__item"><a class="footer-col__link" href="#">Our Story</a></li>
-        <li class="footer-col__item"><a class="footer-col__link" href="#">Journal</a></li>
-        <li class="footer-col__item"><a class="footer-col__link" href="#">Privacy Policy</a></li>
-        <li class="footer-col__item"><a class="footer-col__link" href="#">Terms of Service</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="container site-footer__bottom">
-    <p class="site-footer__copy">© 2026 Billy Love Collection. All rights reserved.</p>
-  </div>
-</footer>
-
-<!-- ================= NEWSLETTER POP-UP ================= -->
-<!-- Slides in from the bottom-right on every page load. No backdrop, so the page stays usable.
-     Closes on the X, Escape or submit. -->
-<div class="welcome" id="welcome" role="dialog" aria-labelledby="welcomeTitle" aria-hidden="true">
-  <button class="welcome__close" type="button" data-close-welcome aria-label="Close newsletter sign-up"><i class="ph ph-x"></i></button>
-
-  <h2 class="welcome__title" id="welcomeTitle">Signup for our newsletter</h2>
-  <p class="welcome__text">Be the first to hear about new drops, restocks and members-only offers.</p>
-
-  <form class="welcome__form" data-welcome-form>
-    <input class="welcome__input" type="email" name="email" placeholder="E-mail" aria-label="E-mail" required>
-    <button class="btn btn--light welcome__submit" type="submit">Subscribe</button>
-  </form>
-
-  <p class="welcome__note" data-welcome-note role="status"></p>
-</div>
-
-<!-- Opens on every page load. Closes on the X, the backdrop, Escape or submit. -->
-<div class="modal welcome" id="welcome" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle" aria-hidden="true">
-  <div class="modal__panel welcome__panel">
-    <button class="modal__close" type="button" data-close-welcome aria-label="Close welcome message"><i class="ph ph-x"></i></button>
-
-    <div class="welcome__content">
-      <span class="eyebrow">Welcome to Billy Love</span>
-      <h2 class="welcome__title" id="welcomeTitle">10% Off Your First Order</h2>
-      <p class="welcome__text">Join the list for early access to drops, restocks and members-only offers.</p>
-
-      <form class="welcome__form" data-welcome-form>
-        <input class="welcome__input" type="email" name="email" placeholder="Your email address" aria-label="Your email address" required>
-        <button class="btn btn--accent" type="submit">Get my 10% off</button>
+      <form class="header-search site-header__search" action="/search" method="get" role="search">
+        <i class="ph ph-magnifying-glass"></i>
+        <label class="visually-hidden" for="header-search-input">Search Products</label>
+        <input id="header-search-input" type="search" name="q" placeholder="Search Products">
       </form>
 
-      <p class="welcome__note" data-welcome-note role="status"></p>
-      <button class="welcome__dismiss" type="button" data-close-welcome>No thanks, keep browsing</button>
-    </div>
-  </div>
-</div>
-
-<!-- ================= QUICK VIEW MODAL ================= -->
-<div class="modal" id="quickView" aria-hidden="true">
-  <div class="modal__panel">
-    <button class="modal__close" type="button" data-close-quickview aria-label="Close quick view"><i class="ph ph-x"></i></button>
-    <div class="modal__media">
-      <img loading="lazy" decoding="async" class="modal__img" src="https://placehold.co/700x900/FFFFFF/B79C86?text=Product" alt="Product quick view" data-qv-image>
-    </div>
-    <div class="modal__content" data-qv-body>
-      <div class="rating"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-      <h3 class="modal__title" data-qv-title>Product</h3>
-      <p class="modal__price" data-qv-price>$0.00</p>
-      <p class="modal__text">Soft-touch fabric, relaxed fit, and a finish that holds up. Select a size to add it straight to your bag.</p>
-      <span class="potw__label">Select size</span>
-      <div class="size-swatches size-swatches--lg">
-        <button class="size-swatch" type="button">S</button>
-        <button class="size-swatch" type="button">M</button>
-        <button class="size-swatch" type="button">L</button>
-        <button class="size-swatch" type="button">XL</button>
-        <button class="size-swatch" type="button">XXL</button>
+      <div class="site-header__actions">
+        <button class="header-action header-search-toggle" type="button" data-search-toggle aria-controls="mobile-search" aria-expanded="false" aria-label="Search">
+          <i class="ph ph-magnifying-glass"></i>
+        </button>
+        <a class="header-action account-link" href="#">
+          <i class="ph ph-user"></i>
+          <span class="header-action__label">Account</span>
+        </a>
+        <a class="header-action cart-link" href="#" aria-label="View Cart">
+          <span class="cart-link__icon">
+            <i class="ph ph-shopping-cart-simple"></i>
+            <span class="cart-link__count" data-cart-count>0</span>
+          </span>
+          <span class="header-action__label">Cart</span>
+        </a>
       </div>
-      <button class="btn btn--solid" type="button" data-add-to-cart>Add to Bag</button>
     </div>
-  </div>
-</div>
 
-<!-- ================= TOAST ================= -->
-<div class="toast" id="toast" aria-live="polite"><i class="ph ph-check-circle"></i><span class="toast__text" data-toast-text>Added to bag</span></div>
+    <div class="container mobile-search" id="mobile-search" data-mobile-search>
+      <form class="header-search" action="/search" method="get" role="search">
+        <i class="ph ph-magnifying-glass"></i>
+        <label class="visually-hidden" for="mobile-search-input">Search Products</label>
+        <input id="mobile-search-input" type="search" name="q" placeholder="Search Products">
+      </form>
+    </div>
 
-<script src="script.js?v=6"></script>
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul class="site-nav__list">
+        <li class="site-nav__item"><a class="site-nav__link" href="#">All Products</a></li>
+        <li class="site-nav__item" data-nav-item>
+          <a class="site-nav__link" href="#" aria-haspopup="true" aria-expanded="false" aria-controls="mega-series">Series <i class="ph ph-caret-down"></i></a>
+          <div class="mega-menu" id="mega-series" data-mega-menu>
+            <div class="mega-menu__inner">
+              <div class="mega-menu__columns">
+                <div class="mega-menu__col">
+                  <h3 class="mega-menu__title">Series</h3>
+                  <ul class="mega-menu__list">
+                    <li><a href="#">Formula 1</a></li>
+                    <li><a href="#">Formula E</a></li>
+                    <li><a href="#">Forza Motorsport</a></li>
+                    <li><a href="#">IMSA-Sports Car</a></li>
+                    <li><a href="#">IndyCar Series</a></li>
+                    <li><a href="#">Moto GP | Superbike</a></li>
+                    <li><a href="#">World Rally</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="site-nav__item" data-nav-item>
+          <a class="site-nav__link" href="#" aria-haspopup="true" aria-expanded="false" aria-controls="mega-team-brands">Team &amp; Brands <i class="ph ph-caret-down"></i></a>
+          <div class="mega-menu" id="mega-team-brands" data-mega-menu>
+            <div class="mega-menu__inner">
+              <div class="mega-tabs" data-mega-tabs>
+                <div class="mega-tabs__nav" role="tablist" aria-label="Team &amp; Brands A to Z">
+                  <button class="mega-tabs__btn is-active" type="button" role="tab" aria-selected="true" aria-controls="mega-team-brands-a-through-e" data-tab-target="mega-team-brands-a-through-e">A Through E <i class="ph ph-caret-right"></i></button>
+                  <button class="mega-tabs__btn" type="button" role="tab" aria-selected="false" aria-controls="mega-team-brands-f-through-l" data-tab-target="mega-team-brands-f-through-l">F Through L <i class="ph ph-caret-right"></i></button>
+                  <button class="mega-tabs__btn" type="button" role="tab" aria-selected="false" aria-controls="mega-team-brands-m-through-p" data-tab-target="mega-team-brands-m-through-p">M Through P <i class="ph ph-caret-right"></i></button>
+                  <button class="mega-tabs__btn" type="button" role="tab" aria-selected="false" aria-controls="mega-team-brands-q-through-s" data-tab-target="mega-team-brands-q-through-s">Q Through S <i class="ph ph-caret-right"></i></button>
+                  <button class="mega-tabs__btn" type="button" role="tab" aria-selected="false" aria-controls="mega-team-brands-t-through-z" data-tab-target="mega-team-brands-t-through-z">T Through Z <i class="ph ph-caret-right"></i></button>
+                </div>
+                <div class="mega-tabs__panel is-active" id="mega-team-brands-a-through-e" role="tabpanel">
+                  <h3 class="mega-menu__title">Team &amp; Brands: A Through E</h3>
+                  <ul class="mega-menu__list">
+                    <li><a href="#">Acura Collection</a></li>
+                    <li><a href="#">AJ Foyt Racing</a></li>
+                    <li><a href="#">Alan Greene Artwork</a></li>
+                    <li><a href="#">Alfa Romeo Racing</a></li>
+                    <li><a href="#">Alpine F1 Team</a></li>
+                    <li><a href="#">Andretti Global</a></li>
+                    <li><a href="#">Arrows McLaren</a></li>
+                    <li><a href="#">Aston Martin</a></li>
+                    <li><a href="#">Aston Martin F1</a></li>
+                    <li><a href="#">Audi F1 Team</a></li>
+                    <li><a href="#">Autoart Accessories</a></li>
+                    <li><a href="#">BMW Motorsport</a></li>
+                    <li><a href="#">BWT Racing Point</a></li>
+                    <li><a href="#">Benetton</a></li>
+                    <li><a href="#">Bentley</a></li>
+                    <li><a href="#">Brabham</a></li>
+                    <li><a href="#">Bugatti</a></li>
+                    <li><a href="#">Cadillac F1 Racing</a></li>
+                    <li><a href="#">Carbon Fiber</a></li>
+                    <li><a href="#">Chip Ganassi</a></li>
+                    <li><a href="#">Citroen Racing</a></li>
+                    <li><a href="#">Cooper F1</a></li>
+                    <li><a href="#">Corvette</a></li>
+                    <li><a href="#">Ducati</a></li>
+                    <li><a href="#">Ed Carpenter Racing</a></li>
+                    <li><a href="#">Envision Virgin Racing</a></li>
+                    <li><a href="#">Esign Racing</a></li>
+                  </ul>
+                </div>
+                <div class="mega-tabs__panel" id="mega-team-brands-f-through-l" role="tabpanel">
+                  <h3 class="mega-menu__title">Team &amp; Brands: F Through L</h3>
+                  <ul class="mega-menu__list">
+                    <li><a href="#">Ferrari</a></li>
+                    <li><a href="#">Fittipaldi Racing</a></li>
+                    <li><a href="#">Ford Performance</a></li>
+                    <li><a href="#">Formula 1</a></li>
+                    <li><a href="#">Goodyear</a></li>
+                    <li><a href="#">Gulf Oil Race Team</a></li>
+                    <li><a href="#">Haas F1</a></li>
+                    <li><a href="#">Honda</a></li>
+                    <li><a href="#">IndyCar Series</a></li>
+                    <li><a href="#">JR Motorsports</a></li>
+                    <li><a href="#">Jordan Racing</a></li>
+                    <li><a href="#">Juncos Hollinger Racing</a></li>
+                    <li><a href="#">Lamborghini</a></li>
+                    <li><a href="#">Lancia</a></li>
+                    <li><a href="#">Ligier</a></li>
+                    <li><a href="#">Lola</a></li>
+                  </ul>
+                </div>
+                <div class="mega-tabs__panel" id="mega-team-brands-m-through-p" role="tabpanel">
+                  <h3 class="mega-menu__title">Team &amp; Brands: M Through P</h3>
+                  <ul class="mega-menu__list">
+                    <li><a href="#">MOTO GP</a></li>
+                    <li><a href="#">Mahindra Racing</a></li>
+                    <li><a href="#">March</a></li>
+                    <li><a href="#">Maserati</a></li>
+                    <li><a href="#">Matra</a></li>
+                    <li><a href="#">McLaren</a></li>
+                    <li><a href="#">Mercedes AMG Petronas F1</a></li>
+                    <li><a href="#">Meyer Shank Racing</a></li>
+                    <li><a href="#">NIO</a></li>
+                    <li><a href="#">Newman Haas Lanigan</a></li>
+                    <li><a href="#">Nicolas Hunziker</a></li>
+                    <li><a href="#">Nissan</a></li>
+                    <li><a href="#">Patron Highcroft Racin</a></li>
+                    <li><a href="#">Pirelli</a></li>
+                    <li><a href="#">Porsche</a></li>
+                  </ul>
+                </div>
+                <div class="mega-tabs__panel" id="mega-team-brands-q-through-s" role="tabpanel">
+                  <h3 class="mega-menu__title">Team &amp; Brands: Q Through S</h3>
+                  <ul class="mega-menu__list">
+                    <li><a href="#">Rahal Letterman Lanigan</a></li>
+                    <li><a href="#">Randy Owens</a></li>
+                    <li><a href="#">Red Bull Racing</a></li>
+                    <li><a href="#">Red Bull KTM Racing Team</a></li>
+                    <li><a href="#">Renault F1</a></li>
+                    <li><a href="#">Scarab MK</a></li>
+                    <li><a href="#">Shelby Cobra</a></li>
+                    <li><a href="#">Speed Racer</a></li>
+                    <li><a href="#">Speedgear</a></li>
+                    <li><a href="#">Stake F1 Kick Sauber</a></li>
+                  </ul>
+                </div>
+                <div class="mega-tabs__panel" id="mega-team-brands-t-through-z" role="tabpanel">
+                  <h3 class="mega-menu__title">Team &amp; Brands: T Through Z</h3>
+                  <ul class="mega-menu__list">
+                    <li><a href="#">Team Lotus</a></li>
+                    <li><a href="#">Team Penske</a></li>
+                    <li><a href="#">Toleman Hart</a></li>
+                    <li><a href="#">Toyota Gazoo Racing</a></li>
+                    <li><a href="#">Troy Lee Designs</a></li>
+                    <li><a href="#">Tyrrell</a></li>
+                    <li><a href="#">United Autosports</a></li>
+                    <li><a href="#">Vanwall</a></li>
+                    <li><a href="#">Visa Cash APP RB</a></li>
+                    <li><a href="#">Vollstedt</a></li>
+                    <li><a href="#">Williams F1 Racing</a></li>
+                    <li><a href="#">Wrenchware</a></li>
+                    <li><a href="#">Yamaha</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="site-nav__item" data-nav-item>
+          <a class="site-nav__link" href="#" aria-haspopup="true" aria-expanded="false" aria-controls="mega-drivers">Drivers <i class="ph ph-caret-down"></i></a>
+          <div class="mega-menu" id="mega-drivers" data-mega-menu>
+            <div class="mega-menu__inner">
+              <div class="mega-tabs" data-mega-tabs>
+                <div class="mega-tabs__nav" role="tablist" aria-label="Drivers A to Z">
+                  <button class="mega-tabs__btn is-active" type="button" role="tab" aria-selected="true" aria-controls="mega-drivers-a-through-e" data-tab-target="mega-drivers-a-through-e">A Through E <i class="ph ph-caret-right"></i></button>
+                  <button class="mega-tabs__btn" type="button" role="tab" aria-selected="false" aria-controls="mega-drivers-f-through-l" data-tab-target="mega-drivers-f-through-l">F Through L <i class="ph ph-caret-right"></i></button>
+                  <button class="mega-tabs__btn" type="button" role="tab" aria-selected="false" aria-controls="mega-drivers-m-through-p" data-tab-target="mega-drivers-m-through-p">M Through P <i class="ph ph-caret-right"></i></button>
+                  <button class="mega-tabs__btn" type="button" role="tab" aria-selected="false" aria-controls="mega-drivers-q-through-s" data-tab-target="mega-drivers-q-through-s">Q Through S <i class="ph ph-caret-right"></i></button>
+                  <button class="mega-tabs__btn" type="button" role="tab" aria-selected="false" aria-controls="mega-drivers-t-through-z" data-tab-target="mega-drivers-t-through-z">T Through Z <i class="ph ph-caret-right"></i></button>
+                </div>
+                <div class="mega-tabs__panel is-active" id="mega-drivers-a-through-e" role="tabpanel">
+                  <h3 class="mega-menu__title">Drivers: A Through E</h3>
+                  <ul class="mega-menu__list">
+                    <li><a href="#">A.J. Foyt</a></li>
+                    <li><a href="#">Agustin Canapino</a></li>
+                    <li><a href="#">Al Unser, Sr</a></li>
+                    <li><a href="#">Alberto Ascari</a></li>
+                    <li><a href="#">Alex Palou</a></li>
+                    <li><a href="#">Alexander Albon</a></li>
+                    <li><a href="#">Alexander Rossi</a></li>
+                    <li><a href="#">Antonio Giovinazzi</a></li>
+                    <li><a href="#">Ayrton Senna</a></li>
+                    <li><a href="#">Bobby Unser</a></li>
+                    <li><a href="#">Brian Redman</a></li>
+                    <li><a href="#">Bruce McLaren</a></li>
+                    <li><a href="#">Cale Yarborough</a></li>
+                    <li><a href="#">Carlos Sainz</a></li>
+                    <li><a href="#">Carroll Shelby</a></li>
+                    <li><a href="#">Charles Leclerc</a></li>
+                    <li><a href="#">Christian Lundgaard</a></li>
+                    <li><a href="#">Christian Rasmussen</a></li>
+                    <li><a href="#">Clay Regazzoni</a></li>
+                    <li><a href="#">Colton Herta</a></li>
+                    <li><a href="#">Conor Daly</a></li>
+                    <li><a href="#">Dale Earnhardt, Jr.</a></li>
+                    <li><a href="#">Dan Gurney</a></li>
+                    <li><a href="#">Dani Sordo</a></li>
+                    <li><a href="#">Danica Patrick</a></li>
+                    <li><a href="#">Daniel Ricciardo</a></li>
+                    <li><a href="#">Danil Kvyat</a></li>
+                    <li><a href="#">David Malukas</a></li>
+                    <li><a href="#">Delvin DeFrancesco</a></li>
+                    <li><a href="#">Derek Bell</a></li>
+                    <li><a href="#">Derek Daly</a></li>
+                    <li><a href="#">Devlin Defrancesco</a></li>
+                    <li><a href="#">Ed Carpenter</a></li>
+                    <li><a href="#">Emerson Fittipaldi</a></li>
+                    <li><a href="#">Esteban Ocon</a></li>
+                  </ul>
+                </div>
+                <div class="mega-tabs__panel" id="mega-drivers-f-through-l" role="tabpanel">
+                  <h3 class="mega-menu__title">Drivers: F Through L</h3>
+                  <ul class="mega-menu__list">
+                    <li><a href="#">Felix Rosenqvist</a></li>
+                    <li><a href="#">Fernando Alonso</a></li>
+                    <li><a href="#">George Follmer</a></li>
+                    <li><a href="#">George Russell</a></li>
+                    <li><a href="#">Graham Hill</a></li>
+                    <li><a href="#">Graham Rahal</a></li>
+                    <li><a href="#">Guanyu Zhou</a></li>
+                    <li><a href="#">Helio Castroneves</a></li>
+                    <li><a href="#">Isack Hadjar</a></li>
+                    <li><a href="#">Jack Brabham</a></li>
+                    <li><a href="#">Jack Doohan</a></li>
+                    <li><a href="#">Jack Harvey</a></li>
+                    <li><a href="#">Jacky Ickx</a></li>
+                    <li><a href="#">James Hinchcliffe</a></li>
+                    <li><a href="#">James Hunt</a></li>
+                    <li><a href="#">Jerome DAmbrosio</a></li>
+                    <li><a href="#">Jim Clark</a></li>
+                    <li><a href="#">Jochen Rindt</a></li>
+                    <li><a href="#">Jody Scheckter</a></li>
+                    <li><a href="#">John Surtees</a></li>
+                    <li><a href="#">Johnny Herbert</a></li>
+                    <li><a href="#">Johnny Rutherford</a></li>
+                    <li><a href="#">Josef Newgarden</a></li>
+                    <li><a href="#">Juan Fangio</a></li>
+                    <li><a href="#">Juan Pablo Montoya</a></li>
+                    <li><a href="#">Kenny Roberts, Jr</a></li>
+                    <li><a href="#">Kevin Magnussen</a></li>
+                    <li><a href="#">Kimi Antonelli</a></li>
+                    <li><a href="#">Kimi Raikkonen</a></li>
+                    <li><a href="#">Kyle Kirkwood</a></li>
+                    <li><a href="#">Kyle Larson</a></li>
+                    <li><a href="#">Lance Stroll</a></li>
+                    <li><a href="#">Lando Norris</a></li>
+                    <li><a href="#">Lewis Hamilton</a></li>
+                    <li><a href="#">Linus Lundqvist</a></li>
+                    <li><a href="#">Logan Sargeant</a></li>
+                    <li><a href="#">Lorenzo Bandini</a></li>
+                  </ul>
+                </div>
+                <div class="mega-tabs__panel" id="mega-drivers-m-through-p" role="tabpanel">
+                  <h3 class="mega-menu__title">Drivers: M Through P</h3>
+                  <ul class="mega-menu__list">
+                    <li><a href="#">Marco Andretti</a></li>
+                    <li><a href="#">Marco Simoncelli</a></li>
+                    <li><a href="#">Marcus Ericsson</a></li>
+                    <li><a href="#">Mario Andretti</a></li>
+                    <li><a href="#">Mark Donohue</a></li>
+                    <li><a href="#">Max Verstappen</a></li>
+                    <li><a href="#">Michael Schumacher</a></li>
+                    <li><a href="#">Michele Alboreto</a></li>
+                    <li><a href="#">Mick Schumacher</a></li>
+                    <li><a href="#">Mike Hawthorn</a></li>
+                    <li><a href="#">Nicholas Latifi</a></li>
+                    <li><a href="#">Nico Hulkenberg</a></li>
+                    <li><a href="#">Nico Rosberg</a></li>
+                    <li><a href="#">Nigel Mansell</a></li>
+                    <li><a href="#">Niki Lauda</a></li>
+                    <li><a href="#">Nolan Siegel</a></li>
+                    <li><a href="#">Nyck DeVries</a></li>
+                    <li><a href="#">Oliver Rowland</a></li>
+                    <li><a href="#">Ollie Bearman</a></li>
+                    <li><a href="#">Oliver Turvey</a></li>
+                    <li><a href="#">Oscar Piastri</a></li>
+                    <li><a href="#">Parnelli Jones</a></li>
+                    <li><a href="#">Pascal Wehrlein</a></li>
+                    <li><a href="#">Pato O Ward</a></li>
+                    <li><a href="#">Pedro Rodriguez</a></li>
+                    <li><a href="#">Phill Hill</a></li>
+                    <li><a href="#">Pierre Gasly</a></li>
+                    <li><a href="#">Pietro Fittipaldi</a></li>
+                  </ul>
+                </div>
+                <div class="mega-tabs__panel" id="mega-drivers-q-through-s" role="tabpanel">
+                  <h3 class="mega-menu__title">Drivers: Q Through S</h3>
+                  <ul class="mega-menu__list">
+                    <li><a href="#">Richie Ginther</a></li>
+                    <li><a href="#">Rick Mears</a></li>
+                    <li><a href="#">Rinus Veekay</a></li>
+                    <li><a href="#">Robert Doornboos</a></li>
+                    <li><a href="#">Robin Frijns</a></li>
+                    <li><a href="#">Roger Penske</a></li>
+                    <li><a href="#">Romain Grosjean</a></li>
+                    <li><a href="#">Ronnie Peterson</a></li>
+                    <li><a href="#">Santino Ferrucci</a></li>
+                    <li><a href="#">Scott Dixon</a></li>
+                    <li><a href="#">Scott McLaughlin</a></li>
+                    <li><a href="#">Sebastian Vettel</a></li>
+                    <li><a href="#">Sergio Perez</a></li>
+                    <li><a href="#">Simon Pagenaud</a></li>
+                    <li><a href="#">Steve McQueen</a></li>
+                    <li><a href="#">Sting Ray Robb</a></li>
+                    <li><a href="#">Stirling Moss</a></li>
+                  </ul>
+                </div>
+                <div class="mega-tabs__panel" id="mega-drivers-t-through-z" role="tabpanel">
+                  <h3 class="mega-menu__title">Drivers: T Through Z</h3>
+                  <ul class="mega-menu__list">
+                    <li><a href="#">Takuma Sato</a></li>
+                    <li><a href="#">Tom Dillmann</a></li>
+                    <li><a href="#">Tom Sneva</a></li>
+                    <li><a href="#">Tony Kanaan</a></li>
+                    <li><a href="#">Valentino Rossi</a></li>
+                    <li><a href="#">Valtteri Bottas</a></li>
+                    <li><a href="#">Vic Elford</a></li>
+                    <li><a href="#">Will Power</a></li>
+                    <li><a href="#">Yuki Tsunoda</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="site-nav__item" data-nav-item>
+          <a class="site-nav__link" href="#" aria-haspopup="true" aria-expanded="false" aria-controls="mega-apparel">Apparel <i class="ph ph-caret-down"></i></a>
+          <div class="mega-menu" id="mega-apparel" data-mega-menu>
+            <div class="mega-menu__inner">
+              <div class="mega-menu__columns">
+                <div class="mega-menu__col">
+                  <h3 class="mega-menu__title">Apparel</h3>
+                  <ul class="mega-menu__list">
+                    <li><a href="#">Driving Gloves</a></li>
+                    <li><a href="#">Footwear</a></li>
+                    <li><a href="#">Hats</a></li>
+                    <li><a href="#">Jackets</a></li>
+                    <li><a href="#">Kids Apparel</a></li>
+                    <li><a href="#">Ladies Apparel</a></li>
+                    <li><a href="#">Pants</a></li>
+                    <li><a href="#">Shorts</a></li>
+                  </ul>
+                </div>
+                <div class="mega-menu__col">
+                  <h3 class="mega-menu__title">Shirts</h3>
+                  <ul class="mega-menu__list">
+                    <li><a href="#">Crew Shirts</a></li>
+                    <li><a href="#">Jerseys</a></li>
+                    <li><a href="#">Polo Shirts</a></li>
+                    <li><a href="#">Sweat Shirts</a></li>
+                    <li><a href="#">Tee Shirts</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="site-nav__item" data-nav-item>
+          <a class="site-nav__link" href="#" aria-haspopup="true" aria-expanded="false" aria-controls="mega-accessories">Accessories <i class="ph ph-caret-down"></i></a>
+          <div class="mega-menu" id="mega-accessories" data-mega-menu>
+            <div class="mega-menu__inner">
+              <div class="mega-menu__columns">
+                <div class="mega-menu__col">
+                  <h3 class="mega-menu__title">Bags</h3>
+                  <ul class="mega-menu__list">
+                    <li><a href="#">Backpacks</a></li>
+                    <li><a href="#">Duffel Sportsbag</a></li>
+                    <li><a href="#">Other</a></li>
+                  </ul>
+                </div>
+                <div class="mega-menu__col">
+                  <h3 class="mega-menu__title">Body</h3>
+                  <ul class="mega-menu__list">
+                    <li><a href="#">Face Masks</a></li>
+                    <li><a href="#">Footwear</a></li>
+                    <li><a href="#">Fragrances</a></li>
+                    <li><a href="#">Umbrellas</a></li>
+                    <li><a href="#">Wallets</a></li>
+                  </ul>
+                </div>
+                <div class="mega-menu__col">
+                  <h3 class="mega-menu__title">Collectibles</h3>
+                  <ul class="mega-menu__list">
+                    <li><a href="#">Calendars</a></li>
+                    <li><a href="#">Figurines</a></li>
+                    <li><a href="#">Flags</a></li>
+                    <li><a href="#">Keychains</a></li>
+                    <li><a href="#">Lithographs</a></li>
+                    <li><a href="#">Patches</a></li>
+                    <li><a href="#">Pins</a></li>
+                    <li><a href="#">Posters</a></li>
+                    <li><a href="#">Replica Helmets</a></li>
+                    <li><a href="#">Stickers</a></li>
+                  </ul>
+                </div>
+                <div class="mega-menu__col">
+                  <h3 class="mega-menu__title">General</h3>
+                  <ul class="mega-menu__list">
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Cell Phone Accessories</a></li>
+                    <li><a href="#">Teddy Bears</a></li>
+                  </ul>
+                </div>
+                <div class="mega-menu__col">
+                  <h3 class="mega-menu__title">Home/office</h3>
+                  <ul class="mega-menu__list">
+                    <li><a href="#">Computer Accessories</a></li>
+                    <li><a href="#">Drinkware</a></li>
+                    <li><a href="#">Home Office Accessories</a></li>
+                    <li><a href="#">Pens</a></li>
+                    <li><a href="#">Towels</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="site-nav__item" data-nav-item>
+          <a class="site-nav__link" href="#" aria-haspopup="true" aria-expanded="false" aria-controls="mega-entertainment">Entertainment <i class="ph ph-caret-down"></i></a>
+          <div class="mega-menu" id="mega-entertainment" data-mega-menu>
+            <div class="mega-menu__inner">
+              <div class="mega-menu__columns">
+                <div class="mega-menu__col">
+                  <h3 class="mega-menu__title">Entertainment</h3>
+                  <ul class="mega-menu__list">
+                    <li><a href="#">Books</a></li>
+                    <li><a href="#">DVD&#x27;s</a></li>
+                    <li><a href="#">Radio Controlled Cars</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="site-nav__item" data-nav-item>
+          <a class="site-nav__link" href="#" aria-haspopup="true" aria-expanded="false" aria-controls="mega-die-cast">Die-cast <i class="ph ph-caret-down"></i></a>
+          <div class="mega-menu" id="mega-die-cast" data-mega-menu>
+            <div class="mega-menu__inner">
+              <div class="mega-menu__columns">
+                <div class="mega-menu__col">
+                  <h3 class="mega-menu__title">Die-cast</h3>
+                  <ul class="mega-menu__list">
+                    <li><a href="#">Display Cases</a></li>
+                    <li><a href="#">Formula 1</a></li>
+                    <li><a href="#">Formula E</a></li>
+                    <li><a href="#">GT Race Cars</a></li>
+                    <li><a href="#">IndyCar Series</a></li>
+                    <li><a href="#">Steering Wheels</a></li>
+                    <li><a href="#">Street Cars</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="site-nav__item"><a class="site-nav__link site-nav__link--sale" href="#">Clearance</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="drawer-overlay" data-drawer-overlay></div>
+  <aside class="drawer" id="mobile-drawer" data-drawer aria-label="Mobile menu" aria-hidden="true">
+    <div class="drawer__header">
+      <img src="images/logo-speedgear.png" alt="Speedgear - Authentic Racewear" width="272" height="80" loading="lazy">
+      <button class="icon-btn" type="button" data-drawer-close aria-label="Close menu"><i class="ph ph-x"></i></button>
+    </div>
+    <nav class="drawer__body" aria-label="Mobile navigation">
+      <ul>
+        <li class="accordion"><a class="accordion__link" href="#">All Products</a></li>
+        <li class="accordion" data-accordion>
+          <button class="accordion__trigger" type="button" aria-expanded="false">Series <i class="ph ph-plus"></i></button>
+          <ul class="accordion__panel">
+            <li class="accordion"><a class="accordion__link" href="#">View all Series</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">Formula 1</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">Formula E</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">Forza Motorsport</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">IMSA-Sports Car</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">IndyCar Series</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">Moto GP | Superbike</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">World Rally</a></li>
+          </ul>
+        </li>
+        <li class="accordion" data-accordion>
+          <button class="accordion__trigger" type="button" aria-expanded="false">Team &amp; Brands <i class="ph ph-plus"></i></button>
+          <ul class="accordion__panel">
+            <li class="accordion"><a class="accordion__link" href="#">View all Team &amp; Brands</a></li>
+            <li class="accordion" data-accordion>
+              <button class="accordion__trigger" type="button" aria-expanded="false">A Through E <i class="ph ph-plus"></i></button>
+              <ul class="accordion__panel">
+                <li class="accordion"><a class="accordion__link" href="#">Acura Collection</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">AJ Foyt Racing</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Alan Greene Artwork</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Alfa Romeo Racing</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Alpine F1 Team</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Andretti Global</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Arrows McLaren</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Aston Martin</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Aston Martin F1</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Audi F1 Team</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Autoart Accessories</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">BMW Motorsport</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">BWT Racing Point</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Benetton</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Bentley</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Brabham</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Bugatti</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Cadillac F1 Racing</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Carbon Fiber</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Chip Ganassi</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Citroen Racing</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Cooper F1</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Corvette</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Ducati</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Ed Carpenter Racing</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Envision Virgin Racing</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Esign Racing</a></li>
+              </ul>
+            </li>
+            <li class="accordion" data-accordion>
+              <button class="accordion__trigger" type="button" aria-expanded="false">F Through L <i class="ph ph-plus"></i></button>
+              <ul class="accordion__panel">
+                <li class="accordion"><a class="accordion__link" href="#">Ferrari</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Fittipaldi Racing</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Ford Performance</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Formula 1</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Goodyear</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Gulf Oil Race Team</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Haas F1</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Honda</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">IndyCar Series</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">JR Motorsports</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Jordan Racing</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Juncos Hollinger Racing</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Lamborghini</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Lancia</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Ligier</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Lola</a></li>
+              </ul>
+            </li>
+            <li class="accordion" data-accordion>
+              <button class="accordion__trigger" type="button" aria-expanded="false">M Through P <i class="ph ph-plus"></i></button>
+              <ul class="accordion__panel">
+                <li class="accordion"><a class="accordion__link" href="#">MOTO GP</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Mahindra Racing</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">March</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Maserati</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Matra</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">McLaren</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Mercedes AMG Petronas F1</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Meyer Shank Racing</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">NIO</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Newman Haas Lanigan</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Nicolas Hunziker</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Nissan</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Patron Highcroft Racin</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Pirelli</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Porsche</a></li>
+              </ul>
+            </li>
+            <li class="accordion" data-accordion>
+              <button class="accordion__trigger" type="button" aria-expanded="false">Q Through S <i class="ph ph-plus"></i></button>
+              <ul class="accordion__panel">
+                <li class="accordion"><a class="accordion__link" href="#">Rahal Letterman Lanigan</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Randy Owens</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Red Bull Racing</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Red Bull KTM Racing Team</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Renault F1</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Scarab MK</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Shelby Cobra</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Speed Racer</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Speedgear</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Stake F1 Kick Sauber</a></li>
+              </ul>
+            </li>
+            <li class="accordion" data-accordion>
+              <button class="accordion__trigger" type="button" aria-expanded="false">T Through Z <i class="ph ph-plus"></i></button>
+              <ul class="accordion__panel">
+                <li class="accordion"><a class="accordion__link" href="#">Team Lotus</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Team Penske</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Toleman Hart</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Toyota Gazoo Racing</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Troy Lee Designs</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Tyrrell</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">United Autosports</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Vanwall</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Visa Cash APP RB</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Vollstedt</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Williams F1 Racing</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Wrenchware</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Yamaha</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="accordion" data-accordion>
+          <button class="accordion__trigger" type="button" aria-expanded="false">Drivers <i class="ph ph-plus"></i></button>
+          <ul class="accordion__panel">
+            <li class="accordion"><a class="accordion__link" href="#">View all Drivers</a></li>
+            <li class="accordion" data-accordion>
+              <button class="accordion__trigger" type="button" aria-expanded="false">A Through E <i class="ph ph-plus"></i></button>
+              <ul class="accordion__panel">
+                <li class="accordion"><a class="accordion__link" href="#">A.J. Foyt</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Agustin Canapino</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Al Unser, Sr</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Alberto Ascari</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Alex Palou</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Alexander Albon</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Alexander Rossi</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Antonio Giovinazzi</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Ayrton Senna</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Bobby Unser</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Brian Redman</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Bruce McLaren</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Cale Yarborough</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Carlos Sainz</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Carroll Shelby</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Charles Leclerc</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Christian Lundgaard</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Christian Rasmussen</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Clay Regazzoni</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Colton Herta</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Conor Daly</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Dale Earnhardt, Jr.</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Dan Gurney</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Dani Sordo</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Danica Patrick</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Daniel Ricciardo</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Danil Kvyat</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">David Malukas</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Delvin DeFrancesco</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Derek Bell</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Derek Daly</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Devlin Defrancesco</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Ed Carpenter</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Emerson Fittipaldi</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Esteban Ocon</a></li>
+              </ul>
+            </li>
+            <li class="accordion" data-accordion>
+              <button class="accordion__trigger" type="button" aria-expanded="false">F Through L <i class="ph ph-plus"></i></button>
+              <ul class="accordion__panel">
+                <li class="accordion"><a class="accordion__link" href="#">Felix Rosenqvist</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Fernando Alonso</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">George Follmer</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">George Russell</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Graham Hill</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Graham Rahal</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Guanyu Zhou</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Helio Castroneves</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Isack Hadjar</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Jack Brabham</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Jack Doohan</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Jack Harvey</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Jacky Ickx</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">James Hinchcliffe</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">James Hunt</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Jerome DAmbrosio</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Jim Clark</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Jochen Rindt</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Jody Scheckter</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">John Surtees</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Johnny Herbert</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Johnny Rutherford</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Josef Newgarden</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Juan Fangio</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Juan Pablo Montoya</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Kenny Roberts, Jr</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Kevin Magnussen</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Kimi Antonelli</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Kimi Raikkonen</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Kyle Kirkwood</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Kyle Larson</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Lance Stroll</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Lando Norris</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Lewis Hamilton</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Linus Lundqvist</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Logan Sargeant</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Lorenzo Bandini</a></li>
+              </ul>
+            </li>
+            <li class="accordion" data-accordion>
+              <button class="accordion__trigger" type="button" aria-expanded="false">M Through P <i class="ph ph-plus"></i></button>
+              <ul class="accordion__panel">
+                <li class="accordion"><a class="accordion__link" href="#">Marco Andretti</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Marco Simoncelli</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Marcus Ericsson</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Mario Andretti</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Mark Donohue</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Max Verstappen</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Michael Schumacher</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Michele Alboreto</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Mick Schumacher</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Mike Hawthorn</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Nicholas Latifi</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Nico Hulkenberg</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Nico Rosberg</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Nigel Mansell</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Niki Lauda</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Nolan Siegel</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Nyck DeVries</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Oliver Rowland</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Ollie Bearman</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Oliver Turvey</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Oscar Piastri</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Parnelli Jones</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Pascal Wehrlein</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Pato O Ward</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Pedro Rodriguez</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Phill Hill</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Pierre Gasly</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Pietro Fittipaldi</a></li>
+              </ul>
+            </li>
+            <li class="accordion" data-accordion>
+              <button class="accordion__trigger" type="button" aria-expanded="false">Q Through S <i class="ph ph-plus"></i></button>
+              <ul class="accordion__panel">
+                <li class="accordion"><a class="accordion__link" href="#">Richie Ginther</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Rick Mears</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Rinus Veekay</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Robert Doornboos</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Robin Frijns</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Roger Penske</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Romain Grosjean</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Ronnie Peterson</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Santino Ferrucci</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Scott Dixon</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Scott McLaughlin</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Sebastian Vettel</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Sergio Perez</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Simon Pagenaud</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Steve McQueen</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Sting Ray Robb</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Stirling Moss</a></li>
+              </ul>
+            </li>
+            <li class="accordion" data-accordion>
+              <button class="accordion__trigger" type="button" aria-expanded="false">T Through Z <i class="ph ph-plus"></i></button>
+              <ul class="accordion__panel">
+                <li class="accordion"><a class="accordion__link" href="#">Takuma Sato</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Tom Dillmann</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Tom Sneva</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Tony Kanaan</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Valentino Rossi</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Valtteri Bottas</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Vic Elford</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Will Power</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Yuki Tsunoda</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="accordion" data-accordion>
+          <button class="accordion__trigger" type="button" aria-expanded="false">Apparel <i class="ph ph-plus"></i></button>
+          <ul class="accordion__panel">
+            <li class="accordion"><a class="accordion__link" href="#">View all Apparel</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">Driving Gloves</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">Footwear</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">Hats</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">Jackets</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">Kids Apparel</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">Ladies Apparel</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">Pants</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">Shorts</a></li>
+            <li class="accordion" data-accordion>
+              <button class="accordion__trigger" type="button" aria-expanded="false">Shirts <i class="ph ph-plus"></i></button>
+              <ul class="accordion__panel">
+                <li class="accordion"><a class="accordion__link" href="#">Crew Shirts</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Jerseys</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Polo Shirts</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Sweat Shirts</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Tee Shirts</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="accordion" data-accordion>
+          <button class="accordion__trigger" type="button" aria-expanded="false">Accessories <i class="ph ph-plus"></i></button>
+          <ul class="accordion__panel">
+            <li class="accordion"><a class="accordion__link" href="#">View all Accessories</a></li>
+            <li class="accordion" data-accordion>
+              <button class="accordion__trigger" type="button" aria-expanded="false">Bags <i class="ph ph-plus"></i></button>
+              <ul class="accordion__panel">
+                <li class="accordion"><a class="accordion__link" href="#">Backpacks</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Duffel Sportsbag</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Other</a></li>
+              </ul>
+            </li>
+            <li class="accordion" data-accordion>
+              <button class="accordion__trigger" type="button" aria-expanded="false">Body <i class="ph ph-plus"></i></button>
+              <ul class="accordion__panel">
+                <li class="accordion"><a class="accordion__link" href="#">Face Masks</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Footwear</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Fragrances</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Umbrellas</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Wallets</a></li>
+              </ul>
+            </li>
+            <li class="accordion" data-accordion>
+              <button class="accordion__trigger" type="button" aria-expanded="false">Collectibles <i class="ph ph-plus"></i></button>
+              <ul class="accordion__panel">
+                <li class="accordion"><a class="accordion__link" href="#">Calendars</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Figurines</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Flags</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Keychains</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Lithographs</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Patches</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Pins</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Posters</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Replica Helmets</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Stickers</a></li>
+              </ul>
+            </li>
+            <li class="accordion" data-accordion>
+              <button class="accordion__trigger" type="button" aria-expanded="false">General <i class="ph ph-plus"></i></button>
+              <ul class="accordion__panel">
+                <li class="accordion"><a class="accordion__link" href="#">Accessories</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Cell Phone Accessories</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Teddy Bears</a></li>
+              </ul>
+            </li>
+            <li class="accordion" data-accordion>
+              <button class="accordion__trigger" type="button" aria-expanded="false">Home/office <i class="ph ph-plus"></i></button>
+              <ul class="accordion__panel">
+                <li class="accordion"><a class="accordion__link" href="#">Computer Accessories</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Drinkware</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Home Office Accessories</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Pens</a></li>
+                <li class="accordion"><a class="accordion__link" href="#">Towels</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="accordion" data-accordion>
+          <button class="accordion__trigger" type="button" aria-expanded="false">Entertainment <i class="ph ph-plus"></i></button>
+          <ul class="accordion__panel">
+            <li class="accordion"><a class="accordion__link" href="#">View all Entertainment</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">Books</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">DVD&#x27;s</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">Radio Controlled Cars</a></li>
+          </ul>
+        </li>
+        <li class="accordion" data-accordion>
+          <button class="accordion__trigger" type="button" aria-expanded="false">Die-cast <i class="ph ph-plus"></i></button>
+          <ul class="accordion__panel">
+            <li class="accordion"><a class="accordion__link" href="#">View all Die-cast</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">Display Cases</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">Formula 1</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">Formula E</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">GT Race Cars</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">IndyCar Series</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">Steering Wheels</a></li>
+            <li class="accordion"><a class="accordion__link" href="#">Street Cars</a></li>
+          </ul>
+        </li>
+        <li class="accordion"><a class="accordion__link accordion__link--sale" href="#">Clearance</a></li>
+      </ul>
+    </nav>
+    <div class="drawer__footer">
+      <a href="#"><i class="ph ph-user"></i> Log in / My Account</a>
+      <a href="#"><i class="ph ph-phone"></i> 1-800-777-4453</a>
+      <ul class="social-list">
+        <li><a href="#" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a></li>
+        <li><a href="#" aria-label="Pinterest"><i class="ph ph-pinterest-logo"></i></a></li>
+        <li><a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a></li>
+        <li><a href="#" aria-label="YouTube"><i class="ph ph-youtube-logo"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main-content" class="site-main">
+
+    <!-- ============ Hero slideshow ============ -->
+    <section class="hero pt-0 pb-0" data-slider aria-roledescription="carousel" aria-label="Featured teams">
+      <div class="hero__track" data-slider-track>
+        <div class="hero__slide" role="group" aria-roledescription="slide" aria-label="1 of 5: Ferrari">
+          <picture class="hero__media">
+            <source media="(max-width: 767px)" srcset="images/hero-scuderia-ferrari-f1-mobile.webp">
+            <img src="images/hero-scuderia-ferrari-f1.webp" alt="2026 Scuderia Ferrari F1 team collection" width="1920" height="820" fetchpriority="high">
+          </picture>
+          <div class="container hero__content">
+            <h1 class="hero__title">2026 Scuderia<br>Ferrari <span>F1</span></h1>
+            <p class="hero__text">Official Scuderia Ferrari F1 Team Merchandise</p>
+            <div class="hero__actions">
+              <a class="btn btn--red" href="#">Shop Now <i class="ph ph-arrow-right"></i></a>
+              <a class="btn btn--outline-light" href="#">Shop Teams</a>
+            </div>
+          </div>
+        </div>
+        <div class="hero__slide" role="group" aria-roledescription="slide" aria-label="2 of 5: Cadillac F1">
+          <picture class="hero__media">
+            <source media="(max-width: 767px)" srcset="images/hero-cadillac-f1-racing-mobile.webp">
+            <img src="images/hero-cadillac-f1-racing.webp" alt="Cadillac F1 Racing team collection" width="1920" height="820" loading="lazy">
+          </picture>
+          <div class="container hero__content">
+            <h2 class="hero__title h1">Cadillac<br><span>F1</span> Racing</h2>
+            <p class="hero__text">Official Cadillac F1 Racing Team Merchandise</p>
+            <div class="hero__actions">
+              <a class="btn btn--red" href="#">Shop Now <i class="ph ph-arrow-right"></i></a>
+              <a class="btn btn--outline-light" href="#">Shop Teams</a>
+            </div>
+          </div>
+        </div>
+        <div class="hero__slide" role="group" aria-roledescription="slide" aria-label="3 of 5: McLaren">
+          <picture class="hero__media">
+            <source media="(max-width: 767px)" srcset="images/hero-mclaren-f1-team-mobile.webp">
+            <img src="images/hero-mclaren-f1-team.webp" alt="McLaren F1 Team collection" width="1920" height="820" loading="lazy">
+          </picture>
+          <div class="container hero__content">
+            <h2 class="hero__title h1">McLaren<br><span>F1</span> Team</h2>
+            <p class="hero__text">Official McLaren F1 Team Merchandise</p>
+            <div class="hero__actions">
+              <a class="btn btn--red" href="#">Shop Now <i class="ph ph-arrow-right"></i></a>
+              <a class="btn btn--outline-light" href="#">Shop Teams</a>
+            </div>
+          </div>
+        </div>
+        <div class="hero__slide" role="group" aria-roledescription="slide" aria-label="4 of 5: Red Bull Racing">
+          <picture class="hero__media">
+            <source media="(max-width: 767px)" srcset="images/hero-red-bull-racing-mobile.webp">
+            <img src="images/hero-red-bull-racing.webp" alt="Red Bull Racing team collection" width="1920" height="820" loading="lazy">
+          </picture>
+          <div class="container hero__content">
+            <h2 class="hero__title h1">Red Bull<br><span>Racing</span></h2>
+            <p class="hero__text">Official Red Bull Racing Team Merchandise</p>
+            <div class="hero__actions">
+              <a class="btn btn--red" href="#">Shop Now <i class="ph ph-arrow-right"></i></a>
+              <a class="btn btn--outline-light" href="#">Shop Teams</a>
+            </div>
+          </div>
+        </div>
+        <div class="hero__slide" role="group" aria-roledescription="slide" aria-label="5 of 5: IndyCar">
+          <picture class="hero__media">
+            <source media="(max-width: 767px)" srcset="images/hero-indycar-series-mobile.webp">
+            <img src="images/hero-indycar-series.webp" alt="IndyCar Series die-cast models" width="1920" height="820" loading="lazy">
+          </picture>
+          <div class="container hero__content">
+            <h2 class="hero__title h1">IndyCar<br><span>Die-cast</span></h2>
+            <p class="hero__text">Official IndyCar Series Die-cast Models</p>
+            <div class="hero__actions">
+              <a class="btn btn--red" href="#">Shop Now <i class="ph ph-arrow-right"></i></a>
+              <a class="btn btn--outline-light" href="#">Shop Teams</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="hero__arrow hero__arrow--prev" type="button" data-slider-prev aria-label="Previous slide"><i class="ph ph-caret-left"></i></button>
+      <button class="hero__arrow hero__arrow--next" type="button" data-slider-next aria-label="Next slide"><i class="ph ph-caret-right"></i></button>
+
+      <div class="hero__controls">
+        <div class="container hero__controls-inner">
+          <p class="hero__counter"><span class="hero__counter-current" data-slider-current>01</span> / <span data-slider-total>05</span></p>
+          <div class="hero__tabs" role="tablist" aria-label="Choose a team" data-slider-tabs>
+            <button class="hero__tab is-active" type="button" role="tab" aria-selected="true">Ferrari</button>
+            <button class="hero__tab" type="button" role="tab" aria-selected="false">Cadillac F1</button>
+            <button class="hero__tab" type="button" role="tab" aria-selected="false">McLaren</button>
+            <button class="hero__tab" type="button" role="tab" aria-selected="false">Red Bull Racing</button>
+            <button class="hero__tab" type="button" role="tab" aria-selected="false">IndyCar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Shop by team ============ -->
+    <section class="section shop-by-team pt-60 pb-60">
+      <div class="container">
+        <div class="section-header section-header--inline">
+          <div class="section-header__text">
+            <h2 class="title-accent">Shop by Team</h2>
+            <p>Official merchandise from your favorite teams</p>
+          </div>
+          <a class="link-inline" href="#">View All Teams <i class="ph ph-arrow-right"></i></a>
+        </div>
+
+        <ul class="team-circles">
+          <li class="team-circle">
+            <a class="team-circle__link" href="#">
+              <span class="team-circle__logo"><img src="images/team-logo-mclaren.png" alt="McLaren logo" width="300" height="300" loading="lazy"></span>
+              <span class="team-circle__name">McLaren</span>
+            </a>
+          </li>
+          <li class="team-circle">
+            <a class="team-circle__link" href="#">
+              <span class="team-circle__logo"><img src="images/team-logo-formula-1.png" alt="Formula 1 logo" width="300" height="300" loading="lazy"></span>
+              <span class="team-circle__name">Formula 1</span>
+            </a>
+          </li>
+          <li class="team-circle">
+            <a class="team-circle__link" href="#">
+              <span class="team-circle__logo"><img src="images/team-logo-lamborghini.png" alt="Lamborghini logo" width="300" height="300" loading="lazy"></span>
+              <span class="team-circle__name">Lamborghini</span>
+            </a>
+          </li>
+          <li class="team-circle">
+            <a class="team-circle__link" href="#">
+              <span class="team-circle__logo"><img src="images/team-logo-bmw-motorsport.png" alt="BMW Motorsport logo" width="300" height="300" loading="lazy"></span>
+              <span class="team-circle__name">BMW Motorsport</span>
+            </a>
+          </li>
+          <li class="team-circle">
+            <a class="team-circle__link" href="#">
+              <span class="team-circle__logo"><img src="images/team-logo-honda.png" alt="Honda logo" width="300" height="300" loading="lazy"></span>
+              <span class="team-circle__name">Honda</span>
+            </a>
+          </li>
+          <li class="team-circle">
+            <a class="team-circle__link" href="#">
+              <span class="team-circle__logo"><img src="images/team-logo-porsche-motorsport.png" alt="Porsche logo" width="300" height="300" loading="lazy"></span>
+              <span class="team-circle__name">Porsche</span>
+            </a>
+          </li>
+          <li class="team-circle">
+            <a class="team-circle__link" href="#">
+              <span class="team-circle__logo"><img src="images/team-logo-indycar-series.png" alt="IndyCar Series logo" width="300" height="300" loading="lazy"></span>
+              <span class="team-circle__name">IndyCar Series</span>
+            </a>
+          </li>
+          <li class="team-circle">
+            <a class="team-circle__link" href="#">
+              <span class="team-circle__logo"><img src="images/team-logo-stake-f1-kick-sauber.png" alt="Stake F1 Kick Sauber logo" width="300" height="300" loading="lazy"></span>
+              <span class="team-circle__name">Stake F1 Kick Sauber</span>
+            </a>
+          </li>
+          <li class="team-circle">
+            <a class="team-circle__link" href="#">
+              <span class="team-circle__logo"><img src="images/team-logo-williams-racing.png" alt="Williams F1 Racing logo" width="300" height="300" loading="lazy"></span>
+              <span class="team-circle__name">Williams F1 Racing</span>
+            </a>
+          </li>
+          <li class="team-circle">
+            <a class="team-circle__link" href="#">
+              <span class="team-circle__logo"><img src="images/team-logo-troy-lee-designs.png" alt="Troy Lee Designs logo" width="300" height="300" loading="lazy"></span>
+              <span class="team-circle__name">Troy Lee Designs</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ Promo tiles (Clearance / Series / Drivers) ============ -->
+    <section class="section promo-tiles-section pt-60 pb-60">
+      <div class="container">
+        <div class="promo-tiles">
+          <a class="promo-tile" href="#">
+            <span class="promo-tile__media"><img src="images/promo-tile-clearance.webp" alt="Clearance racing merchandise" width="900" height="860" loading="lazy"></span>
+            <span class="promo-tile__content">
+              <span class="promo-tile__text">
+                <span class="promo-tile__title h2">Clearance</span>
+                <span class="promo-tile__sub promo-tile__sub--caps">Up to 85% Off</span>
+              </span>
+              <span class="promo-tile__btn" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+            </span>
+          </a>
+          <a class="promo-tile" href="#">
+            <span class="promo-tile__media"><img src="images/promo-tile-series.webp" alt="Motorsport series collections" width="900" height="860" loading="lazy"></span>
+            <span class="promo-tile__content">
+              <span class="promo-tile__text">
+                <span class="promo-tile__title h2"><span class="promo-tile__kicker">Shop by</span>Series</span>
+                <span class="promo-tile__sub">F1 / IndyCar / MotoGP / WRC</span>
+              </span>
+              <span class="promo-tile__btn" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+            </span>
+          </a>
+          <a class="promo-tile" href="#">
+            <span class="promo-tile__media"><img src="images/promo-tile-drivers.webp" alt="Driver collections" width="900" height="860" loading="lazy"></span>
+            <span class="promo-tile__content">
+              <span class="promo-tile__text">
+                <span class="promo-tile__title h2"><span class="promo-tile__kicker">Shop by</span>Driver</span>
+                <span class="promo-tile__sub">Hamilton, Verstappen, Norris &amp; more</span>
+              </span>
+              <span class="promo-tile__btn" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Shop by driver ============ -->
+    <!-- Hidden for now: remove "is-hidden" to show this section again -->
+    <section class="section shop-by-driver pt-60 pb-60 is-hidden">
+      <div class="container">
+        <div class="section-header section-header--inline">
+          <div class="section-header__text">
+            <h2 class="title-accent">Shop by Driver</h2>
+            <p>Gear up for your favorite drivers</p>
+          </div>
+          <a class="link-inline" href="#">View All Drivers <i class="ph ph-arrow-right"></i></a>
+        </div>
+
+        <ul class="team-circles team-circles--photo">
+          <li class="team-circle">
+            <a class="team-circle__link" href="#">
+              <span class="team-circle__logo"><img src="images/driver-helmet-max-verstappen.webp" alt="Max Verstappen helmet" width="240" height="240" loading="lazy"></span>
+              <span class="team-circle__name">Max Verstappen</span>
+            </a>
+          </li>
+          <li class="team-circle">
+            <a class="team-circle__link" href="#">
+              <span class="team-circle__logo"><img src="images/driver-helmet-lewis-hamilton.webp" alt="Lewis Hamilton helmet" width="240" height="240" loading="lazy"></span>
+              <span class="team-circle__name">Lewis Hamilton</span>
+            </a>
+          </li>
+          <li class="team-circle">
+            <a class="team-circle__link" href="#">
+              <span class="team-circle__logo"><img src="images/driver-helmet-charles-leclerc.webp" alt="Charles Leclerc helmet" width="240" height="240" loading="lazy"></span>
+              <span class="team-circle__name">Charles Leclerc</span>
+            </a>
+          </li>
+          <li class="team-circle">
+            <a class="team-circle__link" href="#">
+              <span class="team-circle__logo"><img src="images/driver-helmet-lando-norris.webp" alt="Lando Norris helmet" width="240" height="240" loading="lazy"></span>
+              <span class="team-circle__name">Lando Norris</span>
+            </a>
+          </li>
+          <li class="team-circle">
+            <a class="team-circle__link" href="#">
+              <span class="team-circle__logo"><img src="images/driver-helmet-oscar-piastri.webp" alt="Oscar Piastri helmet" width="240" height="240" loading="lazy"></span>
+              <span class="team-circle__name">Oscar Piastri</span>
+            </a>
+          </li>
+          <li class="team-circle">
+            <a class="team-circle__link" href="#">
+              <span class="team-circle__logo"><img src="images/driver-helmet-fernando-alonso.webp" alt="Fernando Alonso helmet" width="240" height="240" loading="lazy"></span>
+              <span class="team-circle__name">Fernando Alonso</span>
+            </a>
+          </li>
+          <li class="team-circle">
+            <a class="team-circle__link" href="#">
+              <span class="team-circle__logo"><img src="images/driver-helmet-sergio-perez.webp" alt="Sergio Pérez helmet" width="240" height="240" loading="lazy"></span>
+              <span class="team-circle__name">Sergio Pérez</span>
+            </a>
+          </li>
+          <li class="team-circle">
+            <a class="team-circle__link" href="#">
+              <span class="team-circle__logo"><img src="images/driver-helmet-carlos-sainz.webp" alt="Carlos Sainz helmet" width="240" height="240" loading="lazy"></span>
+              <span class="team-circle__name">Carlos Sainz</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ Best sellers / New arrivals (tabs) ============ -->
+    <section class="section product-tabs pt-60 pb-60" data-product-tabs>
+      <div class="container">
+        <div class="section-header section-header--inline section-header--middle">
+          <div class="tab-titles" role="tablist" aria-label="Featured products">
+            <button class="tab-title is-active" type="button" role="tab" aria-selected="true" aria-controls="panel-best-sellers" data-tab-target="panel-best-sellers" data-view-all="#">Best Sellers</button>
+            <button class="tab-title" type="button" role="tab" aria-selected="false" aria-controls="panel-new-arrivals" data-tab-target="panel-new-arrivals" data-view-all="#">New Arrivals</button>
+          </div>
+          <a class="link-inline" href="#" data-tab-view-all>View All <i class="ph ph-arrow-right"></i></a>
+        </div>
+
+        <ul class="product-grid tab-panel is-active" id="panel-best-sellers" role="tabpanel">
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-honda-black-classic-grid-performance-polo.png" alt="Honda Black Classic Grid Performance Polo" width="800" height="776" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">SpeedGear</span>
+                <h3 class="product-card__title"><a href="#">Honda Black Classic Grid Performance Polo</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$42.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-honda-black-classic-softshell-jacket.png" alt="Honda Black Classic Softshell Jacket" width="800" height="794" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">SpeedGear</span>
+                <h3 class="product-card__title"><a href="#">Honda Black Classic Softshell Jacket</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$80.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-honda-black-hooded-softshell-jacket.png" alt="Honda Black Hooded Softshell Jacket" width="800" height="888" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">SpeedGear</span>
+                <h3 class="product-card__title"><a href="#">Honda Black Hooded Softshell Jacket</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$80.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-honda-black-stealth-pullover-hooded-sweatshirt.png" alt="Honda Black Stealth Pullover Hooded Sweatshirt" width="800" height="800" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">SpeedGear</span>
+                <h3 class="product-card__title"><a href="#">Honda Black Stealth Pullover Hooded Sweatshirt</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$49.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-honda-grey-heathered-sport-polo.png" alt="Honda Grey Heathered Sport Polo" width="800" height="794" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">SpeedGear</span>
+                <h3 class="product-card__title"><a href="#">Honda Grey Heathered Sport Polo</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$40.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-honda-royal-blue-quarter-zip-sweater.png" alt="Honda Royal Blue Quarter Zip Sweater" width="800" height="800" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">SpeedGear</span>
+                <h3 class="product-card__title"><a href="#">Honda Royal Blue Quarter Zip Sweater</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$56.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-honda-logo-color-block-polo-grey-black.png" alt="Honda Logo Color Block Polo Grey/Black" width="800" height="1198" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">SpeedGear</span>
+                <h3 class="product-card__title"><a href="#">Honda Logo Color Block Polo Grey/Black</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$42.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-hrc-honda-racing-softshell-jacket.png" alt="HRC Honda Racing Softshell Jacket" width="800" height="800" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">SpeedGear</span>
+                <h3 class="product-card__title"><a href="#">HRC Honda Racing Softshell Jacket</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$85.00</p>
+              </div>
+            </li>
+        </ul>
+        <ul class="product-grid tab-panel" id="panel-new-arrivals" role="tabpanel">
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-2027-super-cars-wall-calendar.png" alt="2027 Super Cars Wall Calendar" width="536" height="536" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">Hachette</span>
+                <h3 class="product-card__title"><a href="#">2027 Super Cars Wall Calendar</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$15.99</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-2027-art-of-the-formula-1-racecar-wall-calendar.png" alt="2027 Art of the Formula 1 Racecar Wall Calendar" width="536" height="536" loading="lazy">
+                <span class="product-card__badge product-card__badge--sale">Sale</span>
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">Hachette</span>
+                <h3 class="product-card__title"><a href="#">2027 Art of the Formula 1 Racecar Wall Calendar</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Sale price</span>$8.99 <s class="product-card__compare"><span class="visually-hidden">Regular price</span>$15.99</s></p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-1-64th-williams-fw47-carlos-sainz-china-gp-2025.png" alt="Sparky 1:64th Williams FW47 Carlos Sainz China GP 2025" width="800" height="463" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">Spark</span>
+                <h3 class="product-card__title"><a href="#">Sparky 1:64th Williams FW47 Carlos Sainz China GP 2025</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$34.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-sparky-1-64th-red-bull-racing-rb21-max-verstappen-australian.png" alt="Sparky 1:64th Red Bull Racing RB21 Max Verstappen Australian GP 2025" width="800" height="535" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">Spark</span>
+                <h3 class="product-card__title"><a href="#">Sparky 1:64th Red Bull Racing RB21 Max Verstappen Australian GP 2025</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$34.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-honda-logo-color-block-polo-navy-blue.png" alt="Honda Logo Color Block Polo Navy/Blue" width="800" height="1198" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">SpeedGear</span>
+                <h3 class="product-card__title"><a href="#">Honda Logo Color Block Polo Navy/Blue</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$42.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-honda-logo-color-block-polo-grey-black.png" alt="Honda Logo Color Block Polo Grey/Black" width="800" height="1198" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">SpeedGear</span>
+                <h3 class="product-card__title"><a href="#">Honda Logo Color Block Polo Grey/Black</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$42.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-2027-autocourse-grand-prix-wall-calendar.png" alt="2027 Autocourse Grand Prix Wall Calendar" width="800" height="600" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">SpeedGear</span>
+                <h3 class="product-card__title"><a href="#">2027 Autocourse Grand Prix Wall Calendar</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$17.99</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-2027-motorcourse-gp-superbike-wall-calendar.png" alt="2027 Motorcourse GP &amp; Superbike Wall Calendar" width="800" height="600" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">SpeedGear</span>
+                <h3 class="product-card__title"><a href="#">2027 Motorcourse GP &amp; Superbike Wall Calendar</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$17.99</p>
+              </div>
+            </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ Clearance lap (countdown banner) ============ -->
+    <section class="section clearance-lap pt-60 pb-60" data-countdown data-countdown-end="2026-10-31T23:59:59">
+      <div class="container clearance-lap__inner">
+        <p class="clearance-lap__offer"><span>Up to</span> 85% Off</p>
+
+        <div class="clearance-lap__text">
+          <h2 class="clearance-lap__title">Clearance Lap</h2>
+          <p class="clearance-lap__tagline">Team gear. Past season. Limited stock. <span class="clearance-lap__flag" aria-hidden="true"></span></p>
+        </div>
+
+        <div class="clearance-lap__actions">
+          <ul class="countdown" aria-label="Time left in the clearance sale">
+            <li class="countdown__unit"><span class="countdown__value" data-countdown-days>00</span><span class="countdown__label">Days</span></li>
+            <li class="countdown__unit"><span class="countdown__value" data-countdown-hours>00</span><span class="countdown__label">Hrs</span></li>
+            <li class="countdown__unit"><span class="countdown__value" data-countdown-mins>00</span><span class="countdown__label">Mins</span></li>
+            <li class="countdown__unit"><span class="countdown__value" data-countdown-secs>00</span><span class="countdown__label">Secs</span></li>
+          </ul>
+          <a class="btn btn--pill-light" href="#">Shop Clearance <i class="ph ph-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Headwear collection (carousel) ============ -->
+    <section class="section headwear pt-60 pb-60">
+      <div class="container" data-carousel>
+        <div class="section-header section-header--inline section-header--middle">
+          <h2 class="title-accent">Headwear Collection</h2>
+          <div class="section-header__controls">
+            <a class="link-inline" href="#">View All <i class="ph ph-arrow-right"></i></a>
+            <div class="carousel__arrows">
+              <button class="carousel__arrow" type="button" data-carousel-prev aria-label="Previous products"><i class="ph ph-caret-left"></i></button>
+              <button class="carousel__arrow" type="button" data-carousel-next aria-label="Next products"><i class="ph ph-caret-right"></i></button>
+            </div>
+          </div>
+        </div>
+        <ul class="carousel__track carousel__track--compact" data-carousel-track>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-hat-01.png" alt="Cadillac F1 Racing Logo Hat Red" width="800" height="800" loading="lazy">
+                <span class="product-card__badge">New</span>
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">Tommy Hilfiger</span>
+                <h3 class="product-card__title"><a href="#">Cadillac F1 Racing Logo Hat Red</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$40.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-hat-02.png" alt="Scuderia Ferrari F1 Lewis Hamilton #44 Silverstone GP Hat Yellow" width="800" height="800" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">Puma</span>
+                <h3 class="product-card__title"><a href="#">Scuderia Ferrari F1 Lewis Hamilton #44 Silverstone GP Hat Yellow</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$60.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-hat-03.png" alt="2026 Pirelli Spain Grand Prix 1st Place Podium Hat Special Edition" width="800" height="1044" loading="lazy">
+                <span class="product-card__badge">Special Edition</span>
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">Pirelli</span>
+                <h3 class="product-card__title"><a href="#">2026 Pirelli Spain Grand Prix 1st Place Podium Hat Special Edition</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$96.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-hat-04.png" alt="Adidas Mercedes AMG Petronas F1 Silverstone Blue Wonder Hat Blue" width="800" height="800" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">Adidas</span>
+                <h3 class="product-card__title"><a href="#">Adidas Mercedes AMG Petronas F1 Silverstone Blue Wonder Hat Blue</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$55.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-hat-05.png" alt="Adidas Mercedes AMG Petronas F1 DNA Stripes Hat White" width="800" height="800" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">Adidas</span>
+                <h3 class="product-card__title"><a href="#">Adidas Mercedes AMG Petronas F1 DNA Stripes Hat White</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$35.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-hat-06.png" alt="Adidas Mercedes AMG Petronas F1 DNA Stripes Hat Black" width="800" height="800" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">Adidas</span>
+                <h3 class="product-card__title"><a href="#">Adidas Mercedes AMG Petronas F1 DNA Stripes Hat Black</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$35.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-hat-07.png" alt="Honda Racing Performance Logo Hat Black" width="544" height="462" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">SpeedGear</span>
+                <h3 class="product-card__title"><a href="#">Honda Racing Performance Logo Hat Black</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$35.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-hat-08.png" alt="Honda Racing Performance Logo Hat White" width="532" height="449" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">SpeedGear</span>
+                <h3 class="product-card__title"><a href="#">Honda Racing Performance Logo Hat White</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$35.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-hat-09.png" alt="2026 Pirelli Silverstone Grand Prix 1st Place Podium Hat Special Edition" width="800" height="1044" loading="lazy">
+                <span class="product-card__badge">Special Edition</span>
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">Pirelli</span>
+                <h3 class="product-card__title"><a href="#">2026 Pirelli Silverstone Grand Prix 1st Place Podium Hat Special Edition</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$96.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-hat-10.png" alt="Honda Racing Ladies Logo Hat Pink" width="800" height="650" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">SpeedGear</span>
+                <h3 class="product-card__title"><a href="#">Honda Racing Ladies Logo Hat Pink</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$35.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-hat-11.png" alt="Scuderia Ferrari F1 Charles Leclerc SE Monaco GP Hat" width="800" height="800" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">Puma</span>
+                <h3 class="product-card__title"><a href="#">Scuderia Ferrari F1 Charles Leclerc SE Monaco GP Hat</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$60.00</p>
+              </div>
+            </li>
+            <li class="product-card">
+              <a class="product-card__media" href="#" tabindex="-1" aria-hidden="true">
+                <img src="images/product-hat-12.png" alt="Scuderia Ferrari F1 Classic Hat Black" width="800" height="800" loading="lazy">
+              </a>
+              <div class="product-card__info">
+                <span class="product-card__vendor">Stichd</span>
+                <h3 class="product-card__title"><a href="#">Scuderia Ferrari F1 Classic Hat Black</a></h3>
+                <p class="product-card__price"><span class="visually-hidden">Regular price</span>$46.00</p>
+              </div>
+            </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ Die-cast banner ============ -->
+    <section class="section diecast-banner pt-60 pb-60">
+      <picture class="diecast-banner__media">
+        <source media="(max-width: 767px)" srcset="images/banner-diecast-models-mobile.webp">
+        <img src="images/banner-diecast-models.webp" alt="Red Bull Racing 1:18 die-cast model in a display case" width="1920" height="560" loading="lazy">
+      </picture>
+      <div class="container diecast-banner__content">
+        <h2 class="diecast-banner__title">100<span class="text-none">s</span> of<br>Die-cast Models</h2>
+        <ul class="diecast-banner__brands" aria-label="Die-cast brands">
+          <li>Minichamps</li>
+          <li>Spark</li>
+          <li>Tecnomodel</li>
+          <li>Bburago</li>
+          <li>Maisto</li>
+          <li>Greenlight</li>
+        </ul>
+        <a class="btn btn--red" href="#">Explore Die-cast <i class="ph ph-arrow-right"></i></a>
+      </div>
+    </section>
+
+    <!-- ============ Why Speedgear (trust bar) ============ -->
+    <section class="section section--dark why-speedgear pt-60 pb-60">
+      <div class="container">
+        <h2 class="title-italic">Why Speedgear</h2>
+        <ul class="why-list">
+          <li class="why-item">
+            <i class="ph-light ph-shield-check why-item__icon" aria-hidden="true"></i>
+            <div class="why-item__text">
+              <h3 class="why-item__title">Officially Licensed Products</h3>
+              <p>Authentic team merchandise</p>
+            </div>
+          </li>
+          <li class="why-item">
+            <i class="ph-light ph-tag why-item__icon" aria-hidden="true"></i>
+            <div class="why-item__text">
+              <h3 class="why-item__title">Price Guarantee</h3>
+              <p>Best prices, always</p>
+            </div>
+          </li>
+          <li class="why-item">
+            <i class="ph-light ph-truck why-item__icon" aria-hidden="true"></i>
+            <div class="why-item__text">
+              <h3 class="why-item__title">Free Ground Shipping Over $75</h3>
+              <p>On all qualifying orders</p>
+            </div>
+          </li>
+          <li class="why-item">
+            <i class="ph-light ph-package why-item__icon" aria-hidden="true"></i>
+            <div class="why-item__text">
+              <h3 class="why-item__title"><a href="#">Wholesale Available</a></h3>
+              <p>For businesses &amp; resellers</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ Newsletter ============ -->
+    <section class="section newsletter pt-60 pb-60">
+      <div class="newsletter__media">
+        <img src="images/banner-newsletter-pit-lane.webp" alt="" width="1920" height="440" loading="lazy">
+      </div>
+      <div class="container newsletter__inner">
+        <div class="newsletter__text">
+          <h2 class="title-italic">Stay in the Fast Lane</h2>
+          <p>Join our newsletter and always be in the know!</p>
+        </div>
+        <form class="newsletter__form" action="/contact#newsletter" method="post" data-newsletter novalidate>
+          <input type="hidden" name="form_type" value="customer">
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="newsletter__field">
+            <label class="visually-hidden" for="newsletter-email">Email address</label>
+            <input id="newsletter-email" class="newsletter__input" type="email" name="contact[email]" placeholder="Enter your email address" autocomplete="email" required>
+            <button class="btn btn--red newsletter__btn" type="submit">Subscribe</button>
+          </div>
+          <p class="newsletter__message" data-newsletter-message role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ Footer ============ -->
+  <footer class="site-footer">
+    <div class="container site-footer__top">
+      <div class="footer-brand">
+        <a href="#" aria-label="Speedgear home"><img src="images/logo-speedgear.png" alt="Speedgear - Authentic Racewear" width="272" height="80" loading="lazy"></a>
+        <p>Officially licensed motorsport merchandise for F1, IndyCar, MotoGP, WRC, Formula E and IMSA. Apparel, accessories, die-cast and more.</p>
+      </div>
+
+      <div class="footer-col" data-footer-col>
+        <button class="footer-col__title" type="button" data-footer-toggle aria-expanded="false">Customer Service <i class="ph ph-plus"></i></button>
+        <ul class="footer-col__list">
+          <li><a class="footer-phone" href="#">Phone: 1-800-777-4453</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Customer Service</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col" data-footer-col>
+        <button class="footer-col__title" type="button" data-footer-toggle aria-expanded="false">Information <i class="ph ph-plus"></i></button>
+        <ul class="footer-col__list">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Sitemap</a></li>
+          <li><a href="#">Gift Cards</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col" data-footer-col>
+        <button class="footer-col__title" type="button" data-footer-toggle aria-expanded="false">About <i class="ph ph-plus"></i></button>
+        <ul class="footer-col__list">
+          <li><a href="#">Price Guarantee</a></li>
+          <li><a href="#">Registration for Wholesale</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col--social">
+        <h2 class="footer-col__title">Follow Us</h2>
+        <ul class="social-list">
+          <li><a href="#" aria-label="Facebook"><i class="ph-fill ph-facebook-logo"></i></a></li>
+          <li><a href="#" aria-label="Pinterest"><i class="ph ph-pinterest-logo"></i></a></li>
+          <li><a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a></li>
+          <li><a href="#" aria-label="YouTube"><i class="ph-fill ph-youtube-logo"></i></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <div class="container site-footer__bottom-inner">
+        <p>&copy; <span data-year>2026</span> Speedgear. All rights reserved.</p>
+        <ul class="payment-list" aria-label="Accepted payment methods">
+          <li><img src="images/payment-visa.png" alt="Visa" width="96" height="60" loading="lazy"></li>
+          <li><img src="images/payment-mastercard.png" alt="Mastercard" width="96" height="60" loading="lazy"></li>
+          <li><img src="images/payment-american-express.png" alt="American Express" width="96" height="60" loading="lazy"></li>
+          <li><img src="images/payment-discover.png" alt="Discover" width="96" height="60" loading="lazy"></li>
+          <li><img src="images/payment-diners-club.png" alt="Diners Club" width="96" height="60" loading="lazy"></li>
+          <li><img src="images/payment-paypal.png" alt="PayPal" width="96" height="60" loading="lazy"></li>
+          <li><img src="images/payment-apple-pay.png" alt="Apple Pay" width="96" height="60" loading="lazy"></li>
+          <li><img src="images/payment-google-pay.png" alt="Google Pay" width="96" height="60" loading="lazy"></li>
+          <li><img src="images/payment-shop-pay.png" alt="Shop Pay" width="96" height="60" loading="lazy"></li>
+          <li><img src="images/payment-venmo.png" alt="Venmo" width="96" height="60" loading="lazy"></li>
+          <li><img src="images/payment-amazon-pay.png" alt="Amazon Pay" width="96" height="60" loading="lazy"></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" type="button" data-back-to-top aria-label="Back to top"><i class="ph ph-arrow-up"></i></button>
 </body>
 </html>

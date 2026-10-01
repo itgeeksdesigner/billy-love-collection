@@ -1,479 +1,293 @@
-/* =========================================================
-   BILLY LOVE COLLECTION — RESPONSIVE STYLESHEET
-   Breakpoints
-   - 1280px  small desktop / laptop
-   - 1024px  tablet landscape / iPad
-   - 768px   tablet portrait
-   - 575px   mobile
-   - 380px   small mobile
-   ========================================================= */
+/* ==========================================================================
+   Speedgear Racing — Responsive Stylesheet
+   Breakpoints: clearance band ≤1320px, laptop ≤1199px, tablet ≤991px, mobile ≤767px, small ≤479px
+   Tokens are scaled here; component rules only change layout.
+   ========================================================================== */
 
-/* ============ SMALL DESKTOP — 1280px ============ */
-@media (max-width: 1280px) {
-  :root {
-    --fs-h1: 46px;
-    --fs-h2: 38px;
-    --fs-h3: 28px;
-    --fs-h4: 22px;
-    --fs-h5: 19px;
-    --fs-h6: 16px;
-
-    --gutter: 32px;
-    --bs-gap: 30px;
-    --fs-tab: 28px;
-  }
-
-
-  .hero__content { max-width: 560px; }
-  .site-nav__list { gap: var(--space-24); }
-  .potw { gap: var(--space-32); padding: var(--space-24); }
-  .potw__media { flex-basis: 440px; width: 440px; }
+/* ---------- Clearance band (≤1320px): timer + button drop to their own row ---------- */
+@media (max-width: 1320px) {
+  .clearance-lap__inner { flex-wrap: wrap; row-gap: var(--space-24); }
+  .clearance-lap__actions { flex: 0 0 100%; justify-content: space-between; }
 }
 
-/* ============ TABLET LANDSCAPE / IPAD — 1024px ============ */
-@media (max-width: 1024px) {
+/* ---------- Laptop (≤1199px) ---------- */
+@media (max-width: 1199px) {
   :root {
-    --fs-h1: 38px;
+    --fs-h1: 76px;
+    --fs-h2: 36px;
+    --fs-h3: 28px;
+    --gutter: 32px;
+    --logo-width: 190px;
+    --search-width: 460px;
+    --nav-gap: 28px;
+    --carousel-cols-compact: 6;
+    --fs-h2-display: 60px;
+    --mega-tab-cols: 3;
+  }
+
+  .announcement__item { padding: 0 var(--space-16); }
+
+}
+
+/* ---------- Tablet (≤991px) ---------- */
+@media (max-width: 991px) {
+  :root {
+    --fs-h1: 64px;
     --fs-h2: 32px;
-    --fs-h3: 25px;
-    --fs-h4: 20px;
+    --fs-h3: 26px;
+    --fs-h4: 22px;
     --fs-h5: 18px;
     --fs-h6: 15px;
 
-    --fs-body-lg: 17px;
-    --fs-body-xl: 18px;
+    --fs-17: 16px;
+    --fs-18: 17px;
+    --fs-19: 18px;
+    --fs-20: 19px;
 
+    --space-40: 32px;
+    --space-48: 40px;
+    --space-64: 48px;
+    --space-80: 64px;
+    --space-96: 72px;
+
+    --pad-60: 50px;
+    --pad-80: 64px;
+    --pad-100: 80px;
     --gutter: 24px;
-    --header-height: 66px;
-    --fs-tab: 26px;
-    --ls-tab: 3px;
+    --grid-gap: 20px;
+    --header-height: 68px;
+    --hero-height: 560px;
+    --team-circle-size: 104px;
+    --grid-cols: 4;
+    --carousel-cols-compact: 4;
+    --fs-h2-display: 52px;
+    --banner-height: 400px;
+    --icon-why: 44px;
+    --logo-width: 170px;
   }
 
-  .bs-card { flex: 0 0 calc((100% - (var(--bs-gap) * 2)) / 3); }
-  .carousel { --carousel-btn: 36px; }
-  .social-tile { flex: 1 1 calc(33.333% - var(--space-16)); }
-  .bestsellers__panels { padding-top: var(--space-40); }
-  .bestsellers__cta { padding-top: var(--space-40); }
+  /* Announcement: one message at a time */
+  .announcement__inner { justify-content: space-between; gap: var(--space-8); }
+  .announcement__track { flex: 1; }
+  .announcement__item.is-visible ~ .announcement__item.is-visible { border-left: none; }
+
+  /* Header switches to drawer navigation + search toggle */
+  .site-header__main { gap: var(--space-12); }
+  .site-header__menu-toggle { display: inline-flex; }
+  .site-header__logo { flex: 1; }
+  .site-header__search { display: none; }
+  .header-search-toggle { display: flex; }
+  .header-action__label { display: none; }
+  .site-header__actions { gap: var(--space-20); }
 
   .site-nav { display: none; }
 
-  /* Menu button left, logo centred, actions right. The logo keeps the base
-     rule's absolute centring so it is centred on the header, not on whatever
-     space is left between the two button groups. */
-  .site-logo { height: 42px; }
-  .site-actions { flex: 1 1 0; }
-  .site-actions__btn--mobile { display: flex; }
-  .site-actions__btn--desktop { display: none; }
-  .site-actions { gap: var(--space-16); }
+  /* Hero */
+  .hero__content { padding-left: var(--gutter); padding-right: var(--gutter); }
+  .hero__arrow { top: auto; bottom: var(--space-12); transform: none; width: 40px; height: 40px; font-size: var(--icon-md); }
+  .hero__arrow--prev { left: var(--space-8); }
+  .hero__arrow--next { right: var(--space-8); }
+  .hero__tab { padding: var(--space-8) var(--space-12); }
+  .hero__tab::after { left: var(--space-12); right: var(--space-12); }
 
-  .hero__content { max-width: 500px; }
+  /* Shop by team: swipe row */
+  .team-circles {
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-bottom: var(--space-4);
+  }
 
-  .section__head { padding-bottom: var(--space-40); }
-  .usp__container { gap: var(--space-24); }
-  .usp__item { flex: 1 1 calc(50% - var(--space-24)); }
+  .team-circles::-webkit-scrollbar { display: none; }
 
-  .modal__content { padding: var(--space-32); }
+  .team-circle {
+    flex: 0 0 var(--team-circle-size);
+    scroll-snap-align: start;
+  }
 
-  .scroll-marquee { --marquee-fs: 26px; }
+  .team-circle__link { padding-top: var(--space-4); }
+
+  .promo-tile__content { padding: var(--space-20); }
+
+  .clearance-lap__offer { padding-right: var(--space-24); }
+  .clearance-lap__inner { column-gap: var(--space-24); }
+
+  /* Why Speedgear: 2 × 2 */
+  .why-list { flex-wrap: wrap; row-gap: var(--space-24); }
+  .why-item { flex: 0 0 50%; padding: var(--space-8) var(--space-24); }
+  .why-item:nth-child(odd) { padding-left: 0; border-left: none; }
+
+  /* Newsletter: photo behind, darker fade */
+  .newsletter__media { width: 100%; }
+  .newsletter::after { background: linear-gradient(90deg, var(--color-bg-darker) 20%, var(--color-overlay-strong) 100%); }
+
+  /* Footer: brand full width, four columns below */
+  .site-footer__top { flex-wrap: wrap; row-gap: var(--space-32); }
+  .footer-brand { flex: 0 0 100%; padding-right: 0; }
+  .footer-brand + .footer-col { border-left: none; padding-left: 0; }
+  .footer-col { padding: 0 var(--space-16); }
+  .footer-brand + .footer-col { padding-left: 0; }
+  .footer-col--social { padding-right: 0; }
 }
 
-/* ============ TABLET PORTRAIT — 768px ============ */
-@media (max-width: 768px) {
+/* ---------- Mobile (≤767px) ---------- */
+@media (max-width: 767px) {
   :root {
-    --fs-h1: 32px;
+    --fs-h1: 50px;
     --fs-h2: 28px;
-    --fs-h3: 23px;
-    --fs-h4: 19px;
+    --fs-h3: 22px;
+    --fs-h4: 20px;
     --fs-h5: 17px;
-    --fs-h6: 15px;
-
-    --fs-body-md: 15px;
-    --fs-body-lg: 16px;
-    --fs-body-xl: 17px;
-
-    --gutter: 20px;
-    --bs-gap: 24px;
-    --fs-tab: 22px;
-  }
-
-  .bs-card { flex: 0 0 calc((100% - var(--bs-gap)) / 2); }
-  .tabs { gap: var(--space-32); }
-
-  .announcement__arrow { display: none; }
-  .announcement__viewport { min-width: 0; }
-
-  .hero { padding-top: var(--space-48); padding-bottom: var(--space-48); }
-  .hero--centered .hero__container { align-items: center; }
-  .hero__frame { margin-right: 0; }
-  .hero__content { max-width: 440px; }
-
-
-
-  .promo-banner { --promo-height: 76vh; }
-  .craft { --craft-min-height: 560px; }
-  .feature-banner__card { max-width: 340px; padding: var(--space-32) var(--space-24); }
-  .promo-banner__inner { padding-top: var(--space-48); padding-bottom: var(--space-48); }
-
-
-  .potw { flex-direction: column; gap: var(--space-24); padding: var(--space-20); }
-
-  .potw__content { flex: 1 1 100%; width: 100%; }
-  .potw__media { flex: 0 1 400px; width: 400px; }
-
-  .blog-grid { gap: var(--space-24); }
-  .social-grid { gap: var(--space-10); }
-  .social-tile { flex: 1 1 calc(50% - var(--space-10)); }
-
-  .site-footer__top { gap: var(--space-32); padding-top: var(--space-56); padding-bottom: var(--space-40); }
-  .footer-col { flex: 1 1 calc(50% - var(--space-32)); }
-  .footer-col--brand { flex: 1 1 100%; }
-
-  /* Side by side rather than stacked: a full-width 16/10 letterbox crops
-     these portrait product shots hard. A narrow tall column matches the
-     source aspect far better, so almost nothing is lost. */
-  .modal__panel { flex-direction: row; flex-wrap: nowrap; max-height: 88vh; }
-
-  .modal__media { flex: 0 0 40%; }
-
-  .modal__img {
-    width: 100%;
-    height: 100%;
-    aspect-ratio: auto;
-    object-fit: cover;
-  }
-
-  .modal__content {
-    flex: 1 1 60%;
-    gap: var(--space-10);
-    padding: var(--space-32) var(--space-20) var(--space-24);
-    overflow-y: auto;
-  }
-
-  .scroll-marquee {
-    --marquee-fs: 22px;
-    --marquee-gap: var(--space-28);
-    --marquee-row-pad: var(--space-16);
-  }
-}
-
-/* ============ MOBILE — 575px ============ */
-@media (max-width: 575px) {
-  .feature-banner--bare { padding: var(--space-40) 0; }
-
-  :root {
-    --fs-h1: 26px;
-    --fs-h2: 25px;
-    --fs-h3: 21px;
-    --fs-h4: 18px;
-    --fs-h5: 16px;
     --fs-h6: 14px;
 
-    --fs-body-xxs: 10px;
-    --fs-body-xs: 11px;
-    --fs-body-sm: 13px;
-    --fs-body-md: 14px;
-    --fs-body-lg: 15px;
-    --fs-body-xl: 16px;
+    --fs-13: 12px;
+    --fs-14: 13px;
+    --fs-15: 14px;
+    --fs-16: 15px;
+    --fs-17: 15px;
+    --fs-18: 16px;
+    --fs-19: 17px;
+    --fs-20: 18px;
 
-    --gutter: 16px;
-    --header-height: 60px;
-
-    --space-64: 32px;
+    --space-24: 20px;
+    --space-32: 24px;
+    --space-40: 28px;
+    --space-48: 32px;
+    --space-64: 40px;
     --space-80: 48px;
-    --space-100: 56px;
-    --space-120: 64px;
+    --space-96: 56px;
 
-    --ls-widest: 2px;
-    --ls-display: 3px;
-    --ls-tab: 2px;
-    --icon-xl: 28px;
-    --bs-gap: 16px;
-    --fs-tab: 19px;
+    --pad-20: 16px;
+    --pad-40: 32px;
+    --pad-60: 40px;
+    --pad-80: 48px;
+    --pad-100: 60px;
+    --gutter: 16px;
+    --grid-gap: 12px;
+    --header-height: 60px;
+    --hero-height: 560px;
+
+    --icon-lg: 24px;
+    --logo-width: 140px;
+    --team-circle-size: 84px;
+    --grid-cols: 2;
+    --carousel-cols-compact: 2.4;
+    --fs-h2-display: 40px;
+    --banner-height: 480px;
+    --icon-why: 36px;
+    --countdown-box: 48px;
+    --speed-lines-width: 40px;
+    --speed-lines-height: 12px;
+    --speed-line-thickness: 2px;
+    --announcement-height: 36px;
   }
 
-  /* ~1.3 cards in view so the next one peeks and invites a swipe */
-  .bs-card { flex: 0 0 64%; }
+  .announcement__item { padding: 0; font-size: var(--fs-12); white-space: normal; text-align: center; }
 
-  /* Arrows straddle the card edge, half on and half off, as on desktop.
-     The button is sized to exactly twice the gutter (16px), so the half that
-     hangs out lands in the page margin and nothing overflows the screen.
-     Vertically they centre on the image band, not the whole card: top clears
-     the media's margin, bottom clears the title and price. */
-  .carousel {
-    --carousel-btn: 32px;
-    --carousel-caption: 66px;
-  }
+  .site-header__main { gap: var(--space-8); }
+  .site-header__actions { gap: var(--space-16); }
 
-  .carousel__btn {
-    top: var(--space-16);
-    bottom: var(--carousel-caption);
-    margin-block: auto;
-    transform: none;
-  }
-  .bs-card { --bs-img-pad: var(--space-16); }
-  .tabs { gap: var(--space-24); }
+  /* Hero: stacked content, bottom aligned */
+  .hero__slide { justify-content: flex-end; }
+  .hero__slide::after { background: linear-gradient(0deg, var(--color-overlay-strong) 15%, transparent 75%); }
+  .hero__content { gap: var(--space-12); padding-bottom: calc(var(--space-80) + var(--space-16)); }
+  .hero__text { font-size: var(--fs-16); }
+  .hero__actions { width: 100%; }
+  .hero__actions .btn { flex: 1; padding-left: var(--space-12); padding-right: var(--space-12); }
+  .hero__tabs { display: none; }
+  .hero__controls-inner { padding-bottom: var(--space-20); }
 
-  /* tabs sit much closer to the carousel on a phone */
-  .bestsellers__head { gap: var(--space-12); }
-  .bestsellers__panels { padding-top: var(--space-24); }
-  .bestsellers__cta .btn { width: 100%; }
-
-  .announcement { padding-top: var(--space-8); padding-bottom: var(--space-8); }
-  .site-logo { height: 36px; }
-
-  /* ---- hero stacks on phones: photo on top, copy beneath it ----
-     The image leaves the absolute layer and becomes a normal block, so the
-     section is simply two stacked boxes instead of an overlay. */
-  .hero {
-    justify-content: flex-start;
-    min-height: 0;
-    padding-top: 0;
-    padding-bottom: var(--space-40);
-  }
-
-  .hero__media {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    aspect-ratio: 4 / 3;
-  }
-
-  /* the scrim exists to lift text off the photo; nothing sits on it now */
-  .hero__media::after { display: none; }
-
-  /* the phone source is already cropped to 4:3, so no further zoom or
-     repositioning is needed here */
-  .hero__img { object-position: center; transform: none; }
-
-  .hero__container { padding-top: var(--space-32); }
-
-  .hero__content {
-    gap: var(--space-16);
-    max-width: 100%;
-    text-shadow: none;
-  }
-
-  /* copy now sits on the page background, so it takes the page ink */
-  .hero__title { color: var(--color-text); }
-  .hero__text { color: var(--color-text-muted); }
-  .hero .eyebrow--light { color: var(--color-logo-pink); opacity: 1; }
-
-  /* the ghost button was white-on-photo; on ivory it needs the dark pair */
-  .hero__actions .btn--ghost {
-    --btn-fill: var(--color-espresso);
-    --btn-ink: var(--color-ivory);
-  }
-
-  /* both CTAs share one row rather than stacking */
-  .hero__actions { width: 100%; flex-wrap: nowrap; gap: var(--space-8); }
-
-  .hero__actions .btn {
-    flex: 1 1 0;
-    min-width: 0;
-    padding-left: var(--space-12);
-    padding-right: var(--space-12);
-    letter-spacing: var(--ls-wide);
-    white-space: nowrap;
-  }
-
-  /* ---- slide 2 keeps its copy over the photo on phones ----
-     It fills whatever height slide 1 sets (photo + copy) and puts the
-     photo back behind the copy, which the stacked slide 1 undid above. */
-  .hero--centered {
-    justify-content: center;
-    padding-top: var(--space-24);
-    padding-bottom: var(--space-24);
-  }
-
-  .hero--centered .hero__media { position: absolute; inset: 0; aspect-ratio: auto; }
-  .hero--centered .hero__container { padding-top: 0; }
-
-  /* the stacked slide 1 turns .hero__title dark above; these slides keep
-     their copy on the photo, so it stays white */
-  .hero--centered .hero__title { color: var(--color-white); }
-
-  /* smaller box so more of the photo shows around it */
-  .hero__frame {
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
     gap: var(--space-12);
-    max-width: 280px;
-    padding: var(--space-28) var(--space-16);
   }
-  .hero__eyebrow { font-size: var(--fs-body-2xs); }
-  .hero__title--light { font-size: 22px; letter-spacing: 0.12em; }
-  .hero__btn { margin-top: 0; padding: var(--space-12) var(--space-20); font-size: var(--fs-body-xs); }
 
-  /* While slide 1 is hidden, the overlay slides set the height themselves
-     and the dots sit in their bottom-right corner. When slide 1 returns,
-     swap back to: .hero-slider__dots { top: calc(75vw - var(--space-32));
-     right: var(--space-12); bottom: auto; } and drop the min-height. */
-  .hero--centered { min-height: 100vw; }
-  .hero-slider__dots { right: var(--space-12); bottom: var(--space-12); }
+  .section-header--inline { flex-direction: row; flex-wrap: wrap; align-items: center; }
+  .tab-title:first-child { padding-right: var(--space-12); }
+  .tab-title + .tab-title { padding-left: var(--space-12); }
+  .tab-title::after { right: var(--space-12); }
+  .tab-title + .tab-title::after { left: var(--space-12); }
+  .team-circle__logo { padding: var(--space-12); }
 
-  .section__head--row { flex-direction: column; align-items: flex-start; }
-
-  /* ---- USP bar becomes a one-at-a-time slider with dots ---- */
-  .usp__container {
-    flex-direction: row;
-    flex-wrap: nowrap;
+  /* Promo tiles: swipe row */
+  .promo-tiles {
     overflow-x: auto;
-    scroll-snap-type: x proximity;
+    scroll-snap-type: x mandatory;
     scrollbar-width: none;
+  }
+
+  .promo-tiles::-webkit-scrollbar { display: none; }
+
+  .promo-tile {
+    flex: 0 0 82%;
+    scroll-snap-align: start;
+  }
+
+  .product-grid { row-gap: var(--space-24); }
+
+  .clearance-lap__inner { flex-direction: column; align-items: flex-start; gap: var(--space-16); }
+  .clearance-lap__offer { flex-direction: row; align-items: baseline; gap: var(--space-8); padding: 0; border-right: none; font-size: var(--fs-h3); }
+  .clearance-lap__offer span { font-size: var(--fs-h3); }
+  .clearance-lap__actions { flex-direction: column; align-items: stretch; gap: var(--space-16); width: 100%; }
+  .countdown { justify-content: space-between; }
+  .countdown__unit { flex: 1; }
+  .countdown__value { width: 100%; }
+
+  .diecast-banner { justify-content: flex-end; }
+  .diecast-banner::after { background: linear-gradient(0deg, var(--color-overlay-strong) 20%, transparent 75%); }
+  .diecast-banner__content { gap: var(--space-16); }
+
+  .why-list { flex-direction: column; row-gap: 0; }
+  .why-item { flex: 0 0 auto; gap: var(--space-16); padding: var(--space-16) 0; }
+  .why-item + .why-item { border-left: none; border-top: var(--border-width) solid var(--color-divider-light-soft); }
+
+  /* Newsletter: stacked field */
+  .newsletter__field { flex-direction: column; }
+  .newsletter__input { flex: 0 0 auto; }
+  .newsletter__btn { width: 100%; }
+
+  /* Footer columns become accordions */
+  .site-footer__top { flex-direction: column; row-gap: 0; padding-bottom: var(--space-24); }
+  .footer-brand { padding-bottom: var(--space-24); }
+
+  .footer-col {
+    flex: 0 0 auto;
     gap: 0;
+    padding: 0;
+    border-left: none;
+    border-top: var(--border-width) solid var(--color-divider-light-soft);
   }
 
-  .usp__container::-webkit-scrollbar { display: none; }
+  .footer-col + .footer-col { border-left: none; }
 
-  .usp__item { flex: 0 0 100%; scroll-snap-align: center; }
-  .usp__text { max-width: 100%; }
-  .usp__dots { display: flex; }
+  .footer-col__title { padding: var(--space-16) 0; cursor: pointer; }
+  .footer-col__title i { display: inline-flex; transition: transform var(--transition); }
+  .footer-col.is-open .footer-col__title i { transform: rotate(45deg); }
 
+  .footer-col__list { display: none; padding-bottom: var(--space-16); }
+  .footer-col.is-open .footer-col__list { display: flex; }
 
+  .footer-col--social { gap: var(--space-4); padding-bottom: var(--space-16); }
+  .footer-col--social .footer-col__title { cursor: default; }
 
-
-  /* no hover on touch: keep the quick-add visible */
-  .bs-card__add { opacity: 1; transform: translateY(0); }
-
-
-  /* ---- promo banner stacks: 4:3 image on top, copy beneath ----
-     The media leaves the absolute layer and becomes a normal block, so the
-     section is two stacked boxes rather than an overlay. */
-  .promo-banner {
-    --promo-height: 0;
-    --promo-text: var(--color-text);
-    justify-content: flex-start;
+  .site-footer__bottom-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
-  .promo-banner__media {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    aspect-ratio: 4 / 3;
-  }
+  .payment-list { justify-content: center; }
 
-  /* the scrim exists to lift text off the photo; nothing sits on it now */
-  .promo-banner__overlay { display: none; }
-
-  .promo-banner__inner {
-    padding-top: var(--space-32);
-    padding-bottom: var(--space-40);
-  }
-
-  .promo-banner__text { opacity: 1; color: var(--color-text-muted); }
-  .promo-banner__subheading { color: var(--color-logo-pink); }
-
-  /* CTA was white-on-photo; on ivory it needs the dark pair */
-  .promo-banner__btn {
-    --btn-fill: var(--color-espresso);
-    --btn-ink: var(--color-ivory);
-  }
-  .craft { --craft-min-height: 500px; --craft-overlay: 0.35; }
-
-  /* the reveal zoom would add crop on top of an already tight phone frame */
-  .craft__img { transform: none; }
-  .feature-banner__card { max-width: 100%; padding: var(--space-28) var(--space-20); }
-  .promo-banner__content { max-width: 100%; }
-
-  /* ---- journal becomes a swipeable slider ----
-     Same scroll-snap approach as the product carousel, so it needs no JS.
-     Negative margins let the track bleed to the screen edges while the
-     padding keeps the first card aligned with the rest of the page. */
-  .blog-grid {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-snap-type: x proximity;
-    scrollbar-width: none;
-    gap: var(--space-16);
-    margin-left: calc(var(--gutter) * -1);
-    margin-right: calc(var(--gutter) * -1);
-    padding-left: var(--gutter);
-    padding-right: var(--gutter);
-    /* snap points align to the scrollport edge, not the padding box, so
-       without this the first card snaps flush to the screen edge */
-    scroll-padding-left: var(--gutter);
-  }
-
-  .blog-grid::-webkit-scrollbar { display: none; }
-
-  /* ~1.2 cards in view so the next one peeks and invites a swipe */
-  .blog-card { flex: 0 0 78%; scroll-snap-align: start; }
-
-  /* ---- social feed becomes a swipeable strip, same pattern ---- */
-  .social-grid {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-snap-type: x proximity;
-    scrollbar-width: none;
-    gap: var(--space-10);
-    margin-left: calc(var(--gutter) * -1);
-    margin-right: calc(var(--gutter) * -1);
-    padding-left: var(--gutter);
-    padding-right: var(--gutter);
-    scroll-padding-left: var(--gutter);
-  }
-
-  .social-grid::-webkit-scrollbar { display: none; }
-
-  .social-tile { flex: 0 0 46%; scroll-snap-align: start; }
-
-  .newsletter__container { flex-direction: column; align-items: flex-start; }
-  .newsletter__form { flex-direction: column; flex: 1 1 100%; width: 100%; }
-
-  /* The form stacks here, so flex-basis applies to height -- the desktop
-     "flex: 1 1 240px" made the input 240px tall. Height comes from padding. */
-  .newsletter__input { flex: 0 0 auto; width: 100%; }
-
-  .newsletter__form .btn { width: 100%; }
-
-  .potw__media { flex-basis: 320px; width: 320px; }
-  .potw__actions { width: 100%; }
-  .potw__actions .btn { flex: 1 1 100%; }
-
-  .footer-col { flex: 1 1 100%; }
-  .site-footer__bottom { flex-direction: column; align-items: flex-start; }
-
-  .modal { padding: var(--space-12); }
-  .modal__content { padding: var(--space-20); }
-  .modal__content .btn { width: 100%; }
-
-  .welcome { right: var(--space-16); bottom: var(--space-16); width: calc(100% - var(--space-32)); padding: var(--space-40) var(--space-24) var(--space-28); }
-
-  .toast { left: var(--space-16); right: var(--space-16); transform: translate(0, 20px); justify-content: center; }
-  .toast.is-visible { transform: translate(0, 0); }
-
-  .scroll-marquee {
-    --marquee-fs: 18px;
-    --marquee-gap: var(--space-20);
-    --marquee-row-pad: var(--space-14);
-  }
+  .back-to-top { right: var(--space-16); bottom: var(--space-16); width: 44px; height: 44px; }
 }
 
-/* ============ SMALL MOBILE — 380px ============ */
-@media (max-width: 380px) {
+/* ---------- Small mobile (≤479px) ---------- */
+@media (max-width: 479px) {
   :root {
-    --fs-h1: 23px;
-    --fs-h2: 23px;
-    --gutter: 14px;
+    --fs-h1: 44px;
+    --fs-h2: 24px;
   }
 
-  .size-swatch { min-width: 32px; }
-  .social-tile { flex: 0 0 56%; }
-
-  /* gutter drops to 14px here, so the arrow shrinks to match */
-  .carousel { --carousel-btn: 28px; }
-}
-
-/* ============ REDUCED MOTION ============ */
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .scroll-marquee__track { animation: none; }
-  .promo-banner__img { transform: none; }
-  .craft__img { transform: none; }
-  .bs-card:hover .bs-card__img { transform: none; }
-  .bs-card__add:hover i { transform: none; }
-  .promo-banner__content { opacity: 1; transform: none; }
-  .feature-banner__card { opacity: 1; transform: none; }
-  .testimonials__track { transition: none; }
-  *,
-  *::before,
-  *::after { transition-duration: 1ms !important; }
 }
